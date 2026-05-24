@@ -1,6 +1,7 @@
 "use client";
 
 import { Magnet } from "@/components/react-bits/Magnet";
+import { useVariant } from "./VariantProvider";
 
 type CtaButtonProps = {
   href?: string;
@@ -17,12 +18,15 @@ export function CtaButton({
   variant = "primary",
   className = ""
 }: CtaButtonProps) {
+  const { variant: themeVariant } = useVariant();
+
   const handleClick = () => {
     window.dispatchEvent(
       new CustomEvent("recruit_cta_click", {
         detail: {
           cta_label: label,
           section_id: sectionId,
+          theme_variant: themeVariant,
           page_path: window.location.pathname
         }
       })
@@ -31,11 +35,12 @@ export function CtaButton({
     window.gtag?.("event", "recruit_cta_click", {
       cta_label: label,
       section_id: sectionId,
+      theme_variant: themeVariant,
       page_path: window.location.pathname
     });
   };
 
-  const styles = {
+  const stylesA = {
     primary:
       "bg-tennis text-primary shadow-[0_14px_30px_rgba(15,61,46,0.18)] hover:-translate-y-0.5 hover:shadow-lift",
     secondary:
@@ -43,12 +48,25 @@ export function CtaButton({
     dark:
       "bg-primary text-white shadow-[0_14px_30px_rgba(15,61,46,0.26)] hover:-translate-y-0.5 hover:bg-court"
   };
+
+  // Variant B CTAs: Ink ベタ + Tennis Yellow の1px下線、または白カード+Coral
+  const stylesB = {
+    primary:
+      "bg-ink text-warm border-b-2 border-tennis hover:-translate-y-0.5 hover:bg-primary",
+    secondary:
+      "border border-ink/20 bg-warm text-ink hover:-translate-y-0.5 hover:border-clay hover:text-clay",
+    dark:
+      "bg-deep text-warm hover:-translate-y-0.5 hover:bg-primary"
+  };
+
+  const styles = themeVariant === "b" ? stylesB : stylesA;
+  const radius = themeVariant === "b" ? "rounded-sm" : "rounded-full";
   const fill = className.includes("w-full") ? "w-full" : "";
 
   return (
     <Magnet className={className}>
       <a
-        className={`relative inline-flex min-h-12 shrink-0 items-center justify-center overflow-hidden whitespace-nowrap rounded-full px-6 text-sm font-black transition before:absolute before:inset-0 before:rounded-full before:border before:border-white/30 before:opacity-60 ${fill} ${styles[variant]}`}
+        className={`relative inline-flex min-h-12 shrink-0 items-center justify-center overflow-hidden whitespace-nowrap ${radius} px-6 text-sm font-bold transition ${fill} ${styles[variant]}`}
         data-cta-label={label}
         data-section-id={sectionId}
         href={href}

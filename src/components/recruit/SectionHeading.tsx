@@ -1,5 +1,10 @@
+"use client";
+
+import { useVariant } from "./VariantProvider";
+
 type SectionHeadingProps = {
   eyebrow?: string;
+  eyebrowB?: string;
   title: string;
   description?: string;
   align?: "left" | "center";
@@ -8,25 +13,23 @@ type SectionHeadingProps = {
 
 export function SectionHeading({
   eyebrow,
+  eyebrowB,
   title,
   description,
   align = "left",
   light = false
 }: SectionHeadingProps) {
+  const { variant } = useVariant();
+  const eyebrowText = variant === "b" && eyebrowB ? eyebrowB : eyebrow;
+
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
-      {eyebrow ? (
-        <p
-          className={`mb-3 text-xs font-black uppercase tracking-[0.2em] ${
-            light ? "text-tennis" : "text-court"
-          }`}
-        >
-          {eyebrow}
-        </p>
+      {eyebrowText ? (
+        <p className={`eyebrow mb-3 ${light ? "!text-tennis" : ""}`}>{eyebrowText}</p>
       ) : null}
       <h2
-        className={`whitespace-pre-line text-balance text-3xl font-black leading-tight sm:text-4xl ${
-          light ? "text-white" : "text-primary"
+        className={`display-heading whitespace-pre-line text-balance text-3xl leading-tight sm:text-4xl ${
+          light ? "!text-white" : ""
         }`}
       >
         {title}

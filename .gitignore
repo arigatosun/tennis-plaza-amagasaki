@@ -43,3 +43,8 @@ next-env.d.ts
 # editor
 .vscode/
 .idea/
+
+# test / mcp artifacts
+.playwright-mcp/
+tmp_pdf_pages/
+tpa-*.png

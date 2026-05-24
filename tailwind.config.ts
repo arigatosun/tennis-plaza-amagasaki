@@ -22,7 +22,11 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-noto-sans-jp)", "var(--font-inter)", "sans-serif"],
-        display: ["var(--font-inter)", "var(--font-noto-sans-jp)", "sans-serif"]
+        display: ["var(--font-inter)", "var(--font-noto-sans-jp)", "sans-serif"],
+        serif: ["var(--font-noto-serif-jp)", "var(--font-fraunces)", "serif"],
+        editorial: ["var(--font-fraunces)", "var(--font-noto-serif-jp)", "serif"],
+        tight: ["var(--font-inter-tight)", "var(--font-inter)", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"]
       },
       boxShadow: {
         soft: "0 20px 60px rgba(15, 61, 46, 0.12)",

@@ -1,11 +1,14 @@
+"use client";
+
 import { Dumbbell, Menu } from "lucide-react";
 import { recruitPage } from "@/data/recruit";
 import { CtaButton } from "./CtaButton";
+import { VariantToggle } from "./VariantToggle";
 
 export function RecruitHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-primary/10 bg-white/84 backdrop-blur-xl">
-      <div className="section-shell flex h-16 items-center justify-between gap-4">
+      <div className="section-shell flex h-16 items-center justify-between gap-3">
         <a className="flex items-center gap-3 font-black text-primary" href="#top">
           <span className="grid size-9 place-items-center rounded-full bg-primary text-tennis">
             <Dumbbell aria-hidden size={18} />
@@ -15,12 +18,17 @@ export function RecruitHeader() {
         </a>
         <nav className="hidden items-center gap-6 text-sm font-bold text-ink/70 lg:flex">
           {recruitPage.nav.map((item) => (
-            <a className="transition hover:text-primary" href={item.href} key={item.href}>
+            <a
+              className="b-underline-coral transition hover:text-primary"
+              href={item.href}
+              key={item.href}
+            >
               {item.label}
             </a>
           ))}
         </nav>
         <div className="flex items-center gap-2">
+          <VariantToggle />
           <CtaButton
             className="hidden sm:inline-flex"
             label="まずは見学してみる"
