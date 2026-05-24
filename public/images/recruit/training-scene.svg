@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="760" viewBox="0 0 1000 760" role="img" aria-label="先輩コーチが若手にフィードバックするデモビジュアル">
+  <rect width="1000" height="760" fill="#e6e9e6"/>
+  <path d="M0 480 C255 380 450 430 645 360 C805 302 925 324 1000 286 L1000 760 L0 760 Z" fill="#0b3b2e"/>
+  <g fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="4">
+    <path d="M135 720 L440 430 L765 730"/>
+    <path d="M880 720 L600 430 L288 730"/>
+    <path d="M260 610 L790 610"/>
+  </g>
+  <rect x="560" y="195" width="205" height="140" rx="12" fill="#fff"/>
+  <path d="M590 235 H735 M590 270 H705 M590 305 H720" stroke="#18a36b" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="315" cy="285" r="54" fill="#f8f6ef"/>
+  <path d="M230 580 C248 432 300 355 365 360 C438 366 480 452 492 580 Z" fill="#f8f6ef"/>
+  <circle cx="650" cy="385" r="46" fill="#d9ff43"/>
+  <path d="M575 594 C592 486 630 438 680 445 C738 454 770 500 785 594 Z" fill="#d9ff43"/>
+</svg>

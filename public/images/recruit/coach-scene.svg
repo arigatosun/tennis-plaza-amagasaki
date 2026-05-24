@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="760" viewBox="0 0 1000 760" role="img" aria-label="経験豊かなコーチが生徒と向き合うデモビジュアル">
+  <rect width="1000" height="760" fill="#0b3b2e"/>
+  <path d="M0 510 C220 430 390 480 585 402 C762 330 890 345 1000 300 L1000 760 L0 760 Z" fill="#1f7a5b"/>
+  <g fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="4">
+    <path d="M130 725 L420 450 L740 735"/>
+    <path d="M870 725 L600 450 L278 735"/>
+    <path d="M300 620 L745 620"/>
+    <path d="M500 448 L500 735"/>
+  </g>
+  <circle cx="330" cy="245" r="70" fill="#f8f6ef"/>
+  <path d="M230 555 C250 385 310 326 382 330 C480 336 525 430 545 555 Z" fill="#f8f6ef"/>
+  <path d="M415 383 C505 390 578 448 630 535" stroke="#f8f6ef" stroke-width="34" stroke-linecap="round" fill="none"/>
+  <circle cx="725" cy="360" r="42" fill="#d9ff43"/>
+  <path d="M660 560 C678 465 716 420 765 426 C820 433 846 490 856 560 Z" fill="#d9ff43"/>
+  <path d="M660 322 C742 258 845 255 920 305" stroke="#d9ff43" stroke-opacity=".55" stroke-width="7" stroke-linecap="round" fill="none"/>
+</svg>

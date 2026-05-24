@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="760" viewBox="0 0 1000 760" role="img" aria-label="タブレットでロープレ練習をするデモビジュアル">
+  <rect width="1000" height="760" fill="#0b3b2e"/>
+  <g opacity=".28" stroke="#7dd3fc" stroke-width="2">
+    <path d="M0 120 H1000 M0 240 H1000 M0 360 H1000 M0 480 H1000 M0 600 H1000"/>
+    <path d="M120 0 V760 M240 0 V760 M360 0 V760 M480 0 V760 M600 0 V760 M720 0 V760 M840 0 V760"/>
+  </g>
+  <rect x="515" y="145" width="310" height="420" rx="24" fill="#f8f6ef"/>
+  <rect x="548" y="190" width="245" height="66" rx="12" fill="#e6e9e6"/>
+  <rect x="548" y="285" width="190" height="54" rx="12" fill="#7dd3fc" opacity=".72"/>
+  <rect x="548" y="365" width="230" height="54" rx="12" fill="#d9ff43" opacity=".88"/>
+  <rect x="548" y="445" width="165" height="54" rx="12" fill="#e6e9e6"/>
+  <circle cx="345" cy="310" r="58" fill="#d9ff43"/>
+  <path d="M252 615 C274 455 330 380 392 388 C485 400 520 485 535 615 Z" fill="#d9ff43"/>
+  <path d="M405 420 C470 420 515 455 550 505" stroke="#d9ff43" stroke-width="32" stroke-linecap="round" fill="none"/>
+  <path d="M190 220 C310 110 500 110 640 220" stroke="#7dd3fc" stroke-width="7" stroke-linecap="round" fill="none"/>
+</svg>

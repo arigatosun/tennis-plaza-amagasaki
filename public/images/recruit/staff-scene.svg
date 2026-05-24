@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="760" viewBox="0 0 1000 760" role="img" aria-label="現場スタッフが生徒と話すデモビジュアル">
+  <rect width="1000" height="760" fill="#f8f6ef"/>
+  <rect y="430" width="1000" height="330" fill="#1f7a5b"/>
+  <g fill="none" stroke="#fff" stroke-opacity=".34" stroke-width="4">
+    <path d="M90 720 L370 430 L690 730"/>
+    <path d="M930 720 L640 430 L318 730"/>
+    <path d="M210 610 L810 610"/>
+  </g>
+  <circle cx="345" cy="265" r="58" fill="#0b3b2e"/>
+  <path d="M250 555 C272 390 330 330 390 338 C485 350 520 438 532 555 Z" fill="#0b3b2e"/>
+  <circle cx="620" cy="330" r="42" fill="#ff7a59"/>
+  <path d="M560 565 C575 455 610 398 660 405 C716 413 748 470 758 565 Z" fill="#ff7a59"/>
+  <circle cx="780" cy="360" r="34" fill="#d9ff43"/>
+  <path d="M730 565 C742 482 772 440 812 444 C860 449 882 493 890 565 Z" fill="#d9ff43"/>
+  <path d="M455 268 C540 210 650 210 735 276" stroke="#18a36b" stroke-width="8" stroke-linecap="round" fill="none"/>
+</svg>
