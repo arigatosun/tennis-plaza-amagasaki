@@ -96,10 +96,12 @@ export function HeroSection() {
             <h1 className="mt-3 whitespace-pre-line text-balance font-serif text-[2.15rem] font-semibold leading-[1.5] text-primary sm:text-[2.6rem] lg:text-[2.9rem]">
               {recruitPage.hero.title}
             </h1>
-            <p className="mt-6 whitespace-pre-line font-serif text-xl font-medium leading-9 text-ink/82">
-              {recruitPage.hero.subtitle}
-            </p>
-            <p className="mt-5 max-w-xl text-sm leading-8 text-ink/74">
+            {recruitPage.hero.subtitle ? (
+              <p className="mt-6 whitespace-pre-line font-serif text-xl font-medium leading-9 text-ink/82">
+                {recruitPage.hero.subtitle}
+              </p>
+            ) : null}
+            <p className="mt-7 max-w-xl text-sm leading-8 text-ink/74">
               {recruitPage.hero.body}
             </p>
             <ClickSpark>
@@ -168,12 +170,14 @@ export function HeroSection() {
             className="text-balance font-tight text-4xl font-black leading-[1.06] tracking-tight sm:text-5xl lg:text-6xl"
             text={recruitPage.hero.title}
           />
-          <BlurText
-            as="p"
-            className="mt-5 whitespace-pre-line text-2xl font-black leading-snug text-tennis sm:text-3xl"
-            text={recruitPage.hero.subtitle}
-          />
-          <p className="mt-5 max-w-2xl text-sm font-medium leading-7 text-white/82 sm:text-base">
+          {recruitPage.hero.subtitle ? (
+            <BlurText
+              as="p"
+              className="mt-5 whitespace-pre-line text-2xl font-black leading-snug text-tennis sm:text-3xl"
+              text={recruitPage.hero.subtitle}
+            />
+          ) : null}
+          <p className="mt-6 max-w-2xl text-sm font-medium leading-7 text-white/82 sm:text-base">
             {recruitPage.hero.body}
           </p>
           <ClickSpark>

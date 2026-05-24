@@ -22,9 +22,9 @@ export const recruitPage = {
   hero: {
     eyebrow: "RECRUIT / COACH 2026",
     eyebrowB: "№ 01 — EDITOR'S NOTE",
-    title: "好きだったテニスが、\n誰かの人生に\n少し触れる仕事になる。",
-    titleEn: "A quiet rally with someone's life.",
-    subtitle: "コートの上での出会いが、\n自分の毎日を、\n少しずつ変えていく。",
+    title: "コートの上での出会いが、\n自分の毎日を、\n少しずつ変えていく。",
+    titleEn: "A quiet rally that reshapes your days.",
+    subtitle: "",
     body:
       "教える、寄り添う、一緒に喜ぶ。テニスプラザ尼崎のコーチの仕事は、いつのまにか自分のリズムをつくる時間になっていきます。誰かの一歩を見届ける毎日が、振り返ったとき、自分の一年を厚くしてくれる仕事です。",
     badges: ["コーチ未経験OK", "研修あり", "見学からOK"],
@@ -83,7 +83,7 @@ export const recruitPage = {
       "テニスがうまい人だけを探しているわけではありません。",
     points: [
       { label: "場の空気を読む力", text: "目の前の人がいま緊張しているか、楽しんでいるかに気づける感覚" },
-      { label: "人の話を聞き続ける力", text: "答えを急がず、相手が話し終えるまで待てる落ち着き" },
+      { label: "人の話を聞き分ける力", text: "言葉のうしろにある気持ちまで、急がずに受け取れる感覚" },
       { label: "続けたい気持ちに気づく力", text: "小さな変化を見つけて、その人の中で言葉にしてあげられる視線" },
       { label: "自分のペースで学ぶ力", text: "比べずに、自分の歩幅で少しずつ前に進める素直さ" }
     ],
