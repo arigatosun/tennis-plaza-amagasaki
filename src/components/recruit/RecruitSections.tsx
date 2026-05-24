@@ -27,13 +27,13 @@ import { VisualPanel } from "./VisualPanel";
 import { useVariant } from "./VariantProvider";
 
 const tickerItems = [
-  "RALLY THE FUTURE",
+  "A QUIET RALLY",
   "コーチ未経験OK",
-  "TRAINING SYSTEM",
-  "教育 × 接客 × 入会案内",
-  "スクール運営",
-  "SCHOOL GROWTH",
-  "見学からOK"
+  "LEARN AT YOUR PACE",
+  "焦らず、少しずつ",
+  "PEOPLE COACH",
+  "見学からで大丈夫",
+  "TENNIS PLAZA AMAGASAKI"
 ];
 
 const ScoreboardNumber = ({ value }: { value: string }) => (
@@ -87,7 +87,7 @@ export function HeroSection() {
             </div>
           </ScrollReveal>
           <div>
-            <ChapterMarker label={recruitPage.hero.eyebrowB} no="Folio 01 / 19" />
+            <ChapterMarker label={recruitPage.hero.eyebrowB} no="Folio 01 / 18" />
             <BlurText
               as="p"
               className="mt-4 font-mono text-sm font-medium uppercase tracking-[0.28em] text-clay sm:text-base"
@@ -643,10 +643,10 @@ export function JobDescriptionSection() {
         <ScrollReveal>
           <div className="mt-9 rounded-sm border border-court/20 bg-white p-7 shadow-sm">
             <p className="display-heading text-lg text-primary">
-              ここで言う「入会案内」は、無理に売り込むことではありません。
+              「入会案内」は、売り込みではなく、聞く時間です。
             </p>
             <p className="mt-3 text-base leading-8 text-ink/72">
-              体験に来てくれた方に、このスクールで続ける価値をきちんと伝え、安心して一歩を踏み出してもらうことです。
+              来てくれた人が「ここなら自分のペースで続けられそう」と自分で決められるように、隣で話を聞き、選択肢を整理する。コートの外側にある、もう一つの仕事です。
             </p>
           </div>
         </ScrollReveal>
@@ -780,7 +780,7 @@ export function CareerPathSection() {
           </ol>
           <ScrollReveal>
             <p className="mt-10 max-w-3xl font-serif text-2xl font-semibold leading-[1.6] text-primary">
-              テニス経験を、将来につながる力に変えていく。
+              好きだったテニスが、自分のリズムをつくる時間になっていく。
             </p>
           </ScrollReveal>
         </div>
@@ -845,7 +845,7 @@ export function CareerPathSection() {
           <BlurText
             as="p"
             className="mt-12 max-w-4xl font-tight text-4xl font-black leading-tight text-tennis sm:text-5xl"
-            text="テニス経験を、将来につながるビジネススキルに変えていく。"
+            text="好きだったテニスが、自分のリズムをつくる時間に変わっていく。"
           />
         </ScrollReveal>
       </div>
@@ -1130,7 +1130,7 @@ export function FinalCtaSection() {
               </div>
             </ClickSpark>
             <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-ink/52">
-              Folio 18 / 19 — Editor&apos;s closing note
+              Folio 18 / 18 — Closing note
             </p>
           </ScrollReveal>
           <ScrollReveal>
