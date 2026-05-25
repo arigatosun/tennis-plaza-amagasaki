@@ -48,3 +48,7 @@ next-env.d.ts
 .playwright-mcp/
 tmp_pdf_pages/
 tpa-*.png
+hero-*.png
+
+# AI generation raw sources (heavy PNG originals; keep optimized JPEGs in repo)
+public/images/recruit/ai/

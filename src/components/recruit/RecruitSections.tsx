@@ -67,73 +67,74 @@ export function HeroSection() {
 
   if (variant === "b") {
     return (
-      <section className="relative overflow-hidden bg-warm pb-20 pt-16 sm:pb-24" id="top">
+      <section className="relative overflow-hidden bg-warm pb-20 pt-10 sm:pb-24" id="top">
         <span className="b-noise" aria-hidden />
-        <div className="section-shell grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:items-center">
+        <div className="section-shell">
+          <div className="flex items-center justify-between gap-4 border-b border-ink/15 pb-4">
+            <ChapterMarker label={recruitPage.hero.eyebrowB} no="Folio 01 / 18" />
+            <span className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-ink/45 sm:inline">
+              Tennis Plaza Amagasaki
+            </span>
+          </div>
+
           <ScrollReveal>
-            <div className="relative overflow-hidden rounded-sm border border-ink/8 shadow-soft">
+            <figure className="relative mt-6 overflow-hidden rounded-sm border border-ink/8 shadow-soft">
               <img
-                alt="テニススクールでコーチが生徒に声をかける採用LP用ビジュアル"
+                alt="テニスプラザ尼崎の屋内コートで、コーチと生徒がコートを並んで歩く様子"
                 className="h-full w-full object-cover"
-                src="/images/recruit/hero-court.svg"
+                src="/images/recruit/hero-main.jpg"
                 style={{
-                  aspectRatio: "4/5",
-                  filter: "saturate(0.94) contrast(1.05) brightness(1.02)"
+                  aspectRatio: "16/9",
+                  filter: "saturate(0.96) contrast(1.03)"
                 }}
               />
-              <figcaption className="absolute inset-x-4 bottom-4 rounded-sm border border-white/40 bg-white/92 p-3 text-[11px] font-medium uppercase tracking-[0.18em] text-clay">
-                Figure 01 — Junior Lesson, Spring 2026
+              <figcaption className="absolute left-4 top-4 rounded-sm bg-warm/90 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-clay backdrop-blur">
+                Figure 01 — On Court, Tennis Plaza Amagasaki
               </figcaption>
-            </div>
+            </figure>
           </ScrollReveal>
-          <div>
-            <ChapterMarker label={recruitPage.hero.eyebrowB} no="Folio 01 / 18" />
-            <BlurText
-              as="p"
-              className="mt-4 font-mono text-sm font-medium uppercase tracking-[0.28em] text-clay sm:text-base"
-              text={recruitPage.hero.titleEn}
-            />
-            <h1 className="mt-3 whitespace-pre-line text-balance font-serif text-[2.15rem] font-semibold leading-[1.5] text-primary sm:text-[2.6rem] lg:text-[2.9rem]">
-              {recruitPage.hero.title}
-            </h1>
-            {recruitPage.hero.subtitle ? (
-              <p className="mt-6 whitespace-pre-line font-serif text-xl font-medium leading-9 text-ink/82">
-                {recruitPage.hero.subtitle}
-              </p>
-            ) : null}
-            <p className="mt-7 max-w-xl text-sm leading-8 text-ink/74">
-              {recruitPage.hero.body}
-            </p>
-            <ClickSpark>
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                {recruitPage.hero.ctas.map((cta) => (
-                  <CtaButton
-                    href={cta.href}
-                    key={cta.label}
-                    label={cta.label}
-                    sectionId="hero"
-                    variant={cta.variant}
-                  />
+
+          <div className="mt-9 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+            <div>
+              <BlurText
+                as="p"
+                className="font-mono text-sm font-medium uppercase tracking-[0.28em] text-clay sm:text-base"
+                text={recruitPage.hero.titleEn}
+              />
+              <h1 className="mt-3 whitespace-pre-line text-balance font-serif text-[2.15rem] font-semibold leading-[1.5] text-primary sm:text-[2.6rem] lg:text-[3rem]">
+                {recruitPage.hero.title}
+              </h1>
+            </div>
+            <div>
+              <p className="text-sm leading-8 text-ink/74">{recruitPage.hero.body}</p>
+              <ClickSpark>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  {recruitPage.hero.ctas.map((cta) => (
+                    <CtaButton
+                      href={cta.href}
+                      key={cta.label}
+                      label={cta.label}
+                      sectionId="hero"
+                      variant={cta.variant}
+                    />
+                  ))}
+                </div>
+              </ClickSpark>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {recruitPage.hero.badges.map((badge) => (
+                  <span
+                    className="inline-flex items-center gap-2 border border-ink/12 bg-warm px-3 py-1.5 text-xs font-medium uppercase tracking-[0.12em] text-ink/74"
+                    key={badge}
+                  >
+                    <Check aria-hidden size={13} />
+                    {badge}
+                  </span>
                 ))}
               </div>
-            </ClickSpark>
-            <div className="mt-7 flex flex-wrap gap-2">
-              {recruitPage.hero.badges.map((badge) => (
-                <span
-                  className="inline-flex items-center gap-2 border border-ink/12 bg-warm px-3 py-1.5 text-xs font-medium uppercase tracking-[0.12em] text-ink/74"
-                  key={badge}
-                >
-                  <Check aria-hidden size={13} />
-                  {badge}
-                </span>
-              ))}
             </div>
-            <p className="mt-5 max-w-xl border-l-2 border-clay pl-4 text-sm italic leading-7 text-ink/68">
-              {recruitPage.hero.note}
-            </p>
           </div>
         </div>
-        <div className="mt-20 rb-ticker-bar">
+        <div className="mt-16 rb-ticker-bar">
           <ScrollVelocity items={tickerItems} />
         </div>
       </section>
@@ -144,15 +145,15 @@ export function HeroSection() {
   return (
     <section className="relative min-h-[88svh] overflow-hidden bg-deep text-white" id="top">
       <img
-        alt="テニススクールでコーチが生徒に声をかける採用LP用ビジュアル"
-        className="absolute inset-0 h-full w-full object-cover opacity-78"
-        src="/images/recruit/hero-court.svg"
+        alt="テニスプラザ尼崎の屋内コートで、コーチと生徒がコートを並んで歩く様子"
+        className="absolute inset-0 h-full w-full object-cover"
+        src="/images/recruit/hero-main.jpg"
       />
-      <div className="court-lines absolute inset-0 opacity-80" />
+      <div className="court-lines absolute inset-0 opacity-20" />
       <LightRays />
       <span className="rally-trail" />
-      <div className="absolute inset-0 bg-gradient-to-r from-deep via-deep/72 to-deep/18" />
-      <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-deep to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-deep via-deep/82 to-deep/35" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-deep to-transparent" />
 
       <div className="section-shell relative flex min-h-[88svh] items-center pb-28 pt-16">
         <div className="relative max-w-4xl">
@@ -204,7 +205,6 @@ export function HeroSection() {
               </span>
             ))}
           </div>
-          <p className="mt-5 text-sm font-bold text-white/70">{recruitPage.hero.note}</p>
         </div>
       </div>
       <div className="rb-stripe absolute inset-x-0 bottom-12" aria-hidden />
