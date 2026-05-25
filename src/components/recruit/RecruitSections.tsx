@@ -73,6 +73,7 @@ const empathyImages = [
   "facility-57380"
 ];
 const idealKanji = ["察", "聴", "芽", "歩"];
+const idealObjectPos = ["50% 40%", "50% 30%", "50% 55%", "50% 42%"];
 const selectionImages = [
   "facility-57380",
   "facility-57395",
@@ -218,7 +219,7 @@ export function HeroSection() {
       <div className="section-shell relative flex min-h-[88svh] items-center pb-28 pt-16">
         <div className="relative max-w-4xl">
           <div className="pointer-events-none absolute -left-6 -top-12 hidden lg:block">
-            <ScoreboardNumber value="01 / 19" />
+            <ScoreboardNumber value="01 / 18" />
           </div>
           <p className="mb-6 inline-flex items-center gap-3 rounded-full border border-tennis/35 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-tennis backdrop-blur">
             <span className="inline-grid size-4 place-items-center rounded-full bg-tennis text-[10px] font-black text-deep">
@@ -297,15 +298,17 @@ export function WhyNowSection() {
               />
             </figure>
           </ScrollReveal>
+          <h2 className="mt-7 whitespace-pre-line font-serif text-2xl font-semibold leading-[1.5] text-warm lg:hidden">
+            {data.title}
+          </h2>
           <div className="mt-10 grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <ScrollReveal>
-              <p className="font-mono text-xs uppercase tracking-[0.22em] text-clay">
-                {data.eyebrowB}
+              <p className="font-mono text-xs uppercase tracking-[0.22em] text-warm/55">
+                Editor&apos;s Note
               </p>
               <p className="mt-6 font-serif text-xl font-medium leading-9 text-warm">
                 {data.lead}
               </p>
-              <p className="mt-6 max-w-md italic text-warm/64">— Editor&apos;s Note</p>
             </ScrollReveal>
             <ScrollReveal>
               <p className="text-base leading-9 text-warm/78">{data.body}</p>
@@ -404,13 +407,13 @@ export function InsightSection() {
                   loading="lazy"
                   src={`${FACILITY}/${empathyImages[index]}.jpg`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/88 to-deep/45" />
+                <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/92 to-deep/55" />
                 <div className="relative flex h-full min-h-[280px] flex-col justify-end p-6">
                   <MessageCircle aria-hidden className={`mb-4 ${accent}`} size={26} />
                   <h3 className="font-serif text-lg font-semibold leading-7 text-white">
                     {card.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-white/76">{card.text}</p>
+                  <p className="mt-3 text-sm leading-7 text-white/88">{card.text}</p>
                 </div>
               </article>
             </ScrollReveal>
@@ -463,13 +466,13 @@ export function IdealPersonSection() {
                     className="aspect-[16/9] w-full object-cover"
                     loading="lazy"
                     src={`/images/recruit/${idealImages[i]}.jpg`}
-                    style={{ objectPosition: "50% 42%" }}
+                    style={{ objectPosition: idealObjectPos[i] }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-deep/55 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-deep/70 via-deep/20 to-transparent" />
                   <span
                     aria-hidden
-                    className="absolute bottom-0 right-3 font-serif leading-none text-warm/85"
-                    style={{ fontSize: "clamp(64px, 9vw, 104px)" }}
+                    className="absolute bottom-1 left-4 font-serif leading-none text-warm/90 drop-shadow-[0_2px_10px_rgba(11,59,46,0.6)]"
+                    style={{ fontSize: "clamp(60px, 8.5vw, 96px)" }}
                   >
                     {idealKanji[i]}
                   </span>
@@ -1301,18 +1304,16 @@ export function FinalCtaSection() {
               />
             </figure>
           </ScrollReveal>
+          <h2 className="mt-7 font-serif text-2xl font-semibold leading-[1.5] text-primary lg:hidden">
+            {data.title}
+          </h2>
         </div>
         <div className="section-shell relative mt-12 grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <ScrollReveal>
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-clay">
               {data.eyebrowB}
             </p>
-            <BlurText
-              as="h2"
-              className="mt-4 text-balance font-serif text-3xl font-semibold leading-[1.5] text-primary sm:text-5xl"
-              text={data.title}
-            />
-            <p className="mt-7 max-w-xl text-base leading-9 text-ink/76">{data.body}</p>
+            <p className="mt-5 max-w-xl text-base leading-9 text-ink/76">{data.body}</p>
             <ClickSpark>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 {data.ctas.map((cta) => (
@@ -1353,7 +1354,7 @@ export function FinalCtaSection() {
               </div>
               <button
                 className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 bg-ink px-6 text-sm font-bold text-warm hover:bg-primary"
-                style={{ borderBottom: "1px solid #d9ff43" }}
+                style={{ borderBottom: "2px solid #ff7a59" }}
                 type="button"
               >
                 送信イメージ
