@@ -144,11 +144,18 @@ export function HeroSection() {
   // Variant A — Rally Burst
   return (
     <section className="relative min-h-[88svh] overflow-hidden bg-deep text-white" id="top">
-      <img
-        alt="テニスプラザ尼崎の屋内コートで、コーチと生徒がコートを並んで歩く様子"
+      <video
+        aria-hidden
+        autoPlay
         className="absolute inset-0 h-full w-full object-cover"
-        src="/images/recruit/hero-main.jpg"
-      />
+        loop
+        muted
+        playsInline
+        poster="/images/recruit/video/hero-court-poster.jpg"
+        preload="metadata"
+      >
+        <source src="/images/recruit/video/hero-court-loop.mp4" type="video/mp4" />
+      </video>
       <div className="court-lines absolute inset-0 opacity-20" />
       <LightRays />
       <span className="rally-trail" />

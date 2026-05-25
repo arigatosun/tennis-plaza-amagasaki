@@ -5,29 +5,29 @@ type VisualPanelProps = {
 
 const variantStyles = {
   hero: {
-    image: "/images/recruit/hero-court.svg",
-    badge: "Junior lesson",
-    card: "生徒の表情を見ながら、声かけを変える。"
+    image: "/images/recruit/hero-main.jpg",
+    badge: "On court",
+    card: "コートの上での出会いが、毎日を少しずつ変えていく。"
   },
   coach: {
-    image: "/images/recruit/coach-scene.svg",
-    badge: "Coaching philosophy",
-    card: "一人ひとりに合わせて、伸ばし方を変える。"
+    image: "/images/recruit/philosophy-watch.jpg",
+    badge: "Reading the court",
+    card: "一人ひとりを見て、伸ばし方を選ぶ。"
   },
   staff: {
-    image: "/images/recruit/staff-scene.svg",
-    badge: "Courtside support",
-    card: "体験後の不安に、現場の言葉で向き合う。"
+    image: "/images/recruit/mayano-courtside.jpg",
+    badge: "Courtside",
+    card: "コートの外側の会話が、続けたい気持ちを育てる。"
   },
   training: {
-    image: "/images/recruit/training-scene.svg",
-    badge: "Training",
-    card: "育てる前提で、レッスンも対応も少しずつ学ぶ。"
+    image: "/images/recruit/adult-lesson.jpg",
+    badge: "Learning here",
+    card: "最初から全部できなくていい。少しずつ覚えていく。"
   },
   roleplay: {
-    image: "/images/recruit/roleplay-scene.svg",
+    image: "/images/recruit/facility/facility-57395.jpg",
     badge: "Future vision",
-    card: "保護者対応や入会案内を、事前に練習できる仕組みへ。"
+    card: "難しい場面を、一人で抱えなくていい仕組みへ。"
   }
 } as const;
 
