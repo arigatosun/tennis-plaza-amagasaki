@@ -66,6 +66,19 @@ const visitImages = [
   "facility-57395",
   "facility-57398"
 ];
+const empathyImages = [
+  "facility-57389",
+  "facility-57398",
+  "facility-57386",
+  "facility-57380"
+];
+const selectionImages = [
+  "facility-57380",
+  "facility-57395",
+  "facility-57387",
+  "facility-57386",
+  "facility-57394"
+];
 
 const ScoreboardNumber = ({ value }: { value: string }) => (
   <span aria-hidden className="rb-scoreboard">
@@ -365,7 +378,9 @@ export function WhyNowSection() {
 /* ===== Section 3 — Empathy / Insight ===== */
 
 export function InsightSection() {
+  const { variant } = useVariant();
   const data = recruitPage.insights;
+  const accent = variant === "a" ? "text-tennis" : "text-clay";
   return (
     <section className="relative py-24" id="empathy">
       <div className="section-shell">
@@ -380,11 +395,23 @@ export function InsightSection() {
         <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {data.cards.map((card, index) => (
             <ScrollReveal delay={index * 80} key={card.title}>
-              <SpotlightCard className="h-full p-6">
-                <MessageCircle aria-hidden className="mb-5 text-court" size={28} />
-                <h3 className="display-heading text-lg leading-7 text-primary">{card.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-ink/70">{card.text}</p>
-              </SpotlightCard>
+              <article className="group relative h-full overflow-hidden rounded-sm">
+                <img
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 h-full w-full object-cover grayscale-[0.35] transition duration-700 group-hover:scale-[1.04] group-hover:grayscale-0"
+                  loading="lazy"
+                  src={`${FACILITY}/${empathyImages[index]}.jpg`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/88 to-deep/45" />
+                <div className="relative flex h-full min-h-[280px] flex-col justify-end p-6">
+                  <MessageCircle aria-hidden className={`mb-4 ${accent}`} size={26} />
+                  <h3 className="font-serif text-lg font-semibold leading-7 text-white">
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-white/76">{card.text}</p>
+                </div>
+              </article>
             </ScrollReveal>
           ))}
         </div>
@@ -1161,13 +1188,25 @@ export function SelectionFlowSection() {
             title={data.title}
           />
         </ScrollReveal>
-        <div className="mt-10 grid gap-4 lg:grid-cols-5">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {data.items.map(([number, title, text], index) => (
             <ScrollReveal delay={index * 70} key={number}>
-              <article className="h-full rounded-sm border border-primary/10 bg-white p-5 shadow-sm">
-                <p className="font-mono text-sm text-court">{number}</p>
-                <h3 className="display-heading mt-4 text-lg leading-7 text-primary">{title}</h3>
-                <p className="mt-3 text-sm leading-7 text-ink/70">{text}</p>
+              <article className="flex h-full flex-col overflow-hidden rounded-sm border border-primary/10 bg-white shadow-sm">
+                <div className="relative">
+                  <img
+                    alt={title}
+                    className="aspect-[4/3] w-full object-cover"
+                    loading="lazy"
+                    src={`${FACILITY}/${selectionImages[index]}.jpg`}
+                  />
+                  <span className="absolute left-3 top-3 grid size-8 place-items-center rounded-full bg-deep/85 font-mono text-xs text-warm backdrop-blur">
+                    {number}
+                  </span>
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <h3 className="display-heading text-base leading-6 text-primary">{title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-ink/70">{text}</p>
+                </div>
               </article>
             </ScrollReveal>
           ))}
