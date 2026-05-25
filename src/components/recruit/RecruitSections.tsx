@@ -194,13 +194,12 @@ export function HeroSection() {
         alt=""
         aria-hidden
         className="absolute inset-0 h-full w-full object-cover"
-        src="/images/recruit/video/hero-court-poster.jpg"
+        src="/images/recruit/video/hero-journey-poster.jpg"
       />
       <video
         aria-hidden
         autoPlay
         className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
-        loop
         muted
         onCanPlay={(e) => {
           e.currentTarget.style.opacity = "1";
@@ -208,7 +207,7 @@ export function HeroSection() {
         playsInline
         preload="auto"
       >
-        <source src="/images/recruit/video/hero-court-loop.mp4" type="video/mp4" />
+        <source src="/images/recruit/video/hero-journey.mp4" type="video/mp4" />
       </video>
       <div className="court-lines absolute inset-0 opacity-20" />
       <LightRays />
