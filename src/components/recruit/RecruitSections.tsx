@@ -36,6 +36,22 @@ const tickerItems = [
   "TENNIS PLAZA AMAGASAKI"
 ];
 
+const idealImages = [
+  "ideal-atmosphere",
+  "ideal-listen",
+  "ideal-notice",
+  "ideal-learn"
+];
+const valueImages = ["value-joy", "value-widen", "value-thanks"];
+const jobImages = [
+  "job-lesson-adult",
+  "job-followup",
+  "job-parent-talk",
+  "job-guidance",
+  "job-event",
+  "job-operation"
+];
+
 const ScoreboardNumber = ({ value }: { value: string }) => (
   <span aria-hidden className="rb-scoreboard">
     {value}
@@ -365,37 +381,43 @@ export function IdealPersonSection() {
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           {data.points.map((p, i) => (
             <ScrollReveal delay={i * 80} key={p.label}>
-              <div
-                className={`flex h-full gap-5 border p-6 ${
+              <article
+                className={`flex h-full flex-col overflow-hidden border ${
                   variant === "b"
                     ? "border-ink/12 bg-white"
                     : "border-court/12 bg-warm rounded-sm"
                 }`}
               >
-                <span
-                  className={`shrink-0 ${
-                    variant === "b"
-                      ? "font-mono text-xs uppercase tracking-[0.2em] text-clay"
-                      : "font-tight text-3xl font-black text-tennis/80"
-                  }`}
-                >
-                  {variant === "b"
-                    ? `№ 0${i + 1}`
-                    : String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <p
-                    className={
+                <img
+                  alt={p.label}
+                  className="aspect-[16/9] w-full object-cover"
+                  loading="lazy"
+                  src={`/images/recruit/${idealImages[i]}.jpg`}
+                />
+                <div className="flex items-start gap-4 p-6">
+                  <span
+                    className={`shrink-0 ${
                       variant === "b"
-                        ? "font-serif text-xl font-semibold leading-8 text-primary"
-                        : "display-heading text-lg leading-7 text-primary"
-                    }
+                        ? "font-mono text-xs uppercase tracking-[0.2em] text-clay"
+                        : "font-tight text-3xl font-black text-tennis/80"
+                    }`}
                   >
-                    {p.label}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-ink/72">{p.text}</p>
+                    {variant === "b" ? `№ 0${i + 1}` : String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <p
+                      className={
+                        variant === "b"
+                          ? "font-serif text-xl font-semibold leading-8 text-primary"
+                          : "display-heading text-lg leading-7 text-primary"
+                      }
+                    >
+                      {p.label}
+                    </p>
+                    <p className="mt-2 text-sm leading-7 text-ink/72">{p.text}</p>
+                  </div>
                 </div>
-              </div>
+              </article>
             </ScrollReveal>
           ))}
         </div>
@@ -433,25 +455,43 @@ export function ValueSection() {
           {data.items.map((value, index) => (
             <ScrollReveal delay={index * 100} key={value.number}>
               {variant === "b" ? (
-                <article className="float-card h-full border border-clay/30 bg-white p-7 shadow-soft">
-                  <p className="font-mono text-xs uppercase tracking-[0.22em] text-clay">
-                    Figure 0{index + 1}
-                  </p>
-                  <h3 className="mt-5 min-h-16 font-serif text-2xl font-semibold leading-[1.5] text-primary">
-                    {value.title}
-                  </h3>
-                  <p className="mt-5 text-sm leading-8 text-ink/72">{value.text}</p>
+                <article className="float-card flex h-full flex-col overflow-hidden border border-clay/30 bg-white shadow-soft">
+                  <img
+                    alt={value.title}
+                    className="aspect-[16/10] w-full object-cover"
+                    loading="lazy"
+                    src={`/images/recruit/${valueImages[index]}.jpg`}
+                  />
+                  <div className="flex flex-1 flex-col p-7">
+                    <p className="font-mono text-xs uppercase tracking-[0.22em] text-clay">
+                      Figure 0{index + 1}
+                    </p>
+                    <h3 className="mt-4 min-h-16 font-serif text-2xl font-semibold leading-[1.5] text-primary">
+                      {value.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-8 text-ink/72">{value.text}</p>
+                  </div>
                 </article>
               ) : (
-                <SpotlightCard className="float-card h-full p-7">
-                  <p className="font-tight text-5xl font-black text-primary/10">
-                    {value.number}
-                  </p>
-                  <h3 className="display-heading mt-5 min-h-16 text-2xl leading-8 text-primary">
-                    {value.title}
-                  </h3>
-                  <p className="mt-5 text-sm leading-8 text-ink/70">{value.text}</p>
-                </SpotlightCard>
+                <div className="float-card flex h-full flex-col overflow-hidden rounded-sm border border-court/14 bg-white shadow-soft">
+                  <div className="relative">
+                    <img
+                      alt={value.title}
+                      className="aspect-[16/10] w-full object-cover"
+                      loading="lazy"
+                      src={`/images/recruit/${valueImages[index]}.jpg`}
+                    />
+                    <span className="absolute left-4 top-3 font-tight text-5xl font-black text-tennis drop-shadow-[0_2px_8px_rgba(11,59,46,0.5)]">
+                      {value.number}
+                    </span>
+                  </div>
+                  <div className="flex flex-1 flex-col p-7">
+                    <h3 className="display-heading min-h-16 text-2xl leading-8 text-primary">
+                      {value.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-8 text-ink/70">{value.text}</p>
+                  </div>
+                </div>
               )}
             </ScrollReveal>
           ))}
@@ -628,24 +668,39 @@ export function JobDescriptionSection() {
             return (
               <ScrollReveal delay={(index % 3) * 80} key={job.title}>
                 {variant === "b" ? (
-                  <article className="h-full border border-ink/10 bg-white p-6">
-                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-clay">
-                      Figure № 0{index + 1}
-                    </p>
-                    <Icon aria-hidden className="mt-4 text-rally" size={26} />
-                    <h3 className="mt-4 font-serif text-xl font-semibold leading-8 text-primary">
-                      {job.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-ink/72">{job.text}</p>
+                  <article className="flex h-full flex-col overflow-hidden border border-ink/10 bg-white">
+                    <img
+                      alt={job.title}
+                      className="aspect-[16/10] w-full object-cover"
+                      loading="lazy"
+                      src={`/images/recruit/${jobImages[index]}.jpg`}
+                    />
+                    <div className="flex flex-1 flex-col p-6">
+                      <p className="font-mono text-xs uppercase tracking-[0.2em] text-clay">
+                        Figure № 0{index + 1}
+                      </p>
+                      <h3 className="mt-3 font-serif text-xl font-semibold leading-8 text-primary">
+                        {job.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-7 text-ink/72">{job.text}</p>
+                    </div>
                   </article>
                 ) : (
-                  <SpotlightCard className="h-full p-6">
-                    <Icon aria-hidden className="text-court" size={30} />
-                    <h3 className="display-heading mt-5 text-xl leading-8 text-primary">
-                      {job.title}
-                    </h3>
-                    <p className="mt-4 text-sm leading-7 text-ink/70">{job.text}</p>
-                  </SpotlightCard>
+                  <div className="flex h-full flex-col overflow-hidden rounded-sm border border-court/14 bg-white shadow-sm transition hover:shadow-lift">
+                    <img
+                      alt={job.title}
+                      className="aspect-[16/10] w-full object-cover"
+                      loading="lazy"
+                      src={`/images/recruit/${jobImages[index]}.jpg`}
+                    />
+                    <div className="flex flex-1 flex-col p-6">
+                      <Icon aria-hidden className="text-court" size={26} />
+                      <h3 className="display-heading mt-3 text-xl leading-8 text-primary">
+                        {job.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-7 text-ink/70">{job.text}</p>
+                    </div>
+                  </div>
                 )}
               </ScrollReveal>
             );
