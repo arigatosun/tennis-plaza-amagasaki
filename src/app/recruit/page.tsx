@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { jobPostingJsonLd } from "@/data/recruit";
 import { RecruitHeader } from "@/components/recruit/RecruitHeader";
+import { ScoreProgress } from "@/components/recruit/ScoreProgress";
 import { VariantProvider } from "@/components/recruit/VariantProvider";
 import {
   AIRoleplaySection,
@@ -45,6 +46,7 @@ export default function RecruitPage() {
         }}
         type="application/ld+json"
       />
+      <ScoreProgress />
       <RecruitHeader />
       <main id="recruit-main">
         <HeroSection />

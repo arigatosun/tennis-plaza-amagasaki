@@ -629,6 +629,77 @@ a {
   filter: saturate(0.72) contrast(1.06) brightness(1.02) sepia(0.04);
 }
 
+/* ===== Score progress (tennis scoreboard scroll indicator) ===== */
+
+.score-progress {
+  align-items: center;
+  background: rgba(248, 246, 239, 0.82);
+  border: 1px solid rgba(15, 61, 46, 0.12);
+  border-radius: 999px;
+  bottom: 22px;
+  box-shadow: 0 10px 30px rgba(15, 61, 46, 0.1);
+  display: flex;
+  gap: 12px;
+  left: 22px;
+  padding: 8px 14px;
+  pointer-events: none;
+  position: fixed;
+  z-index: 30;
+  backdrop-filter: blur(8px);
+}
+
+[data-variant="a"] .score-progress {
+  background: rgba(11, 59, 46, 0.78);
+  border-color: rgba(217, 255, 67, 0.28);
+}
+
+.score-progress__track {
+  height: 3px;
+  position: relative;
+  width: 96px;
+}
+
+.score-progress__fill {
+  background: var(--accent);
+  border-radius: 999px;
+  display: block;
+  height: 3px;
+  transform-origin: left center;
+  transition: transform 120ms linear;
+  width: 100%;
+}
+
+.score-progress__tick {
+  background: rgba(15, 61, 46, 0.3);
+  height: 7px;
+  position: absolute;
+  top: -2px;
+  width: 1px;
+}
+
+[data-variant="a"] .score-progress__tick {
+  background: rgba(217, 255, 67, 0.45);
+}
+
+.score-progress__score {
+  color: var(--accent);
+  font-family: var(--mono-font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  min-width: 3.2em;
+}
+
+[data-variant="a"] .score-progress__score {
+  color: var(--tennis);
+}
+
+@media (max-width: 900px) {
+  .score-progress {
+    display: none;
+  }
+}
+
 /* ===== Variant Toggle ===== */
 
 .variant-toggle {

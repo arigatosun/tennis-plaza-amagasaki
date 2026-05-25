@@ -72,6 +72,7 @@ const empathyImages = [
   "facility-57386",
   "facility-57380"
 ];
+const idealKanji = ["察", "聴", "芽", "歩"];
 const selectionImages = [
   "facility-57380",
   "facility-57395",
@@ -284,51 +285,43 @@ export function WhyNowSection() {
     return (
       <section className="relative bg-deep py-28 text-warm" id="why-now">
         <span className="b-noise" aria-hidden />
-        <div className="b-chapter">
-          <div className="section-shell relative grid gap-12 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <div className="section-shell relative">
+          <ScrollReveal>
+            <figure className="overflow-hidden rounded-sm shadow-soft">
+              <img
+                alt="ドーム天井の屋内コートと「自分の時間が、誰かの一歩につながる場所。」の言葉"
+                className="parallax-img h-full w-full object-cover"
+                loading="lazy"
+                src="/images/recruit/whyhere-feature.jpg"
+                style={{ aspectRatio: "16/9" }}
+              />
+            </figure>
+          </ScrollReveal>
+          <div className="mt-10 grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <ScrollReveal>
-              <div>
-                <p className="font-mono text-xs uppercase tracking-[0.22em] text-clay">
-                  {data.eyebrowB}
-                </p>
-                <h2 className="mt-6 whitespace-pre-line font-serif text-3xl font-semibold leading-[1.55] text-warm sm:text-4xl">
-                  {data.title}
-                </h2>
-                <p className="mt-6 max-w-md italic text-warm/74">— Editor&apos;s Note</p>
-              </div>
+              <p className="font-mono text-xs uppercase tracking-[0.22em] text-clay">
+                {data.eyebrowB}
+              </p>
+              <p className="mt-6 font-serif text-xl font-medium leading-9 text-warm">
+                {data.lead}
+              </p>
+              <p className="mt-6 max-w-md italic text-warm/64">— Editor&apos;s Note</p>
             </ScrollReveal>
             <ScrollReveal>
-              <div>
-                <p className="font-serif text-xl font-medium leading-9 text-warm">{data.lead}</p>
-                <p className="mt-6 text-base leading-9 text-warm/78">{data.body}</p>
-                <div className="mt-10 grid gap-6 sm:grid-cols-3">
-                  {data.stats.map((s) => (
-                    <div key={s.label} className="border-t border-warm/24 pt-4">
-                      <p className="font-serif text-4xl font-semibold text-clay">
-                        {s.value}
-                        <span className="ml-1 font-mono text-base text-warm/80">{s.unit}</span>
-                      </p>
-                      <p className="mt-2 text-xs leading-6 text-warm/68">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
+              <p className="text-base leading-9 text-warm/78">{data.body}</p>
+              <div className="mt-10 grid gap-6 sm:grid-cols-3">
+                {data.stats.map((s) => (
+                  <div key={s.label} className="border-t border-warm/24 pt-4">
+                    <p className="font-serif text-4xl font-semibold text-clay">
+                      {s.value}
+                      <span className="ml-1 font-mono text-base text-warm/80">{s.unit}</span>
+                    </p>
+                    <p className="mt-2 text-xs leading-6 text-warm/68">{s.label}</p>
+                  </div>
+                ))}
               </div>
             </ScrollReveal>
           </div>
-          <ScrollReveal>
-            <figure className="section-shell relative mt-4 overflow-hidden rounded-sm">
-              <img
-                alt="テニスプラザ尼崎の屋外コートに差し込む夕方の光"
-                className="parallax-img doc-photo h-full w-full object-cover"
-                loading="lazy"
-                src={`${FACILITY}/facility-57381.jpg`}
-                style={{ aspectRatio: "21/9" }}
-              />
-              <figcaption className="absolute left-4 top-4 rounded-sm bg-deep/70 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-warm backdrop-blur">
-                Figure 02 — The court, late afternoon
-              </figcaption>
-            </figure>
-          </ScrollReveal>
         </div>
       </section>
     );
@@ -464,13 +457,23 @@ export function IdealPersonSection() {
                     : "border-court/12 bg-warm rounded-sm"
                 }`}
               >
-                <img
-                  alt={p.label}
-                  className="aspect-[16/9] w-full object-cover"
-                  loading="lazy"
-                  src={`/images/recruit/${idealImages[i]}.jpg`}
-                  style={{ objectPosition: "50% 42%" }}
-                />
+                <div className="relative overflow-hidden">
+                  <img
+                    alt={p.label}
+                    className="aspect-[16/9] w-full object-cover"
+                    loading="lazy"
+                    src={`/images/recruit/${idealImages[i]}.jpg`}
+                    style={{ objectPosition: "50% 42%" }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep/55 to-transparent" />
+                  <span
+                    aria-hidden
+                    className="absolute bottom-0 right-3 font-serif leading-none text-warm/85"
+                    style={{ fontSize: "clamp(64px, 9vw, 104px)" }}
+                  >
+                    {idealKanji[i]}
+                  </span>
+                </div>
                 <div className="flex items-start gap-4 p-6">
                   <span
                     className={`shrink-0 ${
@@ -584,37 +587,36 @@ export function ValueSection() {
 /* ===== Section 6 — Philosophy ===== */
 
 export function PhilosophySection() {
-  const { variant } = useVariant();
   const data = recruitPage.philosophy;
   return (
     <section className="relative overflow-hidden bg-primary py-24 text-white">
       <div className="court-lines absolute inset-0 opacity-30" />
-      <div className="section-shell relative grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+      <div className="section-shell relative">
         <ScrollReveal>
-          <VisualPanel label="経験豊かなコーチがジュニア生徒に丁寧に指導する様子" variant="coach" />
+          <p className="eyebrow !text-tennis">{data.eyebrowB}</p>
+          <figure className="mt-5 overflow-hidden rounded-sm shadow-soft">
+            <img
+              alt="夕暮れの屋内コートに立つコーチのシルエットと「技術だけでは、人は続かない。」の言葉"
+              className="parallax-img h-full w-full object-cover"
+              src="/images/recruit/philosophy-feature.jpg"
+              style={{ aspectRatio: "16/9" }}
+            />
+          </figure>
         </ScrollReveal>
-        <ScrollReveal>
-          <SectionHeading
-            description={data.subtitle}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            light
-            title={data.title}
-          />
-          <p className="mt-8 text-base leading-9 text-white/78">{data.body}</p>
-          <blockquote className="quote-block mt-8 bg-white/8 backdrop-blur">
-            <p
-              className={
-                variant === "b"
-                  ? "font-serif text-xl font-semibold italic leading-9 text-white"
-                  : "text-xl font-black leading-10 text-white"
-              }
-            >
-              {data.quote}
+        <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
+          <ScrollReveal>
+            <h2 className="display-heading whitespace-pre-line text-balance text-3xl leading-tight !text-white sm:text-4xl">
+              {data.title}
+            </h2>
+            <p className="mt-5 text-base leading-9 text-white/72">{data.subtitle}</p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <p className="text-base leading-9 text-white/78">{data.body}</p>
+            <p className="mt-6 font-mono text-xs uppercase tracking-[0.18em] text-tennis/80">
+              {data.quoteAttribution}
             </p>
-            <span className="quote-block__attribution">{data.quoteAttribution}</span>
-          </blockquote>
-        </ScrollReveal>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   );
@@ -1287,7 +1289,20 @@ export function FinalCtaSection() {
     return (
       <section className="relative bg-warm py-28" id="entry">
         <span className="b-noise" aria-hidden />
-        <div className="section-shell relative grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="section-shell relative">
+          <ScrollReveal>
+            <figure className="overflow-hidden rounded-sm shadow-soft">
+              <img
+                alt="夕暮れの屋内コートと「まずは、コートに会いに来てください。」の言葉"
+                className="parallax-img h-full w-full object-cover"
+                loading="lazy"
+                src="/images/recruit/finalcta-feature.jpg"
+                style={{ aspectRatio: "16/9" }}
+              />
+            </figure>
+          </ScrollReveal>
+        </div>
+        <div className="section-shell relative mt-12 grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <ScrollReveal>
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-clay">
               {data.eyebrowB}
