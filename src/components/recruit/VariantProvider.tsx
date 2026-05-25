@@ -45,7 +45,7 @@ export function VariantProvider({ children }: { children: ReactNode }) {
   }, [variant]);
 
   const setVariant = useCallback((next: VariantKey) => {
-    setVariantState(next);
+    const commit = () => setVariantState(next);
     try {
       window.localStorage.setItem(STORAGE_KEY, next);
     } catch {
@@ -56,6 +56,18 @@ export function VariantProvider({ children }: { children: ReactNode }) {
         detail: { variant: next }
       })
     );
+
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const doc = document as Document & {
+      startViewTransition?: (cb: () => void) => unknown;
+    };
+    if (!prefersReduced && typeof doc.startViewTransition === "function") {
+      doc.startViewTransition(commit);
+    } else {
+      commit();
+    }
   }, []);
 
   const value = useMemo<VariantContextValue>(

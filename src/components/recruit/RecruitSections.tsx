@@ -125,7 +125,7 @@ export function HeroSection() {
             <figure className="relative mt-6 overflow-hidden rounded-sm border border-ink/8 shadow-soft">
               <img
                 alt="テニスプラザ尼崎の屋内コートで、コーチと生徒がコートを並んで歩く様子"
-                className="h-full w-full object-cover"
+                className="parallax-img h-full w-full object-cover"
                 src="/images/recruit/hero-main.jpg"
                 style={{
                   aspectRatio: "16/9",
@@ -188,15 +188,23 @@ export function HeroSection() {
   // Variant A — Rally Burst
   return (
     <section className="relative min-h-[88svh] overflow-hidden bg-deep text-white" id="top">
+      <img
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover"
+        src="/images/recruit/video/hero-court-poster.jpg"
+      />
       <video
         aria-hidden
         autoPlay
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
         loop
         muted
+        onCanPlay={(e) => {
+          e.currentTarget.style.opacity = "1";
+        }}
         playsInline
-        poster="/images/recruit/video/hero-court-poster.jpg"
-        preload="metadata"
+        preload="auto"
       >
         <source src="/images/recruit/video/hero-court-loop.mp4" type="video/mp4" />
       </video>
@@ -311,7 +319,7 @@ export function WhyNowSection() {
             <figure className="section-shell relative mt-4 overflow-hidden rounded-sm">
               <img
                 alt="テニスプラザ尼崎の屋外コートに差し込む夕方の光"
-                className="h-full w-full object-cover"
+                className="parallax-img doc-photo h-full w-full object-cover"
                 loading="lazy"
                 src={`${FACILITY}/facility-57381.jpg`}
                 style={{ aspectRatio: "21/9" }}
@@ -362,7 +370,7 @@ export function WhyNowSection() {
           <figure className="relative mt-10 overflow-hidden rounded-sm">
             <img
               alt="テニスプラザ尼崎の屋外コートに差し込む夕方の光"
-              className="h-full w-full object-cover"
+              className="parallax-img h-full w-full object-cover"
               loading="lazy"
               src={`${FACILITY}/facility-57381.jpg`}
               style={{ aspectRatio: "21/9" }}
@@ -461,6 +469,7 @@ export function IdealPersonSection() {
                   className="aspect-[16/9] w-full object-cover"
                   loading="lazy"
                   src={`/images/recruit/${idealImages[i]}.jpg`}
+                  style={{ objectPosition: "50% 42%" }}
                 />
                 <div className="flex items-start gap-4 p-6">
                   <span
@@ -1056,7 +1065,7 @@ export function DayFlowSection() {
             <figure className="mt-8 hidden overflow-hidden rounded-sm border border-primary/10 shadow-soft lg:block">
               <img
                 alt="テニスプラザ尼崎の屋内コートと朝の準備"
-                className="h-full w-full object-cover"
+                className="parallax-img doc-photo h-full w-full object-cover"
                 loading="lazy"
                 src={`${FACILITY}/facility-57387.jpg`}
                 style={{ aspectRatio: "4/3" }}

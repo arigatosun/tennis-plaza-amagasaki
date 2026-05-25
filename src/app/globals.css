@@ -605,11 +605,28 @@ a {
 }
 
 .b-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
   inset: 0;
   mix-blend-mode: multiply;
   opacity: 0.05;
   pointer-events: none;
   position: absolute;
+  z-index: 1;
+}
+
+[data-variant="a"] .b-noise {
+  opacity: 0;
+}
+
+/* Unifying grade for real (phone-shot) facility photos so they sit with the
+   cooler AI documentary photos instead of reading as a separate layer. */
+.doc-photo {
+  filter: saturate(0.9) contrast(1.04) brightness(1.02);
+}
+
+[data-variant="b"] .doc-photo {
+  filter: saturate(0.72) contrast(1.06) brightness(1.02) sepia(0.04);
 }
 
 /* ===== Variant Toggle ===== */
@@ -702,6 +719,44 @@ a {
 @media (max-width: 640px) {
   .variant-toggle__label {
     display: none;
+  }
+}
+
+/* ===== A/B switch via View Transitions API ===== */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 520ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(root) {
+  animation-name: vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation-name: vt-fade-in;
+}
+
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
   }
 }
 
@@ -837,6 +892,27 @@ a {
   animation: stroke-draw 1200ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* ===== Scroll-driven parallax for large figures (progressive enhancement) ===== */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .parallax-img {
+      animation: img-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+      will-change: transform;
+    }
+  }
+}
+
+@keyframes img-parallax {
+  from {
+    transform: scale(1.12) translateY(-3.5%);
+  }
+  to {
+    transform: scale(1.12) translateY(3.5%);
+  }
+}
+
 @media (max-width: 640px) {
   .section-shell {
     width: min(100% - 28px, 1120px);
@@ -856,5 +932,22 @@ a {
   .scroll-reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .split-text-word,
+  .blur-text-line {
+    animation: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .light-rays span,
+  .grid-scan::after,
+  .rally-trail,
+  .float-card,
+  .parallax-img {
+    animation: none !important;
+    transform: none !important;
   }
 }
