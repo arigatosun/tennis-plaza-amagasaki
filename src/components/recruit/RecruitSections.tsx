@@ -51,6 +51,21 @@ const jobImages = [
   "job-event",
   "job-operation"
 ];
+const FACILITY = "/images/recruit/facility";
+const trialImages = [
+  "facility-57380",
+  "facility-57387",
+  "facility-57386",
+  "facility-57395",
+  "facility-57389"
+];
+const visitImages = [
+  "facility-57387",
+  "facility-57386",
+  "facility-57390",
+  "facility-57395",
+  "facility-57398"
+];
 
 const ScoreboardNumber = ({ value }: { value: string }) => (
   <span aria-hidden className="rb-scoreboard">
@@ -279,6 +294,20 @@ export function WhyNowSection() {
               </div>
             </ScrollReveal>
           </div>
+          <ScrollReveal>
+            <figure className="section-shell relative mt-4 overflow-hidden rounded-sm">
+              <img
+                alt="テニスプラザ尼崎の屋外コートに差し込む夕方の光"
+                className="h-full w-full object-cover"
+                loading="lazy"
+                src={`${FACILITY}/facility-57381.jpg`}
+                style={{ aspectRatio: "21/9" }}
+              />
+              <figcaption className="absolute left-4 top-4 rounded-sm bg-deep/70 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-warm backdrop-blur">
+                Figure 02 — The court, late afternoon
+              </figcaption>
+            </figure>
+          </ScrollReveal>
         </div>
       </section>
     );
@@ -316,6 +345,18 @@ export function WhyNowSection() {
             </ScrollReveal>
           ))}
         </div>
+        <ScrollReveal>
+          <figure className="relative mt-10 overflow-hidden rounded-sm">
+            <img
+              alt="テニスプラザ尼崎の屋外コートに差し込む夕方の光"
+              className="h-full w-full object-cover"
+              loading="lazy"
+              src={`${FACILITY}/facility-57381.jpg`}
+              style={{ aspectRatio: "21/9" }}
+            />
+            <span className="rb-stripe absolute inset-x-0 bottom-0" aria-hidden />
+          </figure>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -559,45 +600,51 @@ export function TrialToEnrollmentSection() {
             title={data.title}
           />
         </ScrollReveal>
-        <div className="relative mt-12 grid gap-5">
-          <span
-            aria-hidden
-            className="absolute left-[18px] top-3 hidden h-[calc(100%-24px)] w-px bg-ink/12 md:block"
-            style={variant === "a" ? { background: "rgba(217,255,67,0.4)", width: 2 } : undefined}
-          />
+        <div className="mt-12 grid gap-5">
           {data.steps.map((step, i) => (
             <ScrollReveal delay={i * 90} key={step.number}>
               <article
-                className={`relative grid items-start gap-5 ${
+                className={`relative grid items-center gap-5 overflow-hidden ${
                   variant === "b" ? "border border-ink/10 bg-white" : "border border-court/16 bg-white rounded-sm"
-                } p-6 md:grid-cols-[60px_120px_1fr] md:pl-12`}
+                } md:grid-cols-[200px_110px_1fr] md:pl-0`}
               >
+                <div className="relative">
+                  <img
+                    alt={`${step.phase}：${step.title}`}
+                    className="h-full max-h-44 w-full object-cover md:max-h-[140px]"
+                    loading="lazy"
+                    src={`${FACILITY}/${trialImages[i]}.jpg`}
+                    style={{ aspectRatio: "4/3" }}
+                  />
+                  <span
+                    className={`absolute left-3 top-3 grid size-9 place-items-center text-sm ${
+                      variant === "a"
+                        ? "bg-tennis font-tight font-black text-deep"
+                        : "bg-clay font-mono text-warm"
+                    } rounded-full`}
+                  >
+                    {variant === "b" ? `0${i + 1}` : i + 1}
+                  </span>
+                </div>
                 <span
-                  className={`absolute left-3 top-6 hidden size-10 place-items-center md:grid ${
-                    variant === "a"
-                      ? "bg-tennis font-tight font-black text-deep"
-                      : "border border-clay text-clay font-mono text-xs"
-                  } rounded-full`}
-                >
-                  {variant === "b" ? `0${i + 1}` : i + 1}
-                </span>
-                <span
-                  className={`font-mono text-xs uppercase tracking-[0.18em] ${
+                  className={`px-6 font-mono text-xs uppercase tracking-[0.18em] md:px-0 ${
                     variant === "b" ? "text-clay" : "text-court"
                   }`}
                 >
                   {step.phase}
                 </span>
-                <h3
-                  className={
-                    variant === "b"
-                      ? "font-serif text-xl font-semibold leading-[1.5] text-primary"
-                      : "display-heading text-xl leading-7 text-primary"
-                  }
-                >
-                  {step.title}
-                </h3>
-                <p className="text-sm leading-8 text-ink/74">{step.text}</p>
+                <div className="p-6 pt-0 md:p-6 md:pl-0">
+                  <h3
+                    className={
+                      variant === "b"
+                        ? "font-serif text-xl font-semibold leading-[1.5] text-primary"
+                        : "display-heading text-xl leading-7 text-primary"
+                    }
+                  >
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-8 text-ink/74">{step.text}</p>
+                </div>
               </article>
             </ScrollReveal>
           ))}
@@ -969,14 +1016,27 @@ export function DayFlowSection() {
     <section className="relative overflow-hidden bg-white py-24">
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,61,46,0.06)_1px,transparent_1px),linear-gradient(rgba(15,61,46,0.05)_1px,transparent_1px)] bg-[size:80px_80px]" />
       <div className="section-shell relative grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-        <ScrollReveal>
-          <SectionHeading
-            description={data.lead}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            title={data.title}
-          />
-        </ScrollReveal>
+        <div>
+          <ScrollReveal>
+            <SectionHeading
+              description={data.lead}
+              eyebrow={data.eyebrow}
+              eyebrowB={data.eyebrowB}
+              title={data.title}
+            />
+          </ScrollReveal>
+          <ScrollReveal>
+            <figure className="mt-8 hidden overflow-hidden rounded-sm border border-primary/10 shadow-soft lg:block">
+              <img
+                alt="テニスプラザ尼崎の屋内コートと朝の準備"
+                className="h-full w-full object-cover"
+                loading="lazy"
+                src={`${FACILITY}/facility-57387.jpg`}
+                style={{ aspectRatio: "4/3" }}
+              />
+            </figure>
+          </ScrollReveal>
+        </div>
         <div className="rounded-sm border border-primary/10 bg-warm/88 p-4 shadow-soft backdrop-blur sm:p-6">
           {data.items.map(([time, text], index) => (
             <ScrollReveal delay={index * 45} key={time}>
@@ -1044,31 +1104,39 @@ export function VisitPreviewSection() {
           {data.items.map((item, i) => (
             <ScrollReveal delay={i * 70} key={item}>
               <li
-                className={`flex h-full items-start gap-3 p-5 ${
+                className={`flex h-full flex-col overflow-hidden ${
                   variant === "b" ? "border border-ink/12 bg-white" : "rounded-sm bg-white shadow-sm"
                 }`}
               >
-                {variant === "b" ? (
-                  <svg
-                    aria-hidden
-                    className="mt-1 shrink-0"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    width="22"
-                  >
-                    <path
-                      d="M3 12 L9 18 L20 4"
-                      fill="none"
-                      stroke="#FF7A59"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2.4"
-                    />
-                  </svg>
-                ) : (
-                  <Check aria-hidden className="mt-1 shrink-0 text-tennis" size={20} />
-                )}
-                <span className="font-bold leading-7 text-primary">{item}</span>
+                <img
+                  alt={item}
+                  className="aspect-[16/9] w-full object-cover"
+                  loading="lazy"
+                  src={`${FACILITY}/${visitImages[i]}.jpg`}
+                />
+                <div className="flex items-start gap-3 p-5">
+                  {variant === "b" ? (
+                    <svg
+                      aria-hidden
+                      className="mt-1 shrink-0"
+                      height="22"
+                      viewBox="0 0 22 22"
+                      width="22"
+                    >
+                      <path
+                        d="M3 12 L9 18 L20 4"
+                        fill="none"
+                        stroke="#FF7A59"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2.4"
+                      />
+                    </svg>
+                  ) : (
+                    <Check aria-hidden className="mt-1 shrink-0 text-tennis" size={20} />
+                  )}
+                  <span className="font-bold leading-7 text-primary">{item}</span>
+                </div>
               </li>
             </ScrollReveal>
           ))}
