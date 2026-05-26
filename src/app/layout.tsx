@@ -51,9 +51,28 @@ const notoSerifJp = Noto_Serif_JP({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tennis-plaza-amagasaki.vercel.app"),
   title: "採用情報｜テニスプラザ尼崎",
   description:
-    "テニスプラザ尼崎では、ジュニアから大人まで幅広い生徒に向き合うコーチを募集しています。"
+    "テニスプラザ尼崎では、ジュニアから大人まで幅広い生徒に向き合うコーチを募集しています。",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png"
+  },
+  openGraph: {
+    title: "好きなテニスを、誰かの成長に変える仕事。｜テニスプラザ尼崎 採用",
+    description:
+      "テニスを通じて、人の成長や挑戦を支える仕事。はじめは見学やレッスン補助から、少しずつ慣れていけます。",
+    type: "website",
+    locale: "ja_JP",
+    images: ["/images/recruit/people/hero-people.jpg"]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "好きなテニスを、誰かの成長に変える仕事。｜テニスプラザ尼崎 採用",
+    description: "テニスを通じて、人の成長や挑戦を支える仕事。",
+    images: ["/images/recruit/people/hero-people.jpg"]
+  }
 };
 
 export default function RootLayout({
@@ -62,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html data-variant="b" lang="ja">
+    <html data-variant="a" lang="ja">
       <body
         className={`${inter.variable} ${interTight.variable} ${fraunces.variable} ${jetbrainsMono.variable} ${notoSansJp.variable} ${notoSerifJp.variable} font-sans`}
       >

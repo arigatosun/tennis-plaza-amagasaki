@@ -28,11 +28,11 @@ const FACILITY = "/images/recruit/facility";
 // Placeholder imagery (existing optimized assets). People-centric assets are
 // swapped in during the asset-generation pass.
 const careerImages = [
-  "job-lesson-adult",
-  "ideal-notice",
-  "job-parent-talk",
-  "job-event",
-  "job-operation"
+  "people/career-lesson",
+  "people/career-growth",
+  "people/career-parent",
+  "people/career-event",
+  "people/career-ops"
 ];
 const yarigaiImages = ["people/yarigai-kid", "people/yarigai-junior", "people/yarigai-adult"];
 const dailyImages = [

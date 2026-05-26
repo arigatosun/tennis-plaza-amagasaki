@@ -88,6 +88,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -97,6 +98,7 @@ body {
     linear-gradient(180deg, #fbfaf5 0%, #f8f6ef 55%, #eef4ee 100%);
   color: #17212b;
   font-feature-settings: "palt";
+  overflow-x: clip;
 }
 
 [data-variant="b"] body {
