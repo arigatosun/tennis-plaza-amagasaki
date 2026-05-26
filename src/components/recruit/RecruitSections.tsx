@@ -392,7 +392,7 @@ export function YarigaiSection() {
           ))}
         </div>
         <ScrollReveal>
-          <p className="mt-8 max-w-3xl text-xs leading-6 text-warm/56">{data.note}</p>
+          <p className="mt-8 max-w-3xl text-xs leading-6 text-warm/70">{data.note}</p>
         </ScrollReveal>
       </div>
     </section>
@@ -771,7 +771,7 @@ export function PhilosophySection() {
               </footer>
             </blockquote>
           </ScrollReveal>
-          <p className="mt-6 text-xs leading-6 text-white/52">{data.note}</p>
+          <p className="mt-6 text-xs leading-6 text-white/70">{data.note}</p>
         </div>
       </div>
     </section>
@@ -801,13 +801,6 @@ export function RequirementsSection() {
                   variant === "b" ? "border border-ink/12 bg-white" : "rounded-sm border border-court/14 bg-white shadow-soft"
                 }`}
               >
-                <p
-                  className={`font-mono text-xs tracking-[0.16em] ${
-                    col.tone === "must" ? "text-court" : "text-clay"
-                  }`}
-                >
-                  {col.tone === "must" ? "MUST" : "WELCOME"}
-                </p>
                 <h3
                   className={
                     variant === "b"
@@ -1140,7 +1133,7 @@ export function FutureRoadmapSection() {
                   ) : null}
                 </div>
                 <div className="flex-1">
-                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-clay">{phase.label}</p>
+                  <p className="text-xs font-semibold tracking-[0.18em] text-clay">{phase.label}</p>
                   <h3 className="mt-1 font-serif text-xl font-semibold text-primary">{phase.title}</h3>
                   <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                     {phase.items.map((item) => (
