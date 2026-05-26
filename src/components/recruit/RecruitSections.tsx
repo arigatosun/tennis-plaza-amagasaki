@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Check, ChevronRight, Quote } from "lucide-react";
+import { ArrowUpRight, Check, ChevronRight, Quote, X } from "lucide-react";
 import { recruitPage } from "@/data/recruit";
 import { BlurText } from "@/components/react-bits/BlurText";
 import { ClickSpark } from "@/components/react-bits/ClickSpark";
@@ -1198,100 +1198,314 @@ export function RoadmapOutcomesSection() {
   );
 }
 
-/* ===== Persona (採用ターゲット紹介ページ) ===== */
+/* ===== Persona (代表ペルソナ・社内デモ用ページ) ===== */
+
+function PersonaHeading({ kicker, title }: { kicker: string; title: string }) {
+  return (
+    <div>
+      <p className="font-mono text-xs tracking-[0.18em] text-court">{kicker}</p>
+      {title ? (
+        <h2 className="mt-2 whitespace-pre-line font-serif text-2xl font-semibold leading-[1.4] text-primary sm:text-3xl">
+          {title}
+        </h2>
+      ) : null}
+    </div>
+  );
+}
+
+function PersonaList({
+  items,
+  tone = "court"
+}: {
+  items: readonly string[];
+  tone?: "court" | "clay" | "muted";
+}) {
+  return (
+    <ul className="space-y-2.5">
+      {items.map((it) => (
+        <li className="flex gap-2.5 text-sm leading-7 text-ink/78" key={it}>
+          {tone === "muted" ? (
+            <X aria-hidden className="mt-1 shrink-0 text-ink/35" size={15} />
+          ) : (
+            <Check
+              aria-hidden
+              className={`mt-1 shrink-0 ${tone === "clay" ? "text-clay" : "text-court"}`}
+              size={15}
+            />
+          )}
+          <span>{it}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function PersonaSection() {
   const data = recruitPage.personas;
   return (
-    <section className="relative bg-warm py-20" id="persona">
-      <div className="section-shell">
+    <section className="relative bg-warm py-16" id="persona">
+      <div className="section-shell space-y-12">
+        {/* Hero */}
         <ScrollReveal>
-          <p className="inline-flex items-center gap-2 rounded-full border border-clay/30 bg-clay/10 px-4 py-1.5 text-xs font-bold tracking-[0.08em] text-clay">
-            社内デモ用 ・ 採用ターゲット
-          </p>
-          <h1 className="mt-4 whitespace-pre-line font-serif text-3xl font-semibold leading-[1.4] text-primary sm:text-4xl">
-            {data.title}
+          <span className="inline-flex items-center gap-2 rounded-full bg-clay px-4 py-1.5 text-xs font-black tracking-[0.12em] text-white">
+            {data.badge}
+          </span>
+          <h1 className="mt-5 whitespace-pre-line font-serif text-3xl font-semibold leading-[1.4] text-primary sm:text-4xl lg:text-5xl">
+            {data.catch}
           </h1>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-ink/74">{data.lead}</p>
-          <p className="mt-3 text-xs leading-6 text-ink/52">{data.note}</p>
+          <p className="mt-4 max-w-3xl text-xs leading-6 text-ink/52">{data.note}</p>
         </ScrollReveal>
 
-        <div className="mt-14 space-y-8">
-          {data.items.map((p, i) => (
-            <MotionReveal delay={0} key={p.id} variant={i % 2 === 0 ? "left" : "right"}>
-              <article className="overflow-hidden rounded-xl border border-ink/12 bg-white shadow-soft lg:grid lg:grid-cols-[0.8fr_1.2fr]">
-                <div className={`relative ${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                  <img
-                    alt={`${p.name}（イメージ）`}
-                    className="h-full max-h-[420px] w-full object-cover object-top"
-                    loading="lazy"
-                    src={`/images/recruit/${p.photo}.jpg`}
-                  />
-                  <span className="absolute left-5 top-5 grid size-11 place-items-center rounded-full bg-primary font-tight text-lg font-black text-tennis">
-                    {p.no}
-                  </span>
-                </div>
-                <div className="p-7 sm:p-9">
-                  <p className="font-mono text-xs tracking-[0.16em] text-court">{p.type}</p>
-                  <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <h2 className="font-serif text-2xl font-semibold text-primary">{p.name}</h2>
-                    <span className="text-sm font-bold text-ink/60">{p.age}</span>
-                    <span className="text-xs text-ink/50">{p.tennis}</span>
+        <MotionReveal variant="rise-scale">
+          <div className="overflow-hidden rounded-2xl border border-ink/12 bg-white shadow-soft lg:grid lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="relative">
+              <img
+                alt="代表ペルソナ 三浦 涼太（イメージ）"
+                className="h-full max-h-[460px] w-full object-cover object-top"
+                src={`/images/recruit/${data.photo}.jpg`}
+              />
+              <span className="absolute bottom-4 left-4 rounded-full bg-primary/85 px-4 py-1.5 text-xs font-bold tracking-[0.08em] text-warm backdrop-blur">
+                三浦 涼太 ・ 25歳（イメージ）
+              </span>
+            </div>
+            <div className="p-7 sm:p-9">
+              <p className="font-serif text-lg font-medium leading-8 text-primary">{data.summary}</p>
+              <dl className="mt-6 divide-y divide-ink/10 border-t border-ink/10">
+                {data.profile.map(([label, value]) => (
+                  <div className="grid grid-cols-[7rem_1fr] gap-3 py-2.5" key={label}>
+                    <dt className="text-xs font-bold leading-6 text-primary/60">{label}</dt>
+                    <dd className="text-sm leading-6 text-ink/78">{value}</dd>
                   </div>
-                  <p className="mt-2 text-sm leading-7 text-ink/72">{p.role}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {p.tags.map((tag) => (
-                      <span
-                        className="rounded-full border border-court/25 bg-court/8 px-3 py-1 text-xs font-bold text-court"
-                        key={tag}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </MotionReveal>
 
-                  <div className="mt-6 flex gap-3 rounded-lg bg-warm p-5">
-                    <Quote aria-hidden className="shrink-0 text-clay" size={22} />
-                    <div>
-                      <p className="text-xs font-bold tracking-[0.06em] text-clay">いまの悩み</p>
-                      <p className="mt-1 text-sm leading-7 text-ink/80">{p.worry}</p>
-                    </div>
-                  </div>
-
-                  <dl className="mt-5 grid gap-4 sm:grid-cols-2">
-                    <div>
-                      <dt className="text-xs font-bold tracking-[0.06em] text-primary/60">求めていること</dt>
-                      <dd className="mt-1 text-sm leading-7 text-ink/74">{p.want}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs font-bold tracking-[0.06em] text-primary/60">休日の過ごし方</dt>
-                      <dd className="mt-1 text-sm leading-7 text-ink/74">{p.holiday}</dd>
-                    </div>
-                  </dl>
-
-                  <p className="mt-6 border-l-2 border-tennis pl-4 font-serif text-base font-medium leading-8 text-primary">
-                    {p.quote}
-                  </p>
-
-                  <a
-                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white transition hover:bg-court"
-                    href={p.fit.href}
-                  >
-                    このLPで刺さる：{p.fit.label}
-                    <ChevronRight aria-hidden size={16} />
-                  </a>
-                </div>
-              </article>
-            </MotionReveal>
-          ))}
-        </div>
-
+        {/* 現在地 */}
         <ScrollReveal>
-          <div className="mt-12 rounded-xl border border-primary/15 bg-primary p-8 text-white sm:p-10">
-            <h2 className="whitespace-pre-line font-serif text-2xl font-semibold leading-[1.5] sm:text-3xl">
-              {data.closing.title}
-            </h2>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-white/82">{data.closing.text}</p>
+          <div className="rounded-2xl border border-ink/12 bg-white p-7 shadow-soft sm:p-9">
+            <PersonaHeading kicker="この人の現在地" title="高校までテニス、いまはToC営業。" />
+            <div className="mt-5 space-y-4">
+              {data.status.map((p) => (
+                <p className="text-base leading-8 text-ink/76" key={p.slice(0, 12)}>
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* 悩み */}
+        <ScrollReveal>
+          <div className="grid gap-5 lg:grid-cols-2">
+            <div className="rounded-2xl border border-ink/12 bg-white p-7 shadow-soft">
+              <p className="text-xs font-bold tracking-[0.08em] text-primary/60">表面的な悩み</p>
+              <div className="mt-4">
+                <PersonaList items={data.worriesSurface} />
+              </div>
+            </div>
+            <div className="flex flex-col rounded-2xl border border-clay/25 bg-clay/8 p-7">
+              <div className="flex items-center gap-2">
+                <Quote aria-hidden className="text-clay" size={20} />
+                <p className="text-xs font-bold tracking-[0.08em] text-clay">本当の悩み</p>
+              </div>
+              <p className="mt-4 text-base leading-8 text-ink/82">{data.worryDeep}</p>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* テニスとの関係 + 教えることへの興味 */}
+        <ScrollReveal>
+          <div className="grid gap-5 lg:grid-cols-2">
+            <div className="rounded-2xl border border-ink/12 bg-white p-7 shadow-soft">
+              <PersonaHeading kicker="テニスとの関係" title="頑張れた記憶のある、好きなもの。" />
+              <p className="mt-5 text-sm leading-8 text-ink/76">{data.tennisRelation}</p>
+            </div>
+            <div className="rounded-2xl border border-ink/12 bg-white p-7 shadow-soft">
+              <PersonaHeading kicker="教えることへの興味" title="“入口のコーチ”に向いている。" />
+              <p className="mt-5 text-sm leading-8 text-ink/76">{data.teaching.lead}</p>
+              <div className="mt-4">
+                <PersonaList items={data.teaching.points} />
+              </div>
+              <p className="mt-4 border-l-2 border-tennis pl-4 text-sm font-medium leading-7 text-primary">
+                {data.teaching.conclusion}
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* 営業の強み */}
+        <ScrollReveal>
+          <div className="rounded-2xl border border-court/20 bg-court/6 p-7 shadow-soft sm:p-9">
+            <PersonaHeading kicker="営業経験から活かせる強み" title="“不安を安心に変える”対人力。" />
+            <p className="mt-5 text-base leading-8 text-ink/76">{data.strengths.lead}</p>
+            <div className="mt-5 grid gap-x-8 gap-y-1 sm:grid-cols-2">
+              <PersonaList items={data.strengths.points.slice(0, 4)} />
+              <PersonaList items={data.strengths.points.slice(4)} />
+            </div>
+            <p className="mt-6 rounded-lg bg-white/70 p-5 text-sm leading-8 text-ink/80">
+              {data.strengths.conclusion}
+            </p>
+          </div>
+        </ScrollReveal>
+
+        {/* 求めていること */}
+        <ScrollReveal>
+          <div className="grid gap-5 lg:grid-cols-2">
+            <div className="rounded-2xl border border-ink/12 bg-white p-7 shadow-soft">
+              <p className="text-xs font-bold tracking-[0.08em] text-court">強く求めていること</p>
+              <div className="mt-4">
+                <PersonaList items={data.wantStrong} />
+              </div>
+            </div>
+            <div className="rounded-2xl border border-ink/12 bg-white p-7 shadow-soft">
+              <p className="text-xs font-bold tracking-[0.08em] text-clay">実は気にしていること</p>
+              <div className="mt-4">
+                <PersonaList items={data.wantHidden} tone="clay" />
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* 応募前の不安 */}
+        <ScrollReveal>
+          <div className="rounded-2xl border border-ink/12 bg-white p-7 shadow-soft sm:p-9">
+            <PersonaHeading kicker="応募前に感じる不安" title="一番のネックは、職場環境。" />
+            <p className="mt-5 text-sm leading-8 text-ink/76">{data.applyAnxiety.lead}</p>
+            <div className="mt-5 grid gap-x-8 gap-y-1 sm:grid-cols-2">
+              <PersonaList items={data.applyAnxiety.points.slice(0, 4)} tone="clay" />
+              <PersonaList items={data.applyAnxiety.points.slice(4)} tone="clay" />
+            </div>
+            <p className="mt-6 rounded-lg border border-tennis/40 bg-tennis/10 p-5 text-sm font-medium leading-8 text-primary">
+              {data.applyAnxiety.message}
+            </p>
+          </div>
+        </ScrollReveal>
+
+        {/* 刺さる言葉 / 刺さりにくい言葉 */}
+        <ScrollReveal>
+          <div className="grid gap-5 lg:grid-cols-2">
+            <div className="rounded-2xl border border-court/25 bg-white p-7 shadow-soft">
+              <p className="text-sm font-bold text-court">刺さる言葉</p>
+              <div className="mt-4">
+                <PersonaList items={data.wordsHit} />
+              </div>
+            </div>
+            <div className="rounded-2xl border border-ink/12 bg-warm p-7">
+              <p className="text-sm font-bold text-ink/50">刺さりにくい言葉</p>
+              <div className="mt-4">
+                <PersonaList items={data.wordsMiss} tone="muted" />
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* このLPが合う理由 */}
+        <ScrollReveal>
+          <div className="rounded-2xl border border-primary/15 bg-primary p-8 text-white sm:p-10">
+            <p className="font-mono text-xs tracking-[0.18em] text-tennis">
+              このLPがこのペルソナに合っている理由
+            </p>
+            <p className="mt-2 font-serif text-2xl font-semibold leading-[1.5] text-white sm:text-3xl">
+              「営業から逃げたい人」ではなく、
+              <br />
+              「対人力をもっと好きな領域で使いたい人」へ。
+            </p>
+            <p className="mt-5 max-w-3xl text-base leading-8 text-white/82">{data.lpFit}</p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              {data.fits.map((f) => (
+                <a
+                  className="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-sm font-bold text-white backdrop-blur transition hover:bg-tennis hover:text-deep"
+                  href={f.href}
+                  key={f.label}
+                >
+                  刺さる：{f.label}
+                  <ChevronRight aria-hidden size={15} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* 採用側メモ */}
+        <ScrollReveal>
+          <div className="rounded-2xl border border-ink/15 bg-deep p-8 text-warm sm:p-10">
+            <p className="inline-flex items-center gap-2 rounded-full border border-warm/25 px-4 py-1.5 text-xs font-bold tracking-[0.1em] text-warm/80">
+              採用側メモ（社長・採用担当向け）
+            </p>
+
+            <div className="mt-8 grid gap-8 lg:grid-cols-2">
+              <div>
+                <p className="text-xs font-bold tracking-[0.08em] text-tennis">採用メリット</p>
+                <ul className="mt-4 space-y-2.5">
+                  {data.merits.map((m) => (
+                    <li className="flex gap-2.5 text-sm leading-7 text-warm/82" key={m}>
+                      <Check aria-hidden className="mt-1 shrink-0 text-tennis" size={15} />
+                      <span>{m}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="grid gap-6">
+                <div>
+                  <p className="text-xs font-bold tracking-[0.08em] text-clay">懸念点</p>
+                  <ul className="mt-3 space-y-2 text-sm leading-7 text-warm/78">
+                    {data.concerns.map((c) => (
+                      <li className="flex gap-2.5" key={c}>
+                        <span aria-hidden className="mt-2 inline-block size-1 shrink-0 rounded-full bg-clay" />
+                        <span>{c}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="text-xs font-bold tracking-[0.08em] text-tennis">必要なフォロー</p>
+                  <ul className="mt-3 space-y-2 text-sm leading-7 text-warm/78">
+                    {data.follows.map((f) => (
+                      <li className="flex gap-2.5" key={f}>
+                        <Check aria-hidden className="mt-1 shrink-0 text-tennis" size={14} />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 grid gap-8 border-t border-warm/15 pt-8 lg:grid-cols-2">
+              <div>
+                <p className="text-xs font-bold tracking-[0.08em] text-tennis">面接で確認したいこと</p>
+                <ul className="mt-4 space-y-2.5">
+                  {data.interviewQuestions.map((q) => (
+                    <li className="flex gap-2.5 text-sm leading-7 text-warm/82" key={q}>
+                      <span aria-hidden className="mt-0.5 shrink-0 font-mono text-xs text-tennis">Q</span>
+                      <span>{q}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="text-xs font-bold tracking-[0.08em] text-clay">ミスマッチになりやすい人</p>
+                <ul className="mt-4 space-y-2 text-sm leading-7 text-warm/78">
+                  {data.mismatch.map((m) => (
+                    <li className="flex gap-2.5" key={m}>
+                      <X aria-hidden className="mt-1 shrink-0 text-clay/80" size={14} />
+                      <span>{m}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 border-l-2 border-tennis pl-4 text-sm font-medium leading-7 text-warm">
+                  {data.mismatchKey}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 rounded-xl bg-warm/6 p-6 backdrop-blur">
+              <p className="text-xs font-bold tracking-[0.08em] text-tennis">先方への説明文</p>
+              <p className="mt-3 text-sm leading-8 text-warm/85">{data.pitch}</p>
+            </div>
+
             <a
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-tennis px-6 py-3 text-sm font-bold text-deep transition hover:-translate-y-0.5"
               href="/recruit"
