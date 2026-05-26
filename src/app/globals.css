@@ -265,6 +265,21 @@ a {
   transform: none;
 }
 
+/* Persona tab panel fade (always resolves to visible) */
+@keyframes persona-fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.persona-fade {
+  animation: persona-fade 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 .scroll-velocity {
   border-block: 1px solid rgba(217, 255, 67, 0.22);
   overflow: hidden;
