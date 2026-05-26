@@ -228,6 +228,43 @@ a {
   transform: translateY(0);
 }
 
+/* ===== Component reveal (MotionReveal) — varied entrance techniques ===== */
+.reveal {
+  opacity: 0;
+  transition: opacity 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--rv-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal--up {
+  transform: translateY(34px);
+}
+.reveal--scale {
+  transform: scale(0.92);
+}
+.reveal--rise-scale {
+  transform: translateY(38px) scale(0.94);
+}
+.reveal--left {
+  transform: translateX(-48px);
+}
+.reveal--right {
+  transform: translateX(48px);
+}
+/* "curtain" rise — distinct from up: taller travel + slight vertical squash,
+   anchored at the top edge. Transform-only so it never collapses the layout
+   box (a zero-area clip-path makes IntersectionObserver report no intersection). */
+.reveal--clip {
+  transform: translateY(56px) scaleY(0.9);
+  transform-origin: top center;
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
 .scroll-velocity {
   border-block: 1px solid rgba(217, 255, 67, 0.22);
   overflow: hidden;
@@ -980,10 +1017,11 @@ a {
     transition-duration: 0.001ms !important;
   }
 
-  .scroll-reveal {
+  .scroll-reveal,
+  .reveal {
     clip-path: none !important;
-    opacity: 1;
-    transform: none;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .split-text-word,

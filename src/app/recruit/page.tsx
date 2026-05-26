@@ -4,35 +4,32 @@ import { RecruitHeader } from "@/components/recruit/RecruitHeader";
 import { ScoreProgress } from "@/components/recruit/ScoreProgress";
 import { VariantProvider } from "@/components/recruit/VariantProvider";
 import {
-  AIRoleplaySection,
-  CareerPathSection,
+  CareerReframeSection,
+  DailyWorkSection,
   DayFlowSection,
   FaqSection,
   FinalCtaSection,
+  FirstStepSection,
   HeroSection,
-  IdealPersonSection,
   InsightSection,
-  JobDescriptionSection,
-  MayanoMessageSection,
   MobileStickyCta,
-  RequirementSection,
+  PeopleCultureSection,
+  PhilosophySection,
+  RequirementsSection,
   SelectionFlowSection,
-  TrainingSection,
-  TrialToEnrollmentSection,
-  ValueSection,
   VisitPreviewSection,
-  WhyNowSection,
-  PhilosophySection
+  WorkplaceSection,
+  YarigaiSection
 } from "@/components/recruit/RecruitSections";
 
 export const metadata: Metadata = {
-  title: "採用情報｜テニスプラザ尼崎｜好きだったテニスが、誰かの人生に少し触れる仕事になる",
+  title: "採用情報｜テニスプラザ尼崎｜好きなテニスを、誰かの成長に変える仕事",
   description:
-    "テニスプラザ尼崎では、ジュニアから大人まで幅広い生徒と関わるコーチを募集しています。コーチ未経験でも研修あり。好きだったテニスを、自分のペースで人と関わる時間に変えていきませんか。",
+    "テニスプラザ尼崎では、ジュニアから大人まで幅広い生徒と関わるコーチを募集しています。はじめは見学やレッスン補助から、少しずつ現場に慣れていけます。いきなり応募ではなく、カジュアル面談・見学からでも歓迎です。",
   openGraph: {
-    title: "好きだったテニスが、誰かの人生に少し触れる仕事になる。",
+    title: "好きなテニスを、誰かの成長に変える仕事。",
     description:
-      "テニス経験を活かしながら、自分のペースで人と関わる時間を大切にしたい方へ。",
+      "テニスを通じて、人の成長や挑戦を支える仕事。はじめは見学やレッスン補助から、少しずつ慣れていけます。",
     type: "website"
   }
 };
@@ -50,19 +47,16 @@ export default function RecruitPage() {
       <RecruitHeader />
       <main id="recruit-main">
         <HeroSection />
-        <WhyNowSection />
         <InsightSection />
-        <IdealPersonSection />
-        <ValueSection />
-        <PhilosophySection />
-        <TrialToEnrollmentSection />
-        <MayanoMessageSection />
-        <JobDescriptionSection />
-        <TrainingSection />
-        <CareerPathSection />
-        <AIRoleplaySection />
+        <CareerReframeSection />
+        <YarigaiSection />
+        <DailyWorkSection />
         <DayFlowSection />
-        <RequirementSection />
+        <FirstStepSection />
+        <WorkplaceSection />
+        <PeopleCultureSection />
+        <PhilosophySection />
+        <RequirementsSection />
         <VisitPreviewSection />
         <SelectionFlowSection />
         <FaqSection />

@@ -37,7 +37,6 @@ export function VariantToggle({
             role="tab"
             type="button"
           >
-            <span className="variant-toggle__key">{meta.shortLabel}</span>
             <span className="variant-toggle__label">{meta.brandLabel}</span>
           </button>
         );

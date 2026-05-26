@@ -1,16 +1,6 @@
 "use client";
 
-import {
-  ArrowUpRight,
-  BadgeCheck,
-  CalendarDays,
-  Check,
-  ChevronRight,
-  ClipboardList,
-  MessageCircle,
-  Trophy,
-  UsersRound
-} from "lucide-react";
+import { ArrowUpRight, Check, ChevronRight, Quote } from "lucide-react";
 import { recruitPage } from "@/data/recruit";
 import { BlurText } from "@/components/react-bits/BlurText";
 import { ClickSpark } from "@/components/react-bits/ClickSpark";
@@ -18,75 +8,67 @@ import { GridScan } from "@/components/react-bits/GridScan";
 import { LightRays } from "@/components/react-bits/LightRays";
 import { ScrollReveal } from "@/components/react-bits/ScrollReveal";
 import { ScrollVelocity } from "@/components/react-bits/ScrollVelocity";
-import { SplitText } from "@/components/react-bits/SplitText";
-import { SpotlightCard } from "@/components/react-bits/SpotlightCard";
 import RBSplitText from "@/components/reactbits/SplitText";
-import RBBlurText from "@/components/reactbits/BlurText";
+import { MotionReveal } from "./MotionReveal";
 import { CtaButton } from "./CtaButton";
 import { SectionHeading } from "./SectionHeading";
-import { VisualPanel } from "./VisualPanel";
 import { useVariant } from "./VariantProvider";
 
 const tickerItems = [
-  "A QUIET RALLY",
+  "好きなテニスを、仕事に",
   "コーチ未経験OK",
-  "LEARN AT YOUR PACE",
   "焦らず、少しずつ",
-  "PEOPLE COACH",
+  "ジュニアから大人まで",
   "見学からで大丈夫",
-  "TENNIS PLAZA AMAGASAKI"
+  "テニスプラザ尼崎"
 ];
 
-const idealImages = [
-  "ideal-atmosphere",
-  "ideal-listen",
+const FACILITY = "/images/recruit/facility";
+
+// Placeholder imagery (existing optimized assets). People-centric assets are
+// swapped in during the asset-generation pass.
+const careerImages = [
+  "job-lesson-adult",
   "ideal-notice",
-  "ideal-learn"
+  "job-parent-talk",
+  "job-event",
+  "job-operation"
 ];
-const valueImages = ["value-joy", "value-widen", "value-thanks"];
-const jobImages = [
+const yarigaiImages = ["people/yarigai-kid", "people/yarigai-junior", "people/yarigai-adult"];
+const dailyImages = [
   "job-lesson-adult",
   "job-followup",
   "job-parent-talk",
   "job-guidance",
   "job-event",
-  "job-operation"
+  "people/daily-prep"
 ];
-const FACILITY = "/images/recruit/facility";
-const trialImages = [
-  "facility-57380",
-  "facility-57387",
-  "facility-57386",
-  "facility-57395",
-  "facility-57389"
+const peopleImages = ["people/coach", "people/staff", "people/young"];
+const empathyImages = [
+  "facility/facility-57389",
+  "facility/facility-57398",
+  "facility/facility-57386",
+  "facility/facility-57380"
 ];
 const visitImages = [
-  "facility-57387",
-  "facility-57386",
-  "facility-57390",
-  "facility-57395",
-  "facility-57398"
+  "facility/facility-57387",
+  "facility/facility-57386",
+  "facility/facility-57390",
+  "facility/facility-57395",
+  "facility/facility-57383"
 ];
-const empathyImages = [
-  "facility-57389",
-  "facility-57398",
-  "facility-57386",
-  "facility-57380"
-];
-const idealKanji = ["察", "聴", "芽", "歩"];
-const idealObjectPos = ["50% 40%", "50% 30%", "50% 55%", "50% 42%"];
-const selectionImages = [
-  "facility-57380",
-  "facility-57395",
-  "facility-57387",
-  "facility-57386",
-  "facility-57394"
-];
+
+function imgSrc(name: string) {
+  return name.startsWith("facility/")
+    ? `/images/recruit/${name}.jpg`
+    : `/images/recruit/${name}.jpg`;
+}
 
 /* ===== Section 1 — Hero ===== */
 
 export function HeroSection() {
   const { variant } = useVariant();
+  const data = recruitPage.hero;
 
   if (variant === "b") {
     return (
@@ -96,42 +78,32 @@ export function HeroSection() {
           <ScrollReveal>
             <figure className="relative overflow-hidden rounded-sm border border-ink/8 shadow-soft">
               <img
-                alt="テニスプラザ尼崎の屋内コートで、コーチと生徒がコートを並んで歩く様子"
+                alt="テニスプラザ尼崎のコートで、コーチが子どもに目線を合わせて声をかける様子"
                 className="parallax-img h-full w-full object-cover"
-                src="/images/recruit/hero-main.jpg"
-                style={{
-                  aspectRatio: "16/9",
-                  filter: "saturate(0.96) contrast(1.03)"
-                }}
+                src="/images/recruit/people/hero-people.jpg"
+                style={{ aspectRatio: "16/9", filter: "saturate(0.98) contrast(1.02)" }}
               />
             </figure>
           </ScrollReveal>
 
           <div className="mt-9 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+            <RBSplitText
+              className="whitespace-pre-line text-balance font-serif text-[2.15rem] font-semibold leading-[1.5] text-primary sm:text-[2.6rem] lg:text-[3rem]"
+              delay={32}
+              duration={0.9}
+              ease="power3.out"
+              from={{ opacity: 0, y: 24 }}
+              splitType="chars"
+              tag="h1"
+              text={data.title}
+              textAlign="left"
+              to={{ opacity: 1, y: 0 }}
+            />
             <div>
-              <BlurText
-                as="p"
-                className="font-mono text-sm font-medium uppercase tracking-[0.28em] text-clay sm:text-base"
-                text={recruitPage.hero.titleEn}
-              />
-              <RBSplitText
-                className="mt-3 whitespace-pre-line text-balance font-serif text-[2.15rem] font-semibold leading-[1.5] text-primary sm:text-[2.6rem] lg:text-[3rem]"
-                delay={32}
-                duration={0.9}
-                ease="power3.out"
-                from={{ opacity: 0, y: 24 }}
-                splitType="chars"
-                tag="h1"
-                text={recruitPage.hero.title}
-                textAlign="left"
-                to={{ opacity: 1, y: 0 }}
-              />
-            </div>
-            <div>
-              <p className="text-sm leading-8 text-ink/74">{recruitPage.hero.body}</p>
+              <p className="text-sm leading-8 text-ink/74">{data.body}</p>
               <ClickSpark>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  {recruitPage.hero.ctas.map((cta) => (
+                  {data.ctas.map((cta) => (
                     <CtaButton
                       href={cta.href}
                       key={cta.label}
@@ -142,10 +114,11 @@ export function HeroSection() {
                   ))}
                 </div>
               </ClickSpark>
+              <p className="mt-3 text-xs leading-6 text-ink/56">{data.micro}</p>
               <div className="mt-6 flex flex-wrap gap-2">
-                {recruitPage.hero.badges.map((badge) => (
+                {data.badges.map((badge) => (
                   <span
-                    className="inline-flex items-center gap-2 border border-ink/12 bg-warm px-3 py-1.5 text-xs font-medium uppercase tracking-[0.12em] text-ink/74"
+                    className="inline-flex items-center gap-2 border border-ink/12 bg-warm px-3 py-1.5 text-xs font-medium tracking-[0.04em] text-ink/74"
                     key={badge}
                   >
                     <Check aria-hidden size={13} />
@@ -194,30 +167,23 @@ export function HeroSection() {
       <div className="section-shell relative flex min-h-[88svh] items-center pb-28 pt-16">
         <div className="relative max-w-4xl">
           <RBSplitText
-            className="whitespace-pre-line text-balance font-tight text-4xl font-black leading-[1.06] tracking-tight sm:text-5xl lg:text-6xl"
+            className="whitespace-pre-line text-balance font-tight text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
             delay={26}
             duration={0.8}
             ease="power3.out"
             from={{ opacity: 0, y: 28 }}
             splitType="chars"
             tag="h1"
-            text={recruitPage.hero.title}
+            text={data.title}
             textAlign="left"
             to={{ opacity: 1, y: 0 }}
           />
-          {recruitPage.hero.subtitle ? (
-            <BlurText
-              as="p"
-              className="mt-5 whitespace-pre-line text-2xl font-black leading-snug text-tennis sm:text-3xl"
-              text={recruitPage.hero.subtitle}
-            />
-          ) : null}
           <p className="mt-6 max-w-2xl text-sm font-medium leading-7 text-white/82 sm:text-base">
-            {recruitPage.hero.body}
+            {data.body}
           </p>
           <ClickSpark>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              {recruitPage.hero.ctas.map((cta) => (
+              {data.ctas.map((cta) => (
                 <CtaButton
                   href={cta.href}
                   key={cta.label}
@@ -228,8 +194,9 @@ export function HeroSection() {
               ))}
             </div>
           </ClickSpark>
+          <p className="mt-3 text-xs leading-6 text-white/64">{data.micro}</p>
           <div className="mt-7 flex flex-wrap gap-3">
-            {recruitPage.hero.badges.map((badge) => (
+            {data.badges.map((badge) => (
               <span
                 className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/12 px-4 py-2 text-sm font-black text-white backdrop-blur"
                 key={badge}
@@ -249,907 +216,667 @@ export function HeroSection() {
   );
 }
 
-/* ===== Section 2 — Why Now ===== */
-
-export function WhyNowSection() {
-  const { variant } = useVariant();
-  const data = recruitPage.whyNow;
-
-  if (variant === "b") {
-    return (
-      <section className="relative bg-deep py-28 text-warm" id="why-now">
-        <span className="b-noise" aria-hidden />
-        <div className="section-shell relative">
-          <ScrollReveal>
-            <RBSplitText
-              className="max-w-3xl whitespace-pre-line font-serif text-3xl font-semibold leading-[1.5] text-warm sm:text-4xl"
-              delay={24}
-              duration={0.8}
-              ease="power3.out"
-              from={{ opacity: 0, y: 20 }}
-              splitType="chars"
-              tag="h2"
-              text={data.title}
-              textAlign="left"
-              to={{ opacity: 1, y: 0 }}
-            />
-          </ScrollReveal>
-          <ScrollReveal>
-            <figure className="mt-8 overflow-hidden rounded-sm shadow-soft">
-              <img
-                alt="テニスプラザ尼崎の朝の光が差し込む静かな屋内コート"
-                className="parallax-img h-full w-full object-cover"
-                loading="lazy"
-                src="/images/recruit/whyhere-court.jpg"
-                style={{ aspectRatio: "16/9" }}
-              />
-            </figure>
-          </ScrollReveal>
-          <div className="mt-10 grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-            <ScrollReveal>
-              <p className="font-serif text-xl font-medium leading-9 text-warm">
-                {data.lead}
-              </p>
-            </ScrollReveal>
-            <ScrollReveal>
-              <p className="text-base leading-9 text-warm/78">{data.body}</p>
-              <div className="mt-10 grid gap-6 sm:grid-cols-3">
-                {data.stats.map((s) => (
-                  <div key={s.label} className="border-t border-warm/24 pt-4">
-                    <p className="font-serif text-4xl font-semibold text-clay">
-                      {s.value}
-                      <span className="ml-1 font-mono text-base text-warm/80">{s.unit}</span>
-                    </p>
-                    <p className="mt-2 text-xs leading-6 text-warm/68">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  return (
-    <section className="relative overflow-hidden bg-deep py-24 text-white" id="why-now">
-      <LightRays variant="dark" />
-      <div className="section-shell relative">
-        <ScrollReveal>
-          <SectionHeading
-            description={data.lead}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            light
-            title={data.title}
-          />
-        </ScrollReveal>
-        <ScrollReveal>
-          <p className="mt-6 max-w-3xl text-base leading-9 text-white/82">{data.body}</p>
-        </ScrollReveal>
-        <div className="mt-12 grid gap-5 sm:grid-cols-3">
-          {data.stats.map((s, i) => (
-            <ScrollReveal delay={i * 90} key={s.label}>
-              <div className="rounded-sm border border-tennis/30 bg-tennis/8 p-6">
-                <p className="font-tight text-5xl font-black leading-none text-tennis">
-                  {s.value}
-                  <span className="ml-2 text-base text-white/72">{s.unit}</span>
-                </p>
-                <p className="mt-4 text-sm font-bold text-white/78">{s.label}</p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-        <ScrollReveal>
-          <figure className="relative mt-10 overflow-hidden rounded-sm">
-            <img
-              alt="テニスプラザ尼崎の屋外コートに差し込む夕方の光"
-              className="parallax-img h-full w-full object-cover"
-              loading="lazy"
-              src={`${FACILITY}/facility-57381.jpg`}
-              style={{ aspectRatio: "21/9" }}
-            />
-            <span className="rb-stripe absolute inset-x-0 bottom-0" aria-hidden />
-          </figure>
-        </ScrollReveal>
-      </div>
-    </section>
-  );
-}
-
-/* ===== Section 3 — Empathy / Insight ===== */
+/* ===== Empathy / Insight ===== */
 
 export function InsightSection() {
   const { variant } = useVariant();
   const data = recruitPage.insights;
-  const accent = variant === "a" ? "text-tennis" : "text-clay";
   return (
-    <section className="relative py-24" id="empathy">
-      <div className="section-shell">
-        <ScrollReveal>
-          <SectionHeading
-            description={data.body}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            title={data.title}
-          />
-        </ScrollReveal>
-        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {data.cards.map((card, index) => (
-            <ScrollReveal delay={index * 80} key={card.title}>
-              <article className="group relative h-full overflow-hidden rounded-sm">
-                <img
-                  alt=""
-                  aria-hidden
-                  className="absolute inset-0 h-full w-full object-cover grayscale-[0.35] transition duration-700 group-hover:scale-[1.04] group-hover:grayscale-0"
-                  loading="lazy"
-                  src={`${FACILITY}/${empathyImages[index]}.jpg`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/92 to-deep/55" />
-                <div className="relative flex h-full min-h-[280px] flex-col justify-end p-6">
-                  <MessageCircle aria-hidden className={`mb-4 ${accent}`} size={26} />
-                  <h3 className="font-serif text-lg font-semibold leading-7 text-white">
-                    {card.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-white/88">{card.text}</p>
-                </div>
-              </article>
-            </ScrollReveal>
-          ))}
-        </div>
-        <ScrollReveal>
-          <div className="mt-10 overflow-hidden rounded-sm bg-primary p-7 text-white sm:p-10">
-            <p className="max-w-4xl text-xl font-bold leading-10">{data.close}</p>
-          </div>
-        </ScrollReveal>
-      </div>
-    </section>
-  );
-}
-
-/* ===== Section 4 — Ideal Person ===== */
-
-export function IdealPersonSection() {
-  const { variant } = useVariant();
-  const data = recruitPage.ideal;
-  return (
-    <section className="relative overflow-hidden bg-white py-28" id="concept">
-      <div className="absolute inset-0 opacity-[0.05]">
-        <div className="mx-auto mt-8 h-[680px] w-[680px] rounded-full border-[18px] border-primary" />
-        <div className="absolute left-1/2 top-0 h-full w-px bg-primary" />
-        <div className="absolute left-0 top-1/2 h-px w-full bg-primary" />
-      </div>
+    <section className="relative bg-warm py-24" id="empathy">
+      <span className="b-noise" aria-hidden />
       <div className="section-shell relative">
         <ScrollReveal>
-          <SectionHeading
-            description={data.lead}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            title={data.title}
-          />
+          <SectionHeading description={data.body} title={data.title} />
         </ScrollReveal>
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
-          {data.points.map((p, i) => (
-            <ScrollReveal delay={i * 80} key={p.label}>
+          {data.cards.map((card, i) => (
+            <MotionReveal className="h-full" delay={(i % 2) * 0.08} key={card.title} variant="scale">
               <article
                 className={`flex h-full flex-col overflow-hidden border ${
-                  variant === "b"
-                    ? "border-ink/12 bg-white"
-                    : "border-court/12 bg-warm rounded-sm"
+                  variant === "b" ? "border-ink/12 bg-white" : "rounded-sm border-court/14 bg-white shadow-soft"
                 }`}
               >
                 <div className="relative overflow-hidden">
                   <img
-                    alt={p.label}
+                    alt={card.title}
                     className="aspect-[16/9] w-full object-cover"
                     loading="lazy"
-                    src={`/images/recruit/${idealImages[i]}.jpg`}
-                    style={{ objectPosition: idealObjectPos[i] }}
+                    src={imgSrc(empathyImages[i])}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-deep/70 via-deep/20 to-transparent" />
-                  <span
-                    aria-hidden
-                    className="absolute bottom-1 left-4 font-serif leading-none text-warm/90 drop-shadow-[0_2px_10px_rgba(11,59,46,0.6)]"
-                    style={{ fontSize: "clamp(60px, 8.5vw, 96px)" }}
-                  >
-                    {idealKanji[i]}
-                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep/55 to-transparent" />
                 </div>
-                <div className="flex items-start gap-4 p-6">
-                  <span
-                    className={`shrink-0 ${
+                <div className="flex flex-1 flex-col p-6">
+                  <h3
+                    className={
                       variant === "b"
-                        ? "font-mono text-xs uppercase tracking-[0.2em] text-clay"
-                        : "font-tight text-3xl font-black text-tennis/80"
+                        ? "font-serif text-lg font-semibold leading-7 text-primary"
+                        : "display-heading text-lg leading-7 text-primary"
+                    }
+                  >
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-ink/72">{card.text}</p>
+                </div>
+              </article>
+            </MotionReveal>
+          ))}
+        </div>
+        <ScrollReveal>
+          <p className="mt-9 max-w-3xl text-base leading-8 text-ink/76">{data.close}</p>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+/* ===== Section 2 — Career Reframe ===== */
+
+export function CareerReframeSection() {
+  const { variant } = useVariant();
+  const data = recruitPage.careerReframe;
+  return (
+    <section className="relative py-24" id="career">
+      <div className="section-shell">
+        <ScrollReveal>
+          <SectionHeading description={data.lead} title={data.title} />
+        </ScrollReveal>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {data.cards.map((card, i) => (
+            <MotionReveal
+              className="h-full"
+              delay={(i % 3) * 0.08}
+              key={card.title}
+              variant="rise-scale"
+            >
+              <article
+                className={`flex h-full flex-col overflow-hidden border ${
+                  variant === "b"
+                    ? "border-ink/12 bg-white"
+                    : "border-court/14 bg-white rounded-sm shadow-soft"
+                }`}
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    alt={card.title}
+                    className="aspect-[16/10] w-full object-cover"
+                    loading="lazy"
+                    src={imgSrc(careerImages[i])}
+                  />
+                  <span
+                    className={`absolute left-4 top-3 ${
+                      variant === "b"
+                        ? "font-mono text-xs tracking-[0.18em] text-warm"
+                        : "font-tight text-3xl font-black text-tennis drop-shadow-[0_2px_8px_rgba(11,59,46,0.5)]"
                     }`}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <div>
-                    <p
-                      className={
-                        variant === "b"
-                          ? "font-serif text-xl font-semibold leading-8 text-primary"
-                          : "display-heading text-lg leading-7 text-primary"
-                      }
-                    >
-                      {p.label}
-                    </p>
-                    <p className="mt-2 text-sm leading-7 text-ink/72">{p.text}</p>
-                  </div>
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3
+                    className={
+                      variant === "b"
+                        ? "font-serif text-xl font-semibold leading-8 text-primary"
+                        : "display-heading text-lg leading-7 text-primary"
+                    }
+                  >
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-ink/72">{card.text}</p>
                 </div>
               </article>
-            </ScrollReveal>
+            </MotionReveal>
           ))}
         </div>
         <ScrollReveal>
-          <p className="mt-9 max-w-3xl text-base leading-8 text-ink/74">{data.close}</p>
-          <RBBlurText
-            animateBy="words"
-            className={`mt-10 whitespace-pre-line text-balance text-4xl leading-tight text-primary sm:text-5xl ${
-              variant === "b" ? "font-serif font-semibold" : "font-tight font-black"
-            }`}
-            delay={140}
-            direction="bottom"
-            text={data.emphasis}
-          />
+          <p className="mt-8 max-w-3xl text-xs leading-6 text-ink/56">{data.note}</p>
         </ScrollReveal>
       </div>
     </section>
   );
 }
 
-/* ===== Section 5 — Values ===== */
+/* ===== Section 3 — Yarigai / Impact ===== */
 
-export function ValueSection() {
+export function YarigaiSection() {
   const { variant } = useVariant();
-  const data = recruitPage.values;
+  const data = recruitPage.yarigai;
   return (
-    <section className="py-24">
-      <div className="section-shell">
-        <ScrollReveal>
-          <SectionHeading
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            title={data.title}
-          />
-        </ScrollReveal>
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {data.items.map((value, index) => (
-            <ScrollReveal delay={index * 100} key={value.number}>
-              {variant === "b" ? (
-                <article className="float-card flex h-full flex-col overflow-hidden border border-clay/30 bg-white shadow-soft">
-                  <img
-                    alt={value.title}
-                    className="aspect-[16/10] w-full object-cover"
-                    loading="lazy"
-                    src={`/images/recruit/${valueImages[index]}.jpg`}
-                  />
-                  <div className="flex flex-1 flex-col p-7">
-                    <h3 className="min-h-16 font-serif text-2xl font-semibold leading-[1.5] text-primary">
-                      {value.title}
-                    </h3>
-                    <p className="mt-4 text-sm leading-8 text-ink/72">{value.text}</p>
-                  </div>
-                </article>
-              ) : (
-                <div className="float-card flex h-full flex-col overflow-hidden rounded-sm border border-court/14 bg-white shadow-soft">
-                  <div className="relative">
-                    <img
-                      alt={value.title}
-                      className="aspect-[16/10] w-full object-cover"
-                      loading="lazy"
-                      src={`/images/recruit/${valueImages[index]}.jpg`}
-                    />
-                    <span className="absolute left-4 top-3 font-tight text-5xl font-black text-tennis drop-shadow-[0_2px_8px_rgba(11,59,46,0.5)]">
-                      {value.number}
-                    </span>
-                  </div>
-                  <div className="flex flex-1 flex-col p-7">
-                    <h3 className="display-heading min-h-16 text-2xl leading-8 text-primary">
-                      {value.title}
-                    </h3>
-                    <p className="mt-4 text-sm leading-8 text-ink/70">{value.text}</p>
-                  </div>
-                </div>
-              )}
-            </ScrollReveal>
-          ))}
-        </div>
-        <ScrollReveal>
-          <p className="mt-9 max-w-3xl text-xl font-bold leading-10 text-primary">{data.close}</p>
-        </ScrollReveal>
-      </div>
-    </section>
-  );
-}
-
-/* ===== Section 6 — Philosophy ===== */
-
-export function PhilosophySection() {
-  const data = recruitPage.philosophy;
-  return (
-    <section className="relative overflow-hidden bg-primary py-24 text-white">
-      <div className="court-lines absolute inset-0 opacity-30" />
+    <section className="relative bg-deep py-24 text-warm" id="yarigai">
+      {variant === "a" ? <LightRays variant="dark" /> : <span className="b-noise" aria-hidden />}
       <div className="section-shell relative">
         <ScrollReveal>
-          <figure className="overflow-hidden rounded-sm shadow-soft">
+          <RBSplitText
+            className={`max-w-3xl whitespace-pre-line text-balance leading-tight text-warm ${
+              variant === "b"
+                ? "font-serif text-3xl font-semibold sm:text-4xl"
+                : "font-tight text-4xl font-black sm:text-5xl"
+            }`}
+            delay={22}
+            duration={0.8}
+            ease="power3.out"
+            from={{ opacity: 0, y: 20 }}
+            splitType="chars"
+            tag="h2"
+            text={data.title}
+            textAlign="left"
+            to={{ opacity: 1, y: 0 }}
+          />
+        </ScrollReveal>
+        <ScrollReveal>
+          <p className="mt-6 max-w-3xl text-base leading-9 text-warm/82">{data.body}</p>
+        </ScrollReveal>
+        <div className="mt-10 grid gap-4 lg:grid-cols-3">
+          {data.cards.map((card, i) => (
+            <MotionReveal className="h-full" delay={i * 0.1} key={card.title} variant="scale">
+              <article className="flex h-full flex-col overflow-hidden border border-warm/16 bg-warm/4 backdrop-blur">
+                <img
+                  alt={card.title}
+                  className="aspect-[16/10] w-full object-cover"
+                  loading="lazy"
+                  src={imgSrc(yarigaiImages[i])}
+                />
+                <div className="flex flex-1 flex-col p-6">
+                  <h3
+                    className={
+                      variant === "b"
+                        ? "font-serif text-xl font-semibold leading-8 text-warm"
+                        : "display-heading text-lg leading-7 text-warm"
+                    }
+                  >
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-warm/76">{card.text}</p>
+                </div>
+              </article>
+            </MotionReveal>
+          ))}
+        </div>
+        <ScrollReveal>
+          <p className="mt-8 max-w-3xl text-xs leading-6 text-warm/56">{data.note}</p>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+/* ===== Section 4 — Daily Work + Staff Interview ===== */
+
+export function DailyWorkSection() {
+  const { variant } = useVariant();
+  const data = recruitPage.dailyWork;
+  return (
+    <section className="relative py-24" id="daily">
+      <div className="section-shell">
+        <ScrollReveal>
+          <SectionHeading description={data.lead} title={data.title} />
+        </ScrollReveal>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {data.tasks.map((task, i) => (
+            <MotionReveal className="h-full" delay={(i % 3) * 0.08} key={task.title} variant="clip">
+              <article
+                className={`flex h-full flex-col overflow-hidden border ${
+                  variant === "b"
+                    ? "border-ink/12 bg-white"
+                    : "border-court/14 bg-white rounded-sm shadow-soft"
+                }`}
+              >
+                <img
+                  alt={task.title}
+                  className="aspect-[16/9] w-full object-cover"
+                  loading="lazy"
+                  src={imgSrc(dailyImages[i])}
+                />
+                <div className="flex flex-1 flex-col p-6">
+                  <h3
+                    className={
+                      variant === "b"
+                        ? "font-serif text-lg font-semibold leading-7 text-primary"
+                        : "display-heading text-lg leading-7 text-primary"
+                    }
+                  >
+                    {task.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-7 text-ink/72">{task.text}</p>
+                </div>
+              </article>
+            </MotionReveal>
+          ))}
+        </div>
+        <ScrollReveal>
+          <p
+            className={`mt-8 max-w-3xl border-l-2 pl-5 text-sm leading-8 ${
+              variant === "b" ? "border-clay text-ink/74" : "border-tennis text-ink/74"
+            }`}
+          >
+            {data.salesNote}
+          </p>
+        </ScrollReveal>
+
+        <div className="mt-16">
+          <ScrollReveal>
+            <h3
+              className={`text-balance ${
+                variant === "b"
+                  ? "font-serif text-2xl font-semibold text-primary"
+                  : "display-heading text-2xl text-primary"
+              }`}
+            >
+              {data.interview.title}
+            </h3>
+          </ScrollReveal>
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            {data.interview.qa.map((item, i) => (
+              <MotionReveal
+                delay={(i % 2) * 0.08}
+                key={item.q}
+                variant={i % 2 === 0 ? "left" : "right"}
+              >
+                <article
+                  className={`flex h-full gap-4 p-6 ${
+                    variant === "b"
+                      ? "border border-ink/12 bg-white"
+                      : "rounded-sm border border-court/14 bg-white shadow-soft"
+                  }`}
+                >
+                  <Quote
+                    aria-hidden
+                    className={variant === "b" ? "shrink-0 text-clay" : "shrink-0 text-tennis"}
+                    size={26}
+                  />
+                  <div>
+                    <p className="font-bold leading-7 text-primary">{item.q}</p>
+                    <p className="mt-3 text-sm leading-8 text-ink/74">{item.a}</p>
+                  </div>
+                </article>
+              </MotionReveal>
+            ))}
+          </div>
+          <ScrollReveal>
+            <p className="mt-6 text-xs leading-6 text-ink/52">{data.interview.note}</p>
+          </ScrollReveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===== A Day (timeline) ===== */
+
+export function DayFlowSection() {
+  const { variant } = useVariant();
+  const data = recruitPage.dayFlow;
+  return (
+    <section className="relative bg-deep py-24 text-warm" id="dayflow">
+      {variant === "a" ? <LightRays variant="dark" /> : <span className="b-noise" aria-hidden />}
+      <div className="section-shell relative">
+        <ScrollReveal>
+          <RBSplitText
+            className={`whitespace-pre-line text-balance leading-tight text-warm ${
+              variant === "b" ? "font-serif text-3xl font-semibold sm:text-4xl" : "font-tight text-4xl font-black sm:text-5xl"
+            }`}
+            delay={22}
+            duration={0.8}
+            ease="power3.out"
+            from={{ opacity: 0, y: 20 }}
+            splitType="chars"
+            tag="h2"
+            text={data.title}
+            textAlign="left"
+            to={{ opacity: 1, y: 0 }}
+          />
+        </ScrollReveal>
+        <ScrollReveal>
+          <p className="mt-5 max-w-3xl text-sm leading-8 text-warm/72">{data.lead}</p>
+        </ScrollReveal>
+        <div className="mt-12 grid gap-px overflow-hidden border border-warm/16 sm:grid-cols-2">
+          {data.items.map(([time, text], i) => (
+            <MotionReveal delay={(i % 2) * 0.06} key={time} variant={i % 2 === 0 ? "left" : "right"}>
+              <div className="flex h-full items-center gap-5 bg-warm/4 px-6 py-5 backdrop-blur">
+                <span
+                  className={
+                    variant === "b"
+                      ? "shrink-0 font-mono text-lg font-semibold tracking-tight text-clay"
+                      : "shrink-0 font-tight text-2xl font-black text-tennis"
+                  }
+                >
+                  {time}
+                </span>
+                <span className="h-8 w-px shrink-0 bg-warm/20" aria-hidden />
+                <span className="text-sm leading-7 text-warm/82">{text}</span>
+              </div>
+            </MotionReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===== Section 5 — First Step for Beginners ===== */
+
+export function FirstStepSection() {
+  const { variant } = useVariant();
+  const data = recruitPage.firstStep;
+  return (
+    <section className="relative bg-warm py-24" id="firststep">
+      <span className="b-noise" aria-hidden />
+      <div className="section-shell relative">
+        <ScrollReveal>
+          <SectionHeading title={data.title} />
+        </ScrollReveal>
+        <ScrollReveal>
+          <p className="mt-6 max-w-3xl text-base leading-9 text-ink/76">{data.body}</p>
+        </ScrollReveal>
+        <ScrollReveal>
+          <figure className="mt-8 overflow-hidden rounded-sm shadow-soft">
             <img
-              alt="夕暮れの屋内コートに立つコーチのシルエットと「技術だけでは、人は続かない。」の言葉"
+              alt="先輩コーチと新人コーチが、コートサイドでレッスンの流れを一緒に確認する様子"
               className="parallax-img h-full w-full object-cover"
-              src="/images/recruit/philosophy-feature.jpg"
+              loading="lazy"
+              src="/images/recruit/people/beginner.jpg"
               style={{ aspectRatio: "16/9" }}
             />
           </figure>
         </ScrollReveal>
-        <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
-          <ScrollReveal>
-            <h2 className="display-heading whitespace-pre-line text-balance text-3xl leading-tight !text-white sm:text-4xl">
-              {data.title}
-            </h2>
-            <p className="mt-5 text-base leading-9 text-white/72">{data.subtitle}</p>
-          </ScrollReveal>
-          <ScrollReveal>
-            <p className="text-base leading-9 text-white/78">{data.body}</p>
-            <p className="mt-6 font-mono text-xs uppercase tracking-[0.18em] text-tennis/80">
-              {data.quoteAttribution}
-            </p>
-          </ScrollReveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ===== Section 7 — Trial to Enrollment ===== */
-
-export function TrialToEnrollmentSection() {
-  const { variant } = useVariant();
-  const data = recruitPage.trial;
-  return (
-    <section className="relative bg-warm py-28" id="trial">
-      <div className="section-shell">
-        <ScrollReveal>
-          <SectionHeading
-            description={data.lead}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            title={data.title}
-          />
-        </ScrollReveal>
-        <div className="mt-12 grid gap-5">
+        <div className="mt-12 grid gap-4">
           {data.steps.map((step, i) => (
-            <ScrollReveal delay={i * 90} key={step.number}>
+            <MotionReveal delay={0} key={step.title} variant={i % 2 === 0 ? "left" : "right"}>
               <article
-                className={`relative grid items-center gap-5 overflow-hidden ${
-                  variant === "b" ? "border border-ink/10 bg-white" : "border border-court/16 bg-white rounded-sm"
-                } md:grid-cols-[200px_110px_1fr] md:pl-0`}
+                className={`relative grid items-center gap-4 p-6 md:grid-cols-[140px_1fr] ${
+                  variant === "b"
+                    ? "border border-ink/12 bg-white"
+                    : "rounded-sm border border-court/14 bg-white shadow-soft"
+                }`}
               >
-                <div className="relative">
-                  <img
-                    alt={`${step.phase}：${step.title}`}
-                    className="h-full max-h-44 w-full object-cover md:max-h-[140px]"
-                    loading="lazy"
-                    src={`${FACILITY}/${trialImages[i]}.jpg`}
-                    style={{ aspectRatio: "4/3" }}
-                  />
+                <div className="flex items-center gap-3">
                   <span
-                    className={`absolute left-3 top-3 grid size-9 place-items-center text-sm ${
-                      variant === "a"
-                        ? "bg-tennis font-tight font-black text-deep"
-                        : "bg-clay font-mono text-warm"
-                    } rounded-full`}
+                    className={`grid size-9 shrink-0 place-items-center rounded-full text-sm ${
+                      variant === "b"
+                        ? "bg-clay font-mono text-warm"
+                        : "bg-tennis font-tight font-black text-deep"
+                    }`}
                   >
-                    {variant === "b" ? `0${i + 1}` : i + 1}
+                    {i + 1}
                   </span>
-                </div>
-                <span
-                  className={`px-6 font-mono text-xs uppercase tracking-[0.18em] md:px-0 ${
-                    variant === "b" ? "text-clay" : "text-court"
-                  }`}
-                >
-                  {step.phase}
-                </span>
-                <div className="p-6 pt-0 md:p-6 md:pl-0">
-                  <h3
+                  <span
                     className={
                       variant === "b"
-                        ? "font-serif text-xl font-semibold leading-[1.5] text-primary"
-                        : "display-heading text-xl leading-7 text-primary"
+                        ? "font-serif text-base font-semibold text-primary"
+                        : "display-heading text-base text-primary"
                     }
                   >
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-8 text-ink/74">{step.text}</p>
+                    {step.phase}
+                  </span>
+                </div>
+                <div>
+                  <h3 className="font-bold leading-7 text-primary">{step.title}</h3>
+                  <p className="mt-1 text-sm leading-7 text-ink/72">{step.text}</p>
                 </div>
               </article>
-            </ScrollReveal>
+            </MotionReveal>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ===== Section 8 — Mayano Message ===== */
-
-export function MayanoMessageSection() {
-  const { variant } = useVariant();
-  const data = recruitPage.mayano;
-  return (
-    <section className="bg-white py-24">
-      <div className="section-shell grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         <ScrollReveal>
-          <SectionHeading
-            description={data.subtitle}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            title={data.title}
-          />
-          <p className="mt-8 text-base leading-9 text-ink/74">{data.body}</p>
-          <blockquote className="quote-block mt-8 bg-warm">
-            <p
-              className={
-                variant === "b"
-                  ? "font-serif text-lg font-semibold italic leading-9 text-primary"
-                  : "text-lg font-black leading-9 text-primary"
-              }
-            >
-              {data.quote}
-            </p>
-            <span className="quote-block__attribution">{data.quoteAttribution}</span>
-          </blockquote>
-        </ScrollReveal>
-        <ScrollReveal>
-          <VisualPanel label="女性コーチがコート横で生徒やスタッフに話しかける様子" variant="staff" />
+          <p className="mt-9 max-w-3xl text-lg font-bold leading-9 text-primary">{data.close}</p>
         </ScrollReveal>
       </div>
     </section>
   );
 }
 
-/* ===== Section 9 — Job Description ===== */
+/* ===== Section 6 — Workplace / Conditions ===== */
 
-export function JobDescriptionSection() {
+export function WorkplaceSection() {
   const { variant } = useVariant();
-  const data = recruitPage.jobs;
-  const icons = [Trophy, UsersRound, MessageCircle, BadgeCheck, CalendarDays, ClipboardList];
-
+  const data = recruitPage.workplace;
   return (
-    <section className="py-24" id="work">
+    <section className="relative py-24" id="workplace">
       <div className="section-shell">
         <ScrollReveal>
-          <SectionHeading
-            description={data.lead}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            title={data.title}
-          />
+          <SectionHeading description={data.lead} title={data.title} />
         </ScrollReveal>
-        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {data.items.map((job, index) => {
-            const Icon = icons[index];
-            return (
-              <ScrollReveal delay={(index % 3) * 80} key={job.title}>
-                {variant === "b" ? (
-                  <article className="flex h-full flex-col overflow-hidden border border-ink/10 bg-white">
-                    <img
-                      alt={job.title}
-                      className="aspect-[16/10] w-full object-cover"
-                      loading="lazy"
-                      src={`/images/recruit/${jobImages[index]}.jpg`}
-                    />
-                    <div className="flex flex-1 flex-col p-6">
-                      <h3 className="font-serif text-xl font-semibold leading-8 text-primary">
-                        {job.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-7 text-ink/72">{job.text}</p>
-                    </div>
-                  </article>
-                ) : (
-                  <div className="flex h-full flex-col overflow-hidden rounded-sm border border-court/14 bg-white shadow-sm transition hover:shadow-lift">
-                    <img
-                      alt={job.title}
-                      className="aspect-[16/10] w-full object-cover"
-                      loading="lazy"
-                      src={`/images/recruit/${jobImages[index]}.jpg`}
-                    />
-                    <div className="flex flex-1 flex-col p-6">
-                      <Icon aria-hidden className="text-court" size={26} />
-                      <h3 className="display-heading mt-3 text-xl leading-8 text-primary">
-                        {job.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-7 text-ink/70">{job.text}</p>
-                    </div>
-                  </div>
-                )}
-              </ScrollReveal>
-            );
-          })}
+        <div className="mt-10 overflow-hidden border border-ink/12">
+          {data.items.map(([label, value], i) => (
+            <div
+              className={`grid gap-1 px-6 py-5 sm:grid-cols-[180px_1fr] ${
+                i % 2 === 0 ? "bg-white" : "bg-warm"
+              }`}
+              key={label}
+            >
+              <dt
+                className={
+                  variant === "b"
+                    ? "font-serif text-sm font-semibold text-primary"
+                    : "font-bold text-sm text-primary"
+                }
+              >
+                {label}
+              </dt>
+              <dd className="whitespace-pre-line text-sm leading-7 text-ink/76">{value}</dd>
+            </div>
+          ))}
         </div>
         <ScrollReveal>
-          <div className="mt-9 rounded-sm border border-court/20 bg-white p-7 shadow-sm">
-            <p className="display-heading text-lg text-primary">
-              「入会案内」は、売り込みではなく、聞く時間です。
-            </p>
-            <p className="mt-3 text-base leading-8 text-ink/72">
-              来てくれた人が「ここなら自分のペースで続けられそう」と自分で決められるように、隣で話を聞き、選択肢を整理する。コートの外側にある、もう一つの仕事です。
-            </p>
-          </div>
+          <p className="mt-6 max-w-3xl text-xs leading-6 text-ink/56">{data.note}</p>
         </ScrollReveal>
       </div>
     </section>
   );
 }
 
-/* ===== Section 10 — Training ===== */
+/* ===== Section 7 — People / Culture ===== */
 
-export function TrainingSection() {
+export function PeopleCultureSection() {
   const { variant } = useVariant();
-  const data = recruitPage.training;
+  const data = recruitPage.people;
   return (
-    <section className="bg-white py-24" id="training">
-      <div className="section-shell grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+    <section className="relative bg-warm py-24" id="people">
+      <span className="b-noise" aria-hidden />
+      <div className="section-shell relative">
         <ScrollReveal>
-          <VisualPanel label="先輩コーチが若手コーチにフィードバックする様子" variant="training" />
+          <SectionHeading description={data.body} title={data.title} />
         </ScrollReveal>
-        <div>
-          <ScrollReveal>
-            <SectionHeading
-              description={data.lead}
-              eyebrow={data.eyebrow}
-              eyebrowB={data.eyebrowB}
-              title={data.title}
-            />
-          </ScrollReveal>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            {data.modules.map(([title, text], index) => (
-              <ScrollReveal delay={index * 70} key={title}>
-                <div
-                  className={`p-5 ${
-                    variant === "b"
-                      ? "border border-ink/12 bg-warm"
-                      : "rounded-sm bg-warm"
-                  }`}
-                >
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {data.cards.map((card, i) => (
+            <MotionReveal className="h-full" delay={(i % 3) * 0.08} key={card.name} variant="rise-scale">
+              <article
+                className={`flex h-full flex-col overflow-hidden border ${
+                  variant === "b" ? "border-ink/12 bg-white" : "rounded-sm border-court/14 bg-white shadow-soft"
+                }`}
+              >
+                <img
+                  alt={card.name}
+                  className="aspect-[4/3] w-full object-cover"
+                  loading="lazy"
+                  src={imgSrc(peopleImages[i])}
+                />
+                <div className="flex flex-1 flex-col p-6">
                   <p
                     className={
                       variant === "b"
-                        ? "font-mono text-[11px] uppercase tracking-[0.2em] text-clay"
-                        : "text-sm font-black text-court"
+                        ? "font-mono text-xs tracking-[0.16em] text-clay"
+                        : "font-mono text-xs tracking-[0.16em] text-court"
                     }
                   >
-                    {variant === "b" ? `Module 0${index + 1}` : String(index + 1).padStart(2, "0")}
+                    {card.role}
                   </p>
                   <h3
-                    className={`mt-2 text-primary ${
-                      variant === "b" ? "font-serif text-lg font-semibold" : "display-heading"
-                    }`}
+                    className={
+                      variant === "b"
+                        ? "mt-2 font-serif text-xl font-semibold text-primary"
+                        : "mt-2 display-heading text-xl text-primary"
+                    }
                   >
-                    {title}
+                    {card.name}
                   </h3>
-                  <p className="mt-2 text-sm leading-7 text-ink/70">{text}</p>
+                  <p className="mt-3 text-sm leading-7 text-ink/72">{card.text}</p>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
-          <ScrollReveal>
-            <p className="display-heading mt-8 text-2xl text-primary">{data.close}</p>
-          </ScrollReveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ===== Section 11 — Career Path ===== */
-
-export function CareerPathSection() {
-  const { variant } = useVariant();
-  const data = recruitPage.career;
-
-  if (variant === "b") {
-    return (
-      <section className="relative bg-warm py-28" id="career">
-        <div className="section-shell">
-          <ScrollReveal>
-            <SectionHeading
-              description={data.lead}
-              eyebrow={data.eyebrow}
-              eyebrowB={data.eyebrowB}
-              title={data.title}
-            />
-          </ScrollReveal>
-          <ol className="mt-12 grid gap-4">
-            {data.steps.map((step, i) => {
-              const isHighlight = "highlight" in step && step.highlight;
-              return (
-                <ScrollReveal delay={i * 70} key={step.title}>
-                  <li
-                    className={`grid items-start gap-6 border border-ink/12 bg-white p-6 sm:p-7 md:grid-cols-[80px_180px_1fr] ${
-                      isHighlight ? "border-clay/40 shadow-soft" : ""
-                    }`}
-                  >
-                    <span className="font-mono text-xs uppercase tracking-[0.22em] text-clay">
-                      Step {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span
-                      className={`font-mono text-[11px] uppercase tracking-[0.18em] ${
-                        isHighlight ? "text-clay" : "text-ink/52"
-                      }`}
-                    >
-                      {step.label}
-                    </span>
-                    <div>
-                      <h3
-                        className={`font-serif text-xl font-semibold leading-[1.5] text-primary ${
-                          isHighlight ? "underline decoration-clay decoration-[6px] decoration-clip underline-offset-4" : ""
-                        }`}
-                        style={
-                          isHighlight
-                            ? {
-                                textDecorationColor: "rgba(255,122,89,0.4)",
-                                textDecorationThickness: "10px",
-                                textUnderlineOffset: "-4px",
-                                textDecorationSkipInk: "none"
-                              }
-                            : undefined
-                        }
-                      >
-                        {step.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-7 text-ink/72">{step.text}</p>
-                    </div>
-                  </li>
-                </ScrollReveal>
-              );
-            })}
-          </ol>
-          <ScrollReveal>
-            <p className="mt-10 max-w-3xl font-serif text-2xl font-semibold leading-[1.6] text-primary">
-              好きだったテニスが、自分のリズムをつくる時間になっていく。
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-    );
-  }
-
-  // Variant A
-  return (
-    <section className="relative overflow-hidden bg-deep py-24 text-white" id="career">
-      <LightRays variant="dark" />
-      <div className="section-shell relative">
-        <ScrollReveal>
-          <SectionHeading
-            description={data.lead}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            light
-            title={data.title}
-          />
-        </ScrollReveal>
-        <div className="mt-12 grid gap-5 lg:grid-cols-5">
-          {data.steps.map((step, index) => {
-            const highlight = "highlight" in step && step.highlight;
-            return (
-              <ScrollReveal delay={index * 90} key={step.title}>
-                <article
-                  className={`min-h-[300px] rounded-sm border p-6 shadow-soft ${
-                    highlight
-                      ? "border-tennis bg-tennis text-primary"
-                      : "border-white/12 bg-white/10 text-white backdrop-blur"
-                  }`}
-                >
-                  <span
-                    className={`grid size-10 place-items-center rounded-full text-sm font-black ${
-                      highlight ? "bg-primary text-tennis" : "bg-tennis text-primary"
-                    }`}
-                  >
-                    {index + 1}
-                  </span>
-                  <p
-                    className={`mt-5 min-h-10 text-xs font-black uppercase tracking-[0.12em] ${
-                      highlight ? "text-primary/70" : "text-tennis"
-                    }`}
-                  >
-                    {step.label}
-                  </p>
-                  <h3 className="display-heading mt-2 text-xl leading-8">{step.title}</h3>
-                  <p
-                    className={`mt-4 text-sm leading-7 ${
-                      highlight ? "text-primary/76" : "text-white/72"
-                    }`}
-                  >
-                    {step.text}
-                  </p>
-                </article>
-              </ScrollReveal>
-            );
-          })}
-        </div>
-        <ScrollReveal>
-          <BlurText
-            as="p"
-            className="mt-12 max-w-4xl font-tight text-4xl font-black leading-tight text-tennis sm:text-5xl"
-            text="好きだったテニスが、自分のリズムをつくる時間に変わっていく。"
-          />
-        </ScrollReveal>
-      </div>
-    </section>
-  );
-}
-
-/* ===== Section 12 — AI Roleplay ===== */
-
-export function AIRoleplaySection() {
-  const data = recruitPage.roleplay;
-  return (
-    <section className="relative overflow-hidden bg-primary py-24 text-white">
-      <GridScan />
-      <div className="section-shell relative grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
-          <ScrollReveal>
-            <SectionHeading
-              description={data.lead}
-              eyebrow={data.eyebrow}
-              eyebrowB={data.eyebrowB}
-              light
-              title={data.title}
-            />
-          </ScrollReveal>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            {data.scenes.map((scene, index) => (
-              <ScrollReveal delay={index * 70} key={scene}>
-                <div className="rounded-sm border border-white/14 bg-white/8 p-4 backdrop-blur">
-                  <p className="text-sm font-bold leading-6 text-white/86">{scene}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-          <p className="mt-6 max-w-md text-xs uppercase tracking-[0.18em] text-sky/72">
-            {data.note}
-          </p>
-        </div>
-        <ScrollReveal>
-          <VisualPanel label="テニスコーチがタブレットで保護者対応の練習をする様子" variant="roleplay" />
-        </ScrollReveal>
-      </div>
-    </section>
-  );
-}
-
-/* ===== Section 13 — Day Flow ===== */
-
-export function DayFlowSection() {
-  const data = recruitPage.dayFlow;
-  return (
-    <section className="relative overflow-hidden bg-white py-24">
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,61,46,0.06)_1px,transparent_1px),linear-gradient(rgba(15,61,46,0.05)_1px,transparent_1px)] bg-[size:80px_80px]" />
-      <div className="section-shell relative grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-        <div>
-          <ScrollReveal>
-            <SectionHeading
-              description={data.lead}
-              eyebrow={data.eyebrow}
-              eyebrowB={data.eyebrowB}
-              title={data.title}
-            />
-          </ScrollReveal>
-          <ScrollReveal>
-            <figure className="mt-8 hidden overflow-hidden rounded-sm border border-primary/10 shadow-soft lg:block">
-              <img
-                alt="テニスプラザ尼崎の屋内コートと朝の準備"
-                className="parallax-img doc-photo h-full w-full object-cover"
-                loading="lazy"
-                src={`${FACILITY}/facility-57387.jpg`}
-                style={{ aspectRatio: "4/3" }}
-              />
-            </figure>
-          </ScrollReveal>
-        </div>
-        <div className="rounded-sm border border-primary/10 bg-warm/88 p-4 shadow-soft backdrop-blur sm:p-6">
-          {data.items.map(([time, text], index) => (
-            <ScrollReveal delay={index * 45} key={time}>
-              <div className="grid grid-cols-[76px_1fr] gap-4 border-b border-primary/10 py-4 last:border-0">
-                <time className="font-mono text-sm font-medium text-court">{time}</time>
-                <p className="font-bold text-primary">{text}</p>
-              </div>
-            </ScrollReveal>
+              </article>
+            </MotionReveal>
           ))}
         </div>
+        <ScrollReveal>
+          <p className="mt-6 text-xs leading-6 text-ink/52">{data.note}</p>
+        </ScrollReveal>
       </div>
     </section>
   );
 }
 
-/* ===== Section 14 — Requirements ===== */
+/* ===== Section 8 — Philosophy ===== */
 
-export function RequirementSection() {
-  const data = recruitPage.requirements;
+export function PhilosophySection() {
+  const { variant } = useVariant();
+  const data = recruitPage.philosophy;
   return (
-    <section className="bg-white py-24" id="requirements">
+    <section className="relative overflow-hidden bg-primary py-24 text-white" id="philosophy">
+      <div className="court-lines absolute inset-0 opacity-30" />
+      <div className="section-shell relative grid items-center gap-12 lg:grid-cols-[1fr_1fr]">
+        <ScrollReveal>
+          <figure className="overflow-hidden rounded-sm shadow-soft">
+            <img
+              alt="一人ひとりに合わせて向き合う、山下コーチの指導の様子"
+              className="parallax-img h-full w-full object-cover"
+              loading="lazy"
+              src="/images/recruit/philosophy-feature.jpg"
+              style={{ aspectRatio: "4/3" }}
+            />
+          </figure>
+        </ScrollReveal>
+        <div>
+          <RBSplitText
+            className={`whitespace-pre-line text-balance leading-tight text-white ${
+              variant === "b" ? "font-serif text-3xl font-semibold sm:text-4xl" : "font-tight text-4xl font-black sm:text-5xl"
+            }`}
+            delay={22}
+            duration={0.8}
+            ease="power3.out"
+            from={{ opacity: 0, y: 20 }}
+            splitType="chars"
+            tag="h2"
+            text={data.title}
+            textAlign="left"
+            to={{ opacity: 1, y: 0 }}
+          />
+          <ScrollReveal>
+            <p className="mt-6 text-base leading-9 text-white/82">{data.body}</p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <blockquote className="mt-8 border-l-2 border-tennis pl-5">
+              <p className="font-serif text-xl font-semibold leading-9 text-white">
+                「{data.quote}」
+              </p>
+              <footer className="mt-3 font-mono text-xs tracking-[0.16em] text-white/64">
+                {data.quoteAttribution}
+              </footer>
+            </blockquote>
+          </ScrollReveal>
+          <p className="mt-6 text-xs leading-6 text-white/52">{data.note}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===== Section 9 — Requirements ===== */
+
+export function RequirementsSection() {
+  const { variant } = useVariant();
+  const data = recruitPage.requirements;
+  const columns: Array<{ heading: string; tone: "must" | "welcome"; items: readonly string[] }> = [
+    { heading: "大切にしていること", tone: "must", items: data.must },
+    { heading: "歓迎すること", tone: "welcome", items: data.welcome }
+  ];
+  return (
+    <section className="relative py-24" id="requirements">
       <div className="section-shell">
         <ScrollReveal>
-          <SectionHeading
-            description={data.lead}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            title={data.title}
-          />
+          <SectionHeading description={data.body} title={data.title} />
         </ScrollReveal>
-        <dl className="mt-10 overflow-hidden rounded-sm border border-primary/10">
-          {data.items.map(([label, value]) => (
-            <div
-              className="grid gap-2 border-b border-primary/10 bg-white p-5 last:border-0 sm:grid-cols-[180px_1fr]"
-              key={label}
-            >
-              <dt className="display-heading text-primary">{label}</dt>
-              <dd className="whitespace-pre-line leading-8 text-ink/74">{value}</dd>
-            </div>
+        <div className="mt-10 grid gap-4 lg:grid-cols-2">
+          {columns.map((col, ci) => (
+            <MotionReveal className="h-full" delay={ci * 0.08} key={col.heading} variant={ci === 0 ? "left" : "right"}>
+              <div
+                className={`flex h-full flex-col p-7 ${
+                  variant === "b" ? "border border-ink/12 bg-white" : "rounded-sm border border-court/14 bg-white shadow-soft"
+                }`}
+              >
+                <p
+                  className={`font-mono text-xs tracking-[0.16em] ${
+                    col.tone === "must" ? "text-court" : "text-clay"
+                  }`}
+                >
+                  {col.tone === "must" ? "MUST" : "WELCOME"}
+                </p>
+                <h3
+                  className={
+                    variant === "b"
+                      ? "mt-2 font-serif text-xl font-semibold text-primary"
+                      : "mt-2 display-heading text-xl text-primary"
+                  }
+                >
+                  {col.heading}
+                </h3>
+                <ul className="mt-5 space-y-3">
+                  {col.items.map((item) => (
+                    <li className="flex gap-3 text-sm leading-7 text-ink/76" key={item}>
+                      <Check
+                        aria-hidden
+                        className={col.tone === "must" ? "mt-1 shrink-0 text-court" : "mt-1 shrink-0 text-clay"}
+                        size={16}
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </MotionReveal>
           ))}
-        </dl>
-        <p className="mt-6 rounded-sm bg-warm p-5 text-sm leading-7 text-ink/70">{data.note}</p>
+        </div>
+        <ScrollReveal>
+          <p className="mt-8 max-w-3xl text-sm leading-8 text-ink/70">{data.softNg}</p>
+        </ScrollReveal>
       </div>
     </section>
   );
 }
 
-/* ===== Section 15 — Visit Preview ===== */
+/* ===== Visit Preview ===== */
 
 export function VisitPreviewSection() {
   const { variant } = useVariant();
   const data = recruitPage.visit;
   return (
-    <section className="bg-warm py-24" id="visit">
+    <section className="relative py-24" id="visit">
       <div className="section-shell">
         <ScrollReveal>
-          <SectionHeading
-            description={data.lead}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            title={data.title}
-          />
+          <SectionHeading description={data.lead} title={data.title} />
         </ScrollReveal>
         <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {data.items.map((item, i) => (
-            <ScrollReveal delay={i * 70} key={item}>
+            <MotionReveal className="h-full" delay={(i % 3) * 0.07} key={item} variant="clip">
               <li
                 className={`flex h-full flex-col overflow-hidden ${
-                  variant === "b" ? "border border-ink/12 bg-white" : "rounded-sm bg-white shadow-sm"
+                  variant === "b" ? "border border-ink/12 bg-white" : "rounded-sm bg-white shadow-soft"
                 }`}
               >
                 <img
                   alt={item}
                   className="aspect-[16/9] w-full object-cover"
                   loading="lazy"
-                  src={`${FACILITY}/${visitImages[i]}.jpg`}
+                  src={imgSrc(visitImages[i])}
                 />
                 <div className="flex items-start gap-3 p-5">
-                  {variant === "b" ? (
-                    <svg
-                      aria-hidden
-                      className="mt-1 shrink-0"
-                      height="22"
-                      viewBox="0 0 22 22"
-                      width="22"
-                    >
-                      <path
-                        d="M3 12 L9 18 L20 4"
-                        fill="none"
-                        stroke="#FF7A59"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2.4"
-                      />
-                    </svg>
-                  ) : (
-                    <Check aria-hidden className="mt-1 shrink-0 text-tennis" size={20} />
-                  )}
+                  <Check
+                    aria-hidden
+                    className={variant === "b" ? "mt-1 shrink-0 text-clay" : "mt-1 shrink-0 text-tennis"}
+                    size={18}
+                  />
                   <span className="font-bold leading-7 text-primary">{item}</span>
                 </div>
               </li>
-            </ScrollReveal>
+            </MotionReveal>
           ))}
         </ul>
       </div>
@@ -1157,94 +884,90 @@ export function VisitPreviewSection() {
   );
 }
 
-/* ===== Section 16 — Selection Flow ===== */
+/* ===== Selection Flow ===== */
 
 export function SelectionFlowSection() {
+  const { variant } = useVariant();
   const data = recruitPage.selection;
   return (
-    <section className="py-24">
-      <div className="section-shell">
+    <section className="relative bg-warm py-24" id="flow">
+      <span className="b-noise" aria-hidden />
+      <div className="section-shell relative">
         <ScrollReveal>
-          <SectionHeading
-            description={data.lead}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            title={data.title}
-          />
+          <SectionHeading description={data.lead} title={data.title} />
         </ScrollReveal>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {data.items.map(([number, title, text], index) => (
-            <ScrollReveal delay={index * 70} key={number}>
-              <article className="flex h-full flex-col overflow-hidden rounded-sm border border-primary/10 bg-white shadow-sm">
-                <div className="relative">
-                  <img
-                    alt={title}
-                    className="aspect-[4/3] w-full object-cover"
-                    loading="lazy"
-                    src={`${FACILITY}/${selectionImages[index]}.jpg`}
-                  />
-                  <span className="absolute left-3 top-3 grid size-8 place-items-center rounded-full bg-deep/85 font-mono text-xs text-warm backdrop-blur">
-                    {number}
+        <div className="mt-10 grid gap-4">
+          {data.items.map(([num, title, text], i) => (
+            <MotionReveal delay={0} key={num} variant={i % 2 === 0 ? "left" : "right"}>
+              <article
+                className={`grid items-center gap-4 p-6 md:grid-cols-[120px_1fr] ${
+                  variant === "b" ? "border border-ink/12 bg-white" : "rounded-sm border border-court/14 bg-white shadow-soft"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    className={
+                      variant === "b"
+                        ? "font-mono text-2xl font-semibold text-clay"
+                        : "font-tight text-3xl font-black text-tennis"
+                    }
+                  >
+                    {num}
                   </span>
+                  <span className="h-7 w-px bg-ink/15 md:hidden" aria-hidden />
                 </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="display-heading text-base leading-6 text-primary">{title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-ink/70">{text}</p>
+                <div>
+                  <h3
+                    className={
+                      variant === "b"
+                        ? "font-serif text-lg font-semibold text-primary"
+                        : "display-heading text-lg text-primary"
+                    }
+                  >
+                    {title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-7 text-ink/72">{text}</p>
                 </div>
               </article>
-            </ScrollReveal>
+            </MotionReveal>
           ))}
         </div>
-        <CtaButton className="mt-9" label="まずは見学してみる" sectionId="selection" />
       </div>
     </section>
   );
 }
 
-/* ===== Section 17 — FAQ ===== */
+/* ===== Section 10 — FAQ ===== */
 
 export function FaqSection() {
   const { variant } = useVariant();
   const data = recruitPage.faqs;
   return (
-    <section className="bg-white py-24" id="faq">
-      <div className="section-shell">
+    <section className="relative bg-warm py-24" id="faq">
+      <span className="b-noise" aria-hidden />
+      <div className="section-shell relative">
         <ScrollReveal>
-          <SectionHeading
-            align="center"
-            description={data.lead}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            title={data.title}
-          />
+          <SectionHeading description={data.lead} title={data.title} />
         </ScrollReveal>
-        <div className="mx-auto mt-10 max-w-4xl space-y-3">
-          {data.items.map(([question, answer]) => (
-            <details
-              className={`group p-5 ${
-                variant === "b" ? "border border-ink/12 bg-warm" : "rounded-sm border border-primary/10 bg-warm"
-              }`}
-              key={question}
-            >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-black text-primary">
-                <span>{question}</span>
-                {variant === "b" ? (
-                  <span
-                    aria-hidden
-                    className="grid size-7 shrink-0 place-items-center rounded-full border border-clay text-xs font-bold text-clay transition group-open:rotate-[180deg] group-open:bg-clay group-open:text-warm"
-                  >
-                    ●
-                  </span>
-                ) : (
+        <div className="mt-10 grid gap-3">
+          {data.items.map(([q, a], i) => (
+            <MotionReveal delay={(i % 2) * 0.06} key={q} variant="up">
+              <details
+                className={`group p-6 ${
+                  variant === "b" ? "border border-ink/12 bg-white" : "rounded-sm border border-court/14 bg-white shadow-soft"
+                }`}
+              >
+                <summary className="flex cursor-pointer items-start justify-between gap-4 font-bold leading-7 text-primary">
+                  <span>{q}</span>
                   <ChevronRight
                     aria-hidden
-                    className="shrink-0 transition group-open:rotate-90"
+                    className="mt-1 shrink-0 transition-transform group-open:rotate-90"
                     size={18}
                   />
-                )}
-              </summary>
-              <p className="mt-4 leading-8 text-ink/72">{answer}</p>
-            </details>
+                </summary>
+                <p className="mt-4 text-sm leading-8 text-ink/74">{a}</p>
+              </details>
+            </MotionReveal>
           ))}
         </div>
       </div>
@@ -1252,7 +975,7 @@ export function FaqSection() {
   );
 }
 
-/* ===== Section 18 — Final CTA ===== */
+/* ===== Section 11 — Final CTA ===== */
 
 export function FinalCtaSection() {
   const { variant } = useVariant();
@@ -1266,7 +989,7 @@ export function FinalCtaSection() {
           <ScrollReveal>
             <figure className="overflow-hidden rounded-sm shadow-soft">
               <img
-                alt="夕暮れの屋内コートと「まずは、コートに会いに来てください。」の言葉"
+                alt="夕暮れの屋内コートと、見学に来てくださいという言葉"
                 className="parallax-img h-full w-full object-cover"
                 loading="lazy"
                 src="/images/recruit/finalcta-feature.jpg"
@@ -1274,13 +997,16 @@ export function FinalCtaSection() {
               />
             </figure>
           </ScrollReveal>
-          <h2 className="mt-7 font-serif text-2xl font-semibold leading-[1.5] text-primary lg:hidden">
+          <h2 className="mt-7 whitespace-pre-line font-serif text-2xl font-semibold leading-[1.5] text-primary lg:hidden">
             {data.title}
           </h2>
         </div>
         <div className="section-shell relative mt-12 grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <ScrollReveal>
-            <p className="max-w-xl text-base leading-9 text-ink/76">{data.body}</p>
+            <h2 className="hidden whitespace-pre-line font-serif text-3xl font-semibold leading-[1.45] text-primary lg:block">
+              {data.title}
+            </h2>
+            <p className="mt-6 max-w-xl text-base leading-9 text-ink/76">{data.body}</p>
             <ClickSpark>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 {data.ctas.map((cta) => (
@@ -1294,17 +1020,16 @@ export function FinalCtaSection() {
                 ))}
               </div>
             </ClickSpark>
+            <p className="mt-3 text-xs leading-6 text-ink/56">{data.micro}</p>
           </ScrollReveal>
           <ScrollReveal>
             <div className="border border-ink/12 bg-white p-6 shadow-soft">
-              <p className="font-mono text-xs uppercase tracking-[0.22em] text-clay">
-                Contact form placeholder
-              </p>
+              <p className="font-mono text-xs tracking-[0.18em] text-clay">仮フォーム領域</p>
               <h3 className="mt-3 font-serif text-2xl font-semibold text-primary">
-                仮フォーム領域
+                カジュアル面談・見学の申し込み
               </h3>
               <p className="mt-3 text-sm leading-7 text-ink/72">
-                MTGデモでは、ここに応募・見学フォームを設置する想定です。公開時にはフォームサービス、電話導線、採用担当へのメール導線のいずれかに接続します。
+                MTGデモでは、ここに面談・見学フォームを設置する想定です。公開時にはフォームサービス、電話導線、採用担当へのメール導線のいずれかに接続します。
               </p>
               <div className="mt-6 grid gap-3">
                 {["お名前", "メールアドレス", "相談したい内容"].map((label) => (
@@ -1333,11 +1058,6 @@ export function FinalCtaSection() {
 
   return (
     <section className="relative overflow-hidden bg-deep py-24 text-white" id="entry">
-      <img
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover opacity-10"
-        src="/images/recruit/hero-court.svg"
-      />
       <LightRays variant="dark" />
       <div className="absolute inset-0 bg-deep/95" />
       <div className="rb-stripe absolute inset-x-0 top-0" aria-hidden />
@@ -1345,7 +1065,7 @@ export function FinalCtaSection() {
         <ScrollReveal>
           <BlurText
             as="h2"
-            className="text-balance font-tight text-4xl font-black leading-tight sm:text-5xl"
+            className="whitespace-pre-line text-balance font-tight text-4xl font-black leading-tight sm:text-5xl"
             text={data.title}
           />
           <p className="mt-7 text-base leading-9 text-white/78">{data.body}</p>
@@ -1362,15 +1082,14 @@ export function FinalCtaSection() {
               ))}
             </div>
           </ClickSpark>
+          <p className="mt-3 text-xs leading-6 text-white/64">{data.micro}</p>
         </ScrollReveal>
         <ScrollReveal>
           <div className="rounded-sm bg-white p-6 text-primary shadow-soft">
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-court">
-              Contact form placeholder
-            </p>
-            <h3 className="display-heading mt-3 text-2xl">仮フォーム領域</h3>
+            <p className="text-sm font-black tracking-[0.14em] text-court">仮フォーム領域</p>
+            <h3 className="display-heading mt-3 text-2xl">カジュアル面談・見学の申し込み</h3>
             <p className="mt-3 text-sm leading-7 text-ink/70">
-              MTGデモでは、ここに応募・見学フォームを設置する想定です。公開時にはフォームサービス、電話導線、採用担当へのメール導線のいずれかに接続します。
+              MTGデモでは、ここに面談・見学フォームを設置する想定です。公開時にはフォームサービス、電話導線、採用担当へのメール導線のいずれかに接続します。
             </p>
             <div className="mt-6 grid gap-3">
               {["お名前", "メールアドレス", "相談したい内容"].map((label) => (
@@ -1396,7 +1115,7 @@ export function FinalCtaSection() {
   );
 }
 
-/* ===== Section 19 — Future Roadmap ===== */
+/* ===== Future Roadmap (社長デモ専用ページ) ===== */
 
 export function FutureRoadmapSection() {
   const { variant } = useVariant();
@@ -1406,19 +1125,13 @@ export function FutureRoadmapSection() {
       <GridScan />
       <div className="section-shell relative">
         <ScrollReveal>
-          <SectionHeading
-            description={data.lead}
-            eyebrow={data.eyebrow}
-            eyebrowB={data.eyebrowB}
-            light
-            title={data.title}
-          />
+          <SectionHeading description={data.lead} light title={data.title} />
         </ScrollReveal>
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {data.phases.map((phase, i) => (
-            <ScrollReveal delay={i * 90} key={phase.label}>
+            <MotionReveal delay={(i % 2) * 0.08} key={phase.label} variant="rise-scale">
               <article
-                className={`border p-6 ${
+                className={`h-full border p-6 ${
                   variant === "b"
                     ? "border-warm/20 bg-warm/4 backdrop-blur"
                     : "border-tennis/24 bg-tennis/6 rounded-sm"
@@ -1428,7 +1141,7 @@ export function FutureRoadmapSection() {
                   <span
                     className={
                       variant === "b"
-                        ? "font-mono text-xs uppercase tracking-[0.22em] text-clay"
+                        ? "font-mono text-xs tracking-[0.22em] text-clay"
                         : "font-tight text-2xl font-black text-tennis"
                     }
                   >
@@ -1454,14 +1167,9 @@ export function FutureRoadmapSection() {
                   ))}
                 </ul>
               </article>
-            </ScrollReveal>
+            </MotionReveal>
           ))}
         </div>
-        <ScrollReveal>
-          <p className="mt-10 max-w-3xl text-sm leading-8 text-warm/70">
-            HPを作る会社ではなく、事業成長の導線を一緒に設計するパートナーとして、テニプラの次のフェーズまで伴走します。
-          </p>
-        </ScrollReveal>
       </div>
     </section>
   );
@@ -1472,7 +1180,7 @@ export function FutureRoadmapSection() {
 export function MobileStickyCta() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-primary/10 bg-white/92 px-4 py-3 shadow-[0_-12px_30px_rgba(15,61,46,0.12)] backdrop-blur md:hidden">
-      <CtaButton className="w-full" label="まずは見学してみる" sectionId="mobile_sticky" />
+      <CtaButton className="w-full" label="カジュアル面談を申し込む" sectionId="mobile_sticky" />
     </div>
   );
 }
