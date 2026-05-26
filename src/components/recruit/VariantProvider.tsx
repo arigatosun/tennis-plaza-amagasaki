@@ -19,7 +19,7 @@ type VariantContextValue = {
 };
 
 const STORAGE_KEY = "tpa-recruit-variant";
-const DEFAULT_VARIANT: VariantKey = "b";
+const DEFAULT_VARIANT: VariantKey = "a";
 
 const VariantContext = createContext<VariantContextValue | null>(null);
 

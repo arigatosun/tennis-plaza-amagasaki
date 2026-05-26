@@ -4,7 +4,6 @@ import { ArrowUpRight, Check, ChevronRight, Quote } from "lucide-react";
 import { recruitPage } from "@/data/recruit";
 import { BlurText } from "@/components/react-bits/BlurText";
 import { ClickSpark } from "@/components/react-bits/ClickSpark";
-import { GridScan } from "@/components/react-bits/GridScan";
 import { LightRays } from "@/components/react-bits/LightRays";
 import { ScrollReveal } from "@/components/react-bits/ScrollReveal";
 import { ScrollVelocity } from "@/components/react-bits/ScrollVelocity";
@@ -381,7 +380,7 @@ export function YarigaiSection() {
                     className={
                       variant === "b"
                         ? "font-serif text-xl font-semibold leading-8 text-warm"
-                        : "display-heading text-lg leading-7 text-warm"
+                        : "display-heading text-lg leading-7 !text-warm"
                     }
                   >
                     {card.title}
@@ -736,10 +735,10 @@ export function PhilosophySection() {
         <ScrollReveal>
           <figure className="overflow-hidden rounded-sm shadow-soft">
             <img
-              alt="一人ひとりに合わせて向き合う、山下コーチの指導の様子"
+              alt="一人ひとりに合わせて向き合う、コーチの指導の様子"
               className="parallax-img h-full w-full object-cover"
               loading="lazy"
-              src="/images/recruit/philosophy-feature.jpg"
+              src="/images/recruit/people/philosophy.jpg"
               style={{ aspectRatio: "4/3" }}
             />
           </figure>
@@ -909,7 +908,7 @@ export function SelectionFlowSection() {
                     className={
                       variant === "b"
                         ? "font-mono text-2xl font-semibold text-clay"
-                        : "font-tight text-3xl font-black text-tennis"
+                        : "font-tight text-3xl font-black text-court"
                     }
                   >
                     {num}
@@ -1118,58 +1117,82 @@ export function FinalCtaSection() {
 /* ===== Future Roadmap (社長デモ専用ページ) ===== */
 
 export function FutureRoadmapSection() {
-  const { variant } = useVariant();
   const data = recruitPage.future;
   return (
-    <section className="relative bg-deep py-28 text-warm" id="future">
-      <GridScan />
-      <div className="section-shell relative">
+    <section className="relative bg-warm py-24" id="future">
+      <div className="section-shell">
         <ScrollReveal>
-          <SectionHeading description={data.lead} light title={data.title} />
+          <h2 className="whitespace-pre-line font-serif text-3xl font-semibold leading-[1.4] text-primary sm:text-4xl">
+            {data.title}
+          </h2>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-ink/74">{data.lead}</p>
         </ScrollReveal>
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
+        <div className="mt-12 grid gap-5 lg:grid-cols-2">
           {data.phases.map((phase, i) => (
-            <MotionReveal delay={(i % 2) * 0.08} key={phase.label} variant="rise-scale">
-              <article
-                className={`h-full border p-6 ${
-                  variant === "b"
-                    ? "border-warm/20 bg-warm/4 backdrop-blur"
-                    : "border-tennis/24 bg-tennis/6 rounded-sm"
-                }`}
-              >
-                <div className="flex items-baseline gap-3">
-                  <span
-                    className={
-                      variant === "b"
-                        ? "font-mono text-xs tracking-[0.22em] text-clay"
-                        : "font-tight text-2xl font-black text-tennis"
-                    }
-                  >
-                    {phase.label}
+            <MotionReveal className="h-full" delay={(i % 2) * 0.08} key={phase.label} variant="rise-scale">
+              <article className="flex h-full gap-5 rounded-lg border border-ink/12 bg-white p-7 shadow-soft">
+                <div className="flex flex-col items-center">
+                  <span className="grid size-12 shrink-0 place-items-center rounded-full bg-primary font-tight text-xl font-black text-tennis">
+                    {i + 1}
                   </span>
-                  <span className="b-hairline max-w-16" aria-hidden />
+                  {i < data.phases.length - 1 ? (
+                    <span aria-hidden className="mt-3 hidden w-px flex-1 bg-ink/12 lg:block" />
+                  ) : null}
                 </div>
-                <h3
-                  className={`mt-3 ${
-                    variant === "b"
-                      ? "font-serif text-xl font-semibold leading-8 text-warm"
-                      : "display-heading text-xl text-warm"
-                  }`}
-                >
-                  {phase.title}
-                </h3>
-                <ul className="mt-4 space-y-2">
-                  {phase.items.map((item) => (
-                    <li className="flex gap-2 text-sm leading-7 text-warm/80" key={item}>
-                      <span aria-hidden className="mt-2 inline-block size-1 rounded-full bg-clay" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="flex-1">
+                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-clay">{phase.label}</p>
+                  <h3 className="mt-1 font-serif text-xl font-semibold text-primary">{phase.title}</h3>
+                  <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+                    {phase.items.map((item) => (
+                      <li className="flex gap-2 text-sm leading-7 text-ink/74" key={item}>
+                        <Check aria-hidden className="mt-1 shrink-0 text-court" size={15} />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </article>
             </MotionReveal>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+export function RoadmapOutcomesSection() {
+  const data = recruitPage.future;
+  return (
+    <section className="relative overflow-hidden bg-primary py-24 text-white">
+      <div className="court-lines absolute inset-0 opacity-20" />
+      <div className="section-shell relative">
+        <ScrollReveal>
+          <h2 className="whitespace-pre-line font-serif text-3xl font-semibold leading-[1.4] text-white sm:text-4xl">
+            {data.outcomeTitle}
+          </h2>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-white/82">{data.outcomeLead}</p>
+        </ScrollReveal>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          {data.outcomes.map((o, i) => (
+            <MotionReveal className="h-full" delay={(i % 2) * 0.08} key={o.area} variant="scale">
+              <article className="flex h-full flex-col rounded-lg border border-white/14 bg-white/5 p-7 backdrop-blur">
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-tennis">{o.area}</span>
+                <h3 className="mt-3 font-serif text-xl font-semibold leading-8 text-white">{o.title}</h3>
+                <p className="mt-3 text-sm leading-8 text-white/82">{o.text}</p>
+              </article>
+            </MotionReveal>
+          ))}
+        </div>
+        <ScrollReveal>
+          <div className="mt-10 rounded-lg border border-tennis/30 bg-tennis/10 p-8">
+            <h3 className="font-serif text-2xl font-semibold text-white">{data.closing.title}</h3>
+            <p className="mt-4 max-w-3xl text-base leading-8 text-white/82">{data.closing.text}</p>
+            <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-tennis px-6 py-3 text-sm font-bold text-deep">
+              <ChevronRight aria-hidden size={16} />
+              {data.closing.cta}
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
