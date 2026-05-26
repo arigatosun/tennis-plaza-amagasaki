@@ -26,8 +26,8 @@ export const recruitPage = {
     badges: ["コーチ未経験の方も相談OK", "ジュニア・一般クラスあり", "JR尼崎エリア / インドアコート"],
     micro: "いきなり応募ではなく、話を聞くだけ・見学だけでも歓迎です。",
     ctas: [
-      { label: "カジュアル面談を申し込む", href: "#entry", variant: "primary" as const },
-      { label: "まずは職場を見学する", href: "#entry", variant: "secondary" as const }
+      { label: "カジュアル面談を申し込む", href: "/recruit/persona", variant: "primary" as const },
+      { label: "まずは職場を見学する", href: "/recruit/persona", variant: "secondary" as const }
     ]
   },
   insights: {
@@ -316,9 +316,69 @@ export const recruitPage = {
       "テニス経験を仕事にしたい方。人の成長を支える仕事に興味がある方。レッスンだけでなく、保護者対応やスクールづくりにも関心がある方。まずは一度、カジュアルにお話ししましょう。",
     micro: "話を聞くだけでも歓迎です。応募するかどうかは、その後で大丈夫です。",
     ctas: [
-      { label: "カジュアル面談を申し込む", href: "#entry", variant: "primary" as const },
-      { label: "職場を見学してみる", href: "#entry", variant: "secondary" as const }
+      { label: "カジュアル面談を申し込む", href: "/recruit/persona", variant: "primary" as const },
+      { label: "職場を見学してみる", href: "/recruit/persona", variant: "secondary" as const }
     ]
+  },
+  personas: {
+    title: "このLPは、\nこんな人に届けたい。",
+    lead:
+      "求人票だけでは拾いきれない「迷い」や「これまでの経歴」を持った人に向けて、このLPを設計しています。テニプラが採用したい代表的な3人を、仮のペルソナとして描きました。",
+    note: "※デモ用に作成した架空のペルソナです。写真・氏名はすべてイメージ（demo image）です。",
+    items: [
+      {
+        no: "01",
+        id: "miura",
+        name: "三浦 涼太",
+        age: "28歳",
+        photo: "persona/miura",
+        type: "好きを仕事にしたい、元・競技者",
+        role: "元・大学体育会テニス部 → スポーツ用品店の販売スタッフ（3年）",
+        tennis: "テニス歴 16年",
+        tags: ["競技経験あり", "接客3年", "指導は未経験"],
+        worry: "好きなテニスに、もう一度ちゃんと関わりたい。でも、人に教えた経験がなくて、自分にできるのか不安。",
+        want: "「好き」を消耗させずに続けられる場所。最初から完璧を求められない環境。",
+        holiday: "社会人サークルでプレー。動画でフォーム研究をするのが地味な楽しみ。",
+        quote: "「教える」より「一緒にうまくなる」方が、たぶん自分には合ってる。",
+        fit: { label: "未経験の最初の一歩", href: "/recruit#firststep" }
+      },
+      {
+        no: "02",
+        id: "onishi",
+        name: "大西 真希",
+        age: "33歳",
+        photo: "persona/onishi",
+        type: "人と向き合う、接客のプロ",
+        role: "アパレル販売 → ブライダル接客（計8年）",
+        tennis: "学生時代に経験、最近スクールで再開",
+        tags: ["接客8年", "提案が得意", "数字ノルマに疲れた"],
+        worry: "人と関わる仕事は好き。でも、売上ノルマに追われる毎日に少し疲れた。腰を据えて長く続けたい。",
+        want: "売り込みではなく、相手に寄り添える接客。安心して長く働ける環境。",
+        holiday: "通い始めたスクールで、テニスの楽しさを再発見しているところ。",
+        quote: "モノを売るより、人の「また来たい」をつくる方が、ずっと好きなんです。",
+        fit: { label: "一日の仕事・入会案内", href: "/recruit#daily" }
+      },
+      {
+        no: "03",
+        id: "tanabe",
+        name: "田辺 航",
+        age: "26歳",
+        photo: "persona/tanabe",
+        type: "成長に関わりたい、遠回りしてきた人",
+        role: "体育大卒 → 別業界の法人営業（2年）",
+        tennis: "テニス歴 12年",
+        tags: ["体育大卒", "営業2年", "学生コーチ経験"],
+        worry: "子どもや人の成長に関わる仕事に戻りたい。でも本格的な指導経験は学生コーチ止まりで、自信がない。",
+        want: "やったことが、誰かの一歩につながる実感。人の成長に立ち会える仕事。",
+        holiday: "ときどき母校の後輩の練習を手伝っている。",
+        quote: "数字を追うより、誰かの「できた」に立ち会えた日のほうが、よく眠れる。",
+        fit: { label: "やりがい / 求める人物像", href: "/recruit#yarigai" }
+      }
+    ],
+    closing: {
+      title: "だから、このLPは\n「会社の自慢」より「あなたの迷い」から始めています。",
+      text: "3人に共通するのは、「好き」や「人と関わること」を大切にしながらも、最初の一歩に迷いがあること。だからこのLPでは、できないことを責めず、見学や補助から始められること、人と向き合う時間そのものが仕事になることを、求職者の目線で伝えています。"
+    }
   },
   future: {
     eyebrow: "FUTURE ROADMAP",

@@ -1198,12 +1198,120 @@ export function RoadmapOutcomesSection() {
   );
 }
 
+/* ===== Persona (採用ターゲット紹介ページ) ===== */
+
+export function PersonaSection() {
+  const data = recruitPage.personas;
+  return (
+    <section className="relative bg-warm py-20" id="persona">
+      <div className="section-shell">
+        <ScrollReveal>
+          <p className="inline-flex items-center gap-2 rounded-full border border-clay/30 bg-clay/10 px-4 py-1.5 text-xs font-bold tracking-[0.08em] text-clay">
+            社内デモ用 ・ 採用ターゲット
+          </p>
+          <h1 className="mt-4 whitespace-pre-line font-serif text-3xl font-semibold leading-[1.4] text-primary sm:text-4xl">
+            {data.title}
+          </h1>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-ink/74">{data.lead}</p>
+          <p className="mt-3 text-xs leading-6 text-ink/52">{data.note}</p>
+        </ScrollReveal>
+
+        <div className="mt-14 space-y-8">
+          {data.items.map((p, i) => (
+            <MotionReveal delay={0} key={p.id} variant={i % 2 === 0 ? "left" : "right"}>
+              <article className="overflow-hidden rounded-xl border border-ink/12 bg-white shadow-soft lg:grid lg:grid-cols-[0.8fr_1.2fr]">
+                <div className={`relative ${i % 2 === 1 ? "lg:order-2" : ""}`}>
+                  <img
+                    alt={`${p.name}（イメージ）`}
+                    className="h-full max-h-[420px] w-full object-cover object-top"
+                    loading="lazy"
+                    src={`/images/recruit/${p.photo}.jpg`}
+                  />
+                  <span className="absolute left-5 top-5 grid size-11 place-items-center rounded-full bg-primary font-tight text-lg font-black text-tennis">
+                    {p.no}
+                  </span>
+                </div>
+                <div className="p-7 sm:p-9">
+                  <p className="font-mono text-xs tracking-[0.16em] text-court">{p.type}</p>
+                  <div className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <h2 className="font-serif text-2xl font-semibold text-primary">{p.name}</h2>
+                    <span className="text-sm font-bold text-ink/60">{p.age}</span>
+                    <span className="text-xs text-ink/50">{p.tennis}</span>
+                  </div>
+                  <p className="mt-2 text-sm leading-7 text-ink/72">{p.role}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {p.tags.map((tag) => (
+                      <span
+                        className="rounded-full border border-court/25 bg-court/8 px-3 py-1 text-xs font-bold text-court"
+                        key={tag}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 flex gap-3 rounded-lg bg-warm p-5">
+                    <Quote aria-hidden className="shrink-0 text-clay" size={22} />
+                    <div>
+                      <p className="text-xs font-bold tracking-[0.06em] text-clay">いまの悩み</p>
+                      <p className="mt-1 text-sm leading-7 text-ink/80">{p.worry}</p>
+                    </div>
+                  </div>
+
+                  <dl className="mt-5 grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <dt className="text-xs font-bold tracking-[0.06em] text-primary/60">求めていること</dt>
+                      <dd className="mt-1 text-sm leading-7 text-ink/74">{p.want}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs font-bold tracking-[0.06em] text-primary/60">休日の過ごし方</dt>
+                      <dd className="mt-1 text-sm leading-7 text-ink/74">{p.holiday}</dd>
+                    </div>
+                  </dl>
+
+                  <p className="mt-6 border-l-2 border-tennis pl-4 font-serif text-base font-medium leading-8 text-primary">
+                    {p.quote}
+                  </p>
+
+                  <a
+                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white transition hover:bg-court"
+                    href={p.fit.href}
+                  >
+                    このLPで刺さる：{p.fit.label}
+                    <ChevronRight aria-hidden size={16} />
+                  </a>
+                </div>
+              </article>
+            </MotionReveal>
+          ))}
+        </div>
+
+        <ScrollReveal>
+          <div className="mt-12 rounded-xl border border-primary/15 bg-primary p-8 text-white sm:p-10">
+            <h2 className="whitespace-pre-line font-serif text-2xl font-semibold leading-[1.5] sm:text-3xl">
+              {data.closing.title}
+            </h2>
+            <p className="mt-5 max-w-3xl text-base leading-8 text-white/82">{data.closing.text}</p>
+            <a
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-tennis px-6 py-3 text-sm font-bold text-deep transition hover:-translate-y-0.5"
+              href="/recruit"
+            >
+              <ChevronRight aria-hidden size={16} />
+              採用LPを見る
+            </a>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
 /* ===== Mobile Sticky CTA ===== */
 
 export function MobileStickyCta() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-primary/10 bg-white/92 px-4 py-3 shadow-[0_-12px_30px_rgba(15,61,46,0.12)] backdrop-blur md:hidden">
-      <CtaButton className="w-full" label="カジュアル面談を申し込む" sectionId="mobile_sticky" />
+      <CtaButton className="w-full" href="/recruit/persona" label="カジュアル面談を申し込む" sectionId="mobile_sticky" />
     </div>
   );
 }

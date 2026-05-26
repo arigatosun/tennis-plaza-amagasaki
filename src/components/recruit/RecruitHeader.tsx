@@ -42,6 +42,7 @@ export function RecruitHeader() {
           <VariantToggle />
           <CtaButton
             className="hidden sm:inline-flex"
+            href="/recruit/persona"
             label="まずは見学してみる"
             sectionId="header"
           />
