@@ -261,19 +261,30 @@ export function WhyNowSection() {
         <span className="b-noise" aria-hidden />
         <div className="section-shell relative">
           <ScrollReveal>
-            <figure className="overflow-hidden rounded-sm shadow-soft">
+            <RBSplitText
+              className="max-w-3xl whitespace-pre-line font-serif text-3xl font-semibold leading-[1.5] text-warm sm:text-4xl"
+              delay={24}
+              duration={0.8}
+              ease="power3.out"
+              from={{ opacity: 0, y: 20 }}
+              splitType="chars"
+              tag="h2"
+              text={data.title}
+              textAlign="left"
+              to={{ opacity: 1, y: 0 }}
+            />
+          </ScrollReveal>
+          <ScrollReveal>
+            <figure className="mt-8 overflow-hidden rounded-sm shadow-soft">
               <img
-                alt="ドーム天井の屋内コートと「自分の時間が、誰かの一歩につながる場所。」の言葉"
+                alt="テニスプラザ尼崎の朝の光が差し込む静かな屋内コート"
                 className="parallax-img h-full w-full object-cover"
                 loading="lazy"
-                src="/images/recruit/whyhere-feature.jpg"
+                src="/images/recruit/whyhere-court.jpg"
                 style={{ aspectRatio: "16/9" }}
               />
             </figure>
           </ScrollReveal>
-          <h2 className="mt-7 whitespace-pre-line font-serif text-2xl font-semibold leading-[1.5] text-warm lg:hidden">
-            {data.title}
-          </h2>
           <div className="mt-10 grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <ScrollReveal>
               <p className="font-serif text-xl font-medium leading-9 text-warm">
