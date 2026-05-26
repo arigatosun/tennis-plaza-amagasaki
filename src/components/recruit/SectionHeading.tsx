@@ -1,9 +1,11 @@
 "use client";
 
-import { useVariant } from "./VariantProvider";
+import RBSplitText from "@/components/reactbits/SplitText";
 
 type SectionHeadingProps = {
+  /** Retained for call-site compatibility; no longer rendered. */
   eyebrow?: string;
+  /** Retained for call-site compatibility; no longer rendered. */
   eyebrowB?: string;
   title: string;
   description?: string;
@@ -12,28 +14,27 @@ type SectionHeadingProps = {
 };
 
 export function SectionHeading({
-  eyebrow,
-  eyebrowB,
   title,
   description,
   align = "left",
   light = false
 }: SectionHeadingProps) {
-  const { variant } = useVariant();
-  const eyebrowText = variant === "b" && eyebrowB ? eyebrowB : eyebrow;
-
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
-      {eyebrowText ? (
-        <p className={`eyebrow mb-3 ${light ? "!text-tennis" : ""}`}>{eyebrowText}</p>
-      ) : null}
-      <h2
+      <RBSplitText
         className={`display-heading whitespace-pre-line text-balance text-3xl leading-tight sm:text-4xl ${
           light ? "!text-white" : ""
         }`}
-      >
-        {title}
-      </h2>
+        delay={20}
+        duration={0.7}
+        ease="power3.out"
+        from={{ opacity: 0, y: 18 }}
+        splitType="chars"
+        tag="h2"
+        text={title}
+        textAlign={align}
+        to={{ opacity: 1, y: 0 }}
+      />
       {description ? (
         <p
           className={`mt-5 text-base leading-8 sm:text-lg ${
