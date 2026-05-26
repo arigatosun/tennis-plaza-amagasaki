@@ -8,7 +8,6 @@ import {
   ChevronRight,
   ClipboardList,
   MessageCircle,
-  Sparkles,
   Trophy,
   UsersRound
 } from "lucide-react";
@@ -21,6 +20,8 @@ import { ScrollReveal } from "@/components/react-bits/ScrollReveal";
 import { ScrollVelocity } from "@/components/react-bits/ScrollVelocity";
 import { SplitText } from "@/components/react-bits/SplitText";
 import { SpotlightCard } from "@/components/react-bits/SpotlightCard";
+import RBSplitText from "@/components/reactbits/SplitText";
+import RBBlurText from "@/components/reactbits/BlurText";
 import { CtaButton } from "./CtaButton";
 import { SectionHeading } from "./SectionHeading";
 import { VisualPanel } from "./VisualPanel";
@@ -82,30 +83,6 @@ const selectionImages = [
   "facility-57394"
 ];
 
-const ScoreboardNumber = ({ value }: { value: string }) => (
-  <span aria-hidden className="rb-scoreboard">
-    {value}
-  </span>
-);
-
-const Folio = ({ value }: { value: string }) => (
-  <span className="b-folio">{value}</span>
-);
-
-const ChapterMarker = ({ no, label }: { no: string; label: string }) => {
-  const { variant } = useVariant();
-  if (variant === "b") {
-    return (
-      <div className="flex items-center gap-4">
-        <Folio value={no} />
-        <span className="b-hairline max-w-24" aria-hidden />
-        <span className="eyebrow !tracking-[0.22em]">{label}</span>
-      </div>
-    );
-  }
-  return <span className="eyebrow">{label}</span>;
-};
-
 /* ===== Section 1 — Hero ===== */
 
 export function HeroSection() {
@@ -116,15 +93,8 @@ export function HeroSection() {
       <section className="relative overflow-hidden bg-warm pb-20 pt-10 sm:pb-24" id="top">
         <span className="b-noise" aria-hidden />
         <div className="section-shell">
-          <div className="flex items-center justify-between gap-4 border-b border-ink/15 pb-4">
-            <ChapterMarker label={recruitPage.hero.eyebrowB} no="Folio 01 / 18" />
-            <span className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-ink/45 sm:inline">
-              Tennis Plaza Amagasaki
-            </span>
-          </div>
-
           <ScrollReveal>
-            <figure className="relative mt-6 overflow-hidden rounded-sm border border-ink/8 shadow-soft">
+            <figure className="relative overflow-hidden rounded-sm border border-ink/8 shadow-soft">
               <img
                 alt="テニスプラザ尼崎の屋内コートで、コーチと生徒がコートを並んで歩く様子"
                 className="parallax-img h-full w-full object-cover"
@@ -134,9 +104,6 @@ export function HeroSection() {
                   filter: "saturate(0.96) contrast(1.03)"
                 }}
               />
-              <figcaption className="absolute left-4 top-4 rounded-sm bg-warm/90 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-clay backdrop-blur">
-                Figure 01 — On Court, Tennis Plaza Amagasaki
-              </figcaption>
             </figure>
           </ScrollReveal>
 
@@ -147,9 +114,18 @@ export function HeroSection() {
                 className="font-mono text-sm font-medium uppercase tracking-[0.28em] text-clay sm:text-base"
                 text={recruitPage.hero.titleEn}
               />
-              <h1 className="mt-3 whitespace-pre-line text-balance font-serif text-[2.15rem] font-semibold leading-[1.5] text-primary sm:text-[2.6rem] lg:text-[3rem]">
-                {recruitPage.hero.title}
-              </h1>
+              <RBSplitText
+                className="mt-3 whitespace-pre-line text-balance font-serif text-[2.15rem] font-semibold leading-[1.5] text-primary sm:text-[2.6rem] lg:text-[3rem]"
+                delay={32}
+                duration={0.9}
+                ease="power3.out"
+                from={{ opacity: 0, y: 24 }}
+                splitType="chars"
+                tag="h1"
+                text={recruitPage.hero.title}
+                textAlign="left"
+                to={{ opacity: 1, y: 0 }}
+              />
             </div>
             <div>
               <p className="text-sm leading-8 text-ink/74">{recruitPage.hero.body}</p>
@@ -217,19 +193,17 @@ export function HeroSection() {
 
       <div className="section-shell relative flex min-h-[88svh] items-center pb-28 pt-16">
         <div className="relative max-w-4xl">
-          <div className="pointer-events-none absolute -left-6 -top-12 hidden lg:block">
-            <ScoreboardNumber value="01 / 18" />
-          </div>
-          <p className="mb-6 inline-flex items-center gap-3 rounded-full border border-tennis/35 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-tennis backdrop-blur">
-            <span className="inline-grid size-4 place-items-center rounded-full bg-tennis text-[10px] font-black text-deep">
-              A
-            </span>
-            {recruitPage.hero.eyebrow}
-          </p>
-          <SplitText
-            as="h1"
-            className="text-balance font-tight text-4xl font-black leading-[1.06] tracking-tight sm:text-5xl lg:text-6xl"
+          <RBSplitText
+            className="whitespace-pre-line text-balance font-tight text-4xl font-black leading-[1.06] tracking-tight sm:text-5xl lg:text-6xl"
+            delay={26}
+            duration={0.8}
+            ease="power3.out"
+            from={{ opacity: 0, y: 28 }}
+            splitType="chars"
+            tag="h1"
             text={recruitPage.hero.title}
+            textAlign="left"
+            to={{ opacity: 1, y: 0 }}
           />
           {recruitPage.hero.subtitle ? (
             <BlurText
@@ -302,10 +276,7 @@ export function WhyNowSection() {
           </h2>
           <div className="mt-10 grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <ScrollReveal>
-              <p className="font-mono text-xs uppercase tracking-[0.22em] text-warm/55">
-                Editor&apos;s Note
-              </p>
-              <p className="mt-6 font-serif text-xl font-medium leading-9 text-warm">
+              <p className="font-serif text-xl font-medium leading-9 text-warm">
                 {data.lead}
               </p>
             </ScrollReveal>
@@ -333,9 +304,6 @@ export function WhyNowSection() {
     <section className="relative overflow-hidden bg-deep py-24 text-white" id="why-now">
       <LightRays variant="dark" />
       <div className="section-shell relative">
-        <div className="pointer-events-none absolute right-0 top-0 hidden lg:block">
-          <ScoreboardNumber value="02" />
-        </div>
         <ScrollReveal>
           <SectionHeading
             description={data.lead}
@@ -484,7 +452,7 @@ export function IdealPersonSection() {
                         : "font-tight text-3xl font-black text-tennis/80"
                     }`}
                   >
-                    {variant === "b" ? `№ 0${i + 1}` : String(i + 1).padStart(2, "0")}
+                    {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
                     <p
@@ -505,11 +473,13 @@ export function IdealPersonSection() {
         </div>
         <ScrollReveal>
           <p className="mt-9 max-w-3xl text-base leading-8 text-ink/74">{data.close}</p>
-          <BlurText
-            as="p"
+          <RBBlurText
+            animateBy="words"
             className={`mt-10 whitespace-pre-line text-balance text-4xl leading-tight text-primary sm:text-5xl ${
               variant === "b" ? "font-serif font-semibold" : "font-tight font-black"
             }`}
+            delay={140}
+            direction="bottom"
             text={data.emphasis}
           />
         </ScrollReveal>
@@ -545,10 +515,7 @@ export function ValueSection() {
                     src={`/images/recruit/${valueImages[index]}.jpg`}
                   />
                   <div className="flex flex-1 flex-col p-7">
-                    <p className="font-mono text-xs uppercase tracking-[0.22em] text-clay">
-                      Figure 0{index + 1}
-                    </p>
-                    <h3 className="mt-4 min-h-16 font-serif text-2xl font-semibold leading-[1.5] text-primary">
+                    <h3 className="min-h-16 font-serif text-2xl font-semibold leading-[1.5] text-primary">
                       {value.title}
                     </h3>
                     <p className="mt-4 text-sm leading-8 text-ink/72">{value.text}</p>
@@ -595,8 +562,7 @@ export function PhilosophySection() {
       <div className="court-lines absolute inset-0 opacity-30" />
       <div className="section-shell relative">
         <ScrollReveal>
-          <p className="eyebrow !text-tennis">{data.eyebrowB}</p>
-          <figure className="mt-5 overflow-hidden rounded-sm shadow-soft">
+          <figure className="overflow-hidden rounded-sm shadow-soft">
             <img
               alt="夕暮れの屋内コートに立つコーチのシルエットと「技術だけでは、人は続かない。」の言葉"
               className="parallax-img h-full w-full object-cover"
@@ -763,10 +729,7 @@ export function JobDescriptionSection() {
                       src={`/images/recruit/${jobImages[index]}.jpg`}
                     />
                     <div className="flex flex-1 flex-col p-6">
-                      <p className="font-mono text-xs uppercase tracking-[0.2em] text-clay">
-                        Figure № 0{index + 1}
-                      </p>
-                      <h3 className="mt-3 font-serif text-xl font-semibold leading-8 text-primary">
+                      <h3 className="font-serif text-xl font-semibold leading-8 text-primary">
                         {job.title}
                       </h3>
                       <p className="mt-3 text-sm leading-7 text-ink/72">{job.text}</p>
@@ -1028,10 +991,7 @@ export function AIRoleplaySection() {
             {data.scenes.map((scene, index) => (
               <ScrollReveal delay={index * 70} key={scene}>
                 <div className="rounded-sm border border-white/14 bg-white/8 p-4 backdrop-blur">
-                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-sky">
-                    Scene {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <p className="mt-2 text-sm font-bold leading-6 text-white/86">{scene}</p>
+                  <p className="text-sm font-bold leading-6 text-white/86">{scene}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -1309,10 +1269,7 @@ export function FinalCtaSection() {
         </div>
         <div className="section-shell relative mt-12 grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <ScrollReveal>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-clay">
-              {data.eyebrowB}
-            </p>
-            <p className="mt-5 max-w-xl text-base leading-9 text-ink/76">{data.body}</p>
+            <p className="max-w-xl text-base leading-9 text-ink/76">{data.body}</p>
             <ClickSpark>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 {data.ctas.map((cta) => (
@@ -1326,9 +1283,6 @@ export function FinalCtaSection() {
                 ))}
               </div>
             </ClickSpark>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-ink/52">
-              Folio 18 / 18 — Closing note
-            </p>
           </ScrollReveal>
           <ScrollReveal>
             <div className="border border-ink/12 bg-white p-6 shadow-soft">
@@ -1378,10 +1332,6 @@ export function FinalCtaSection() {
       <div className="rb-stripe absolute inset-x-0 top-0" aria-hidden />
       <div className="section-shell relative grid items-start gap-10 lg:grid-cols-[0.95fr_1.05fr]">
         <ScrollReveal>
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-tennis">
-            <Sparkles aria-hidden size={15} />
-            {data.eyebrow}
-          </p>
           <BlurText
             as="h2"
             className="text-balance font-tight text-4xl font-black leading-tight sm:text-5xl"
