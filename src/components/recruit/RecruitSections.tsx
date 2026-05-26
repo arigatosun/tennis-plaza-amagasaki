@@ -77,12 +77,19 @@ export function HeroSection() {
         <div className="section-shell">
           <ScrollReveal>
             <figure className="relative overflow-hidden rounded-sm border border-ink/8 shadow-soft">
-              <img
-                alt="テニスプラザ尼崎のコートで、コーチが子どもに目線を合わせて声をかける様子"
-                className="parallax-img h-full w-full object-cover"
-                src="/images/recruit/people/hero-people.jpg"
+              <video
+                aria-hidden
+                autoPlay
+                className="h-full w-full object-cover"
+                loop
+                muted
+                playsInline
+                poster="/images/recruit/video/hero-b-loop-poster.jpg"
+                preload="auto"
                 style={{ aspectRatio: "16/9", filter: "saturate(0.98) contrast(1.02)" }}
-              />
+              >
+                <source src="/images/recruit/video/hero-b-loop.mp4" type="video/mp4" />
+              </video>
             </figure>
           </ScrollReveal>
 
@@ -735,13 +742,19 @@ export function PhilosophySection() {
       <div className="section-shell relative grid items-center gap-12 lg:grid-cols-[1fr_1fr]">
         <ScrollReveal>
           <figure className="overflow-hidden rounded-sm shadow-soft">
-            <img
-              alt="一人ひとりに合わせて向き合う、コーチの指導の様子"
-              className="parallax-img h-full w-full object-cover"
-              loading="lazy"
-              src="/images/recruit/people/philosophy.jpg"
+            <video
+              aria-hidden
+              autoPlay
+              className="h-full w-full object-cover"
+              loop
+              muted
+              playsInline
+              poster="/images/recruit/video/philosophy-loop-poster.jpg"
+              preload="none"
               style={{ aspectRatio: "4/3" }}
-            />
+            >
+              <source src="/images/recruit/video/philosophy-loop.mp4" type="video/mp4" />
+            </video>
           </figure>
         </ScrollReveal>
         <div>
