@@ -514,8 +514,27 @@ export function DayFlowSection() {
   const { variant } = useVariant();
   const data = recruitPage.dayFlow;
   return (
-    <section className="relative bg-deep py-24 text-warm" id="dayflow">
-      {variant === "a" ? <LightRays variant="dark" /> : <span className="b-noise" aria-hidden />}
+    <section className="relative overflow-hidden bg-deep py-24 text-warm" id="dayflow">
+      {variant === "a" ? (
+        <>
+          <video
+            aria-hidden
+            autoPlay
+            className="absolute inset-0 h-full w-full object-cover opacity-40"
+            loop
+            muted
+            playsInline
+            poster="/images/recruit/video/dayflow-bg-loop-poster.jpg"
+            preload="none"
+          >
+            <source src="/images/recruit/video/dayflow-bg-loop.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-deep/80" />
+          <LightRays variant="dark" />
+        </>
+      ) : (
+        <span className="b-noise" aria-hidden />
+      )}
       <div className="section-shell relative">
         <ScrollReveal>
           <RBSplitText
@@ -1064,8 +1083,20 @@ export function FinalCtaSection() {
 
   return (
     <section className="relative overflow-hidden bg-deep py-24 text-white" id="entry">
+      <video
+        aria-hidden
+        autoPlay
+        className="absolute inset-0 h-full w-full object-cover opacity-45"
+        loop
+        muted
+        playsInline
+        poster="/images/recruit/video/cta-bg-loop-poster.jpg"
+        preload="none"
+      >
+        <source src="/images/recruit/video/cta-bg-loop.mp4" type="video/mp4" />
+      </video>
       <LightRays variant="dark" />
-      <div className="absolute inset-0 bg-deep/95" />
+      <div className="absolute inset-0 bg-deep/80" />
       <div className="rb-stripe absolute inset-x-0 top-0" aria-hidden />
       <div className="section-shell relative grid items-start gap-10 lg:grid-cols-[0.95fr_1.05fr]">
         <ScrollReveal>
