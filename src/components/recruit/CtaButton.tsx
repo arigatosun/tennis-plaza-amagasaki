@@ -84,7 +84,7 @@ export function CtaButton({
         >
           <img
             alt={label}
-            className="h-12 w-auto sm:h-[3.25rem]"
+            className="h-16 w-auto sm:h-[4.5rem]"
             src={imageSrc}
           />
         </a>

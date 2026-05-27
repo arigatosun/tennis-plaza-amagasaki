@@ -180,17 +180,17 @@ export function HeroSection() {
           {/* 見出しはデザイナー支給のロゴ画像。下からゆっくり立ち上がるアニメーション */}
           <motion.img
             alt={data.title}
-            className="h-auto w-[86%] max-w-[420px] sm:max-w-[520px] lg:max-w-[620px]"
+            className="h-auto w-[90%] max-w-[560px] sm:max-w-[700px] lg:max-w-[840px]"
             initial={{ opacity: 0, y: 56 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.4, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             src="/TOPtextlogo.png"
           />
-          <p className="mt-6 max-w-2xl whitespace-pre-line text-sm font-medium leading-7 text-white/82 sm:text-base">
+          <p className="mt-8 max-w-2xl whitespace-pre-line text-lg font-medium leading-8 text-white/82 sm:text-xl">
             {data.body}
           </p>
           <ClickSpark>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               {data.ctas.map((cta, i) => (
                 <CtaButton
                   href={cta.href}
@@ -203,29 +203,18 @@ export function HeroSection() {
               ))}
             </div>
           </ClickSpark>
-          <p className="mt-3 text-xs leading-6 text-white/64">{data.micro}</p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            {data.badges.map((badge) => (
-              <span
-                className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/12 px-4 py-2 text-sm font-black text-white backdrop-blur"
-                key={badge}
-              >
-                <Check aria-hidden size={16} />
-                {badge}
-              </span>
-            ))}
-          </div>
+          <p className="mt-4 text-sm leading-7 text-white/64">{data.micro}</p>
         </div>
       </div>
-      {/* 下部バナー: デザイナー支給の Group 15.png を傾きに沿って対角タイルし、右→左へ無限ループ */}
+      {/* 下部バナー: Group 15.png をテキスト1周期で切り出した banner-tile.png を傾きに沿って対角タイルし、右→左へ継ぎ目なく無限ループ */}
       <div className="rb-image-ticker absolute inset-x-0 bottom-0" aria-hidden>
         <div className="rb-image-ticker__track">
-          {Array.from({ length: 6 }).map((_, i) => (
+          {Array.from({ length: 8 }).map((_, i) => (
             <img
               alt=""
               className="rb-image-ticker__img"
               key={i}
-              src="/Group%2015.png"
+              src="/banner-tile.png"
               style={{ transform: `translateY(calc(var(--rb-tick-rise) * ${-i}))` }}
             />
           ))}
@@ -1613,14 +1602,8 @@ function SubPersonaView({ sub }: { sub: SubPersona }) {
 
 export function PersonaSection() {
   const data = recruitPage.personas;
-  const tabs = [
-    { key: "lead", role: "代表ペルソナ", name: data.lead.name },
-    ...data.subs.map((s) => ({
-      key: s.key,
-      role: s.badge.replace("サブペルソナ・", "サブ："),
-      name: s.name
-    }))
-  ];
+  // サブペルソナは非表示（代表ペルソナのみ表示）
+  const tabs = [{ key: "lead", role: "代表ペルソナ", name: data.lead.name }];
   const [active, setActive] = useState("lead");
   const activeSub = data.subs.find((s) => s.key === active);
 
@@ -1632,45 +1615,47 @@ export function PersonaSection() {
             {data.intro.badge}
           </span>
           <h1 className="mt-4 font-serif text-2xl font-semibold leading-[1.4] text-primary sm:text-3xl">
-            採用が思い描く、3つの人物像。
+            採用が思い描く人物像。
           </h1>
           <p className="mt-3 max-w-3xl text-xs leading-6 text-ink/52">{data.intro.note}</p>
         </ScrollReveal>
 
-        {/* Tabs */}
-        <div
-          className="sticky top-16 z-20 -mx-5 mt-8 flex gap-2 overflow-x-auto bg-warm/95 px-5 py-3 backdrop-blur"
-          role="tablist"
-        >
-          {tabs.map((t) => {
-            const isActive = active === t.key;
-            return (
-              <button
-                aria-selected={isActive}
-                className={`flex shrink-0 flex-col items-start rounded-xl border px-5 py-2.5 text-left transition ${
-                  isActive
-                    ? "border-primary bg-primary text-white shadow-soft"
-                    : "border-ink/15 bg-white text-ink/70 hover:border-court"
-                }`}
-                key={t.key}
-                onClick={() => setActive(t.key)}
-                role="tab"
-                type="button"
-              >
-                <span
-                  className={`text-[11px] font-bold tracking-[0.08em] ${
-                    isActive ? "text-tennis" : "text-court"
+        {/* Tabs（複数ペルソナがある場合のみ表示。サブ非表示で1件のときは出さない）*/}
+        {tabs.length > 1 && (
+          <div
+            className="sticky top-16 z-20 -mx-5 mt-8 flex gap-2 overflow-x-auto bg-warm/95 px-5 py-3 backdrop-blur"
+            role="tablist"
+          >
+            {tabs.map((t) => {
+              const isActive = active === t.key;
+              return (
+                <button
+                  aria-selected={isActive}
+                  className={`flex shrink-0 flex-col items-start rounded-xl border px-5 py-2.5 text-left transition ${
+                    isActive
+                      ? "border-primary bg-primary text-white shadow-soft"
+                      : "border-ink/15 bg-white text-ink/70 hover:border-court"
                   }`}
+                  key={t.key}
+                  onClick={() => setActive(t.key)}
+                  role="tab"
+                  type="button"
                 >
-                  {t.role}
-                </span>
-                <span className="mt-0.5 whitespace-nowrap font-serif text-base font-semibold">
-                  {t.name}
-                </span>
-              </button>
-            );
-          })}
-        </div>
+                  <span
+                    className={`text-[11px] font-bold tracking-[0.08em] ${
+                      isActive ? "text-tennis" : "text-court"
+                    }`}
+                  >
+                    {t.role}
+                  </span>
+                  <span className="mt-0.5 whitespace-nowrap font-serif text-base font-semibold">
+                    {t.name}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         <div className="mt-8" key={active}>
           {activeSub ? <SubPersonaView sub={activeSub} /> : <LeadPersonaView lead={data.lead} />}
