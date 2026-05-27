@@ -597,6 +597,51 @@ a {
   color: var(--ink);
 }
 
+/* ===== Hero 画像ティッカー：Group 15.png を傾きに沿って対角タイルし右→左へ無限ループ ===== */
+.rb-image-ticker {
+  --rb-tick-h: 4.5rem; /* バナー画像1枚の表示高さ */
+  --rb-tick-w: calc(var(--rb-tick-h) * 1920 / 145); /* 画像1枚の表示幅（縦横比 1920:145）*/
+  --rb-tick-rise: calc(var(--rb-tick-h) * 40 / 145); /* 画像1枚分の傾き（上方向の詰め量）*/
+  --rb-tick-gap: 0.25rem; /* 帯の下端をヒーロー下端から浮かせる量（小さいほど下に寄る）*/
+  /* 帯太さ + ビューポート幅分の傾き上昇量 + 下端の浮かせ量 を収める高さ（はみ出し防止）*/
+  height: calc(var(--rb-tick-h) * 0.72 + 2.084vw + var(--rb-tick-gap) + 6px);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* 下端基準で配置：帯の下端（左側）が常にヒーロー下端から --rb-tick-gap だけ浮く */
+.rb-image-ticker__track {
+  animation: rb-image-ticker-scroll 16s linear infinite;
+  bottom: var(--rb-tick-gap);
+  display: flex;
+  left: 0;
+  position: absolute;
+  width: max-content;
+  will-change: transform;
+}
+
+.rb-image-ticker__img {
+  display: block;
+  height: var(--rb-tick-h);
+  width: var(--rb-tick-w);
+}
+
+@keyframes rb-image-ticker-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    /* 1周期で画像1枚分だけ左へ＋傾き分だけ下へ＝帯の軸に沿った移動なので帯は不動・テキストだけ流れる */
+    transform: translate3d(calc(var(--rb-tick-w) * -1), var(--rb-tick-rise), 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rb-image-ticker__track {
+    animation: none;
+  }
+}
+
 /* ===== B-specific decorations ===== */
 
 .b-folio {

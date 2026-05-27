@@ -9,6 +9,8 @@ type CtaButtonProps = {
   sectionId: string;
   variant?: "primary" | "secondary" | "dark";
   className?: string;
+  /** 指定すると、テキストボタンの代わりにこの画像をボタンとして表示する */
+  imageSrc?: string;
 };
 
 export function CtaButton({
@@ -16,7 +18,8 @@ export function CtaButton({
   label,
   sectionId,
   variant = "primary",
-  className = ""
+  className = "",
+  imageSrc
 }: CtaButtonProps) {
   const { variant: themeVariant } = useVariant();
 
@@ -62,6 +65,27 @@ export function CtaButton({
   const styles = themeVariant === "b" ? stylesB : stylesA;
   const radius = themeVariant === "b" ? "rounded-sm" : "rounded-full";
   const fill = className.includes("w-full") ? "w-full" : "";
+
+  // 画像ボタン: デザイナー支給の画像をそのままボタンとして表示する
+  if (imageSrc) {
+    return (
+      <Magnet className={className}>
+        <a
+          className={`inline-flex shrink-0 transition-transform duration-300 hover:-translate-y-0.5 ${fill}`}
+          data-cta-label={label}
+          data-section-id={sectionId}
+          href={href}
+          onClick={handleClick}
+        >
+          <img
+            alt={label}
+            className="h-12 w-auto sm:h-[3.25rem]"
+            src={imageSrc}
+          />
+        </a>
+      </Magnet>
+    );
+  }
 
   return (
     <Magnet className={className}>

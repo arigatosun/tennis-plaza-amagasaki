@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "motion/react";
 import { ArrowUpRight, Check, ChevronRight, Quote, X } from "lucide-react";
 import { recruitPage } from "@/data/recruit";
 import { BlurText } from "@/components/react-bits/BlurText";
@@ -24,6 +25,9 @@ const tickerItems = [
 ];
 
 const FACILITY = "/images/recruit/facility";
+
+// Variant A ヒーローの画像CTA（デザイナー支給）。data.ctas と同じ並び順で対応。
+const heroCtaImages = ["/mendanmousikomibutton.png", "/kengakubutton.png"];
 
 // Placeholder imagery (existing optimized assets). People-centric assets are
 // swapped in during the asset-generation pass.
@@ -107,7 +111,7 @@ export function HeroSection() {
               to={{ opacity: 1, y: 0 }}
             />
             <div>
-              <p className="text-sm leading-8 text-ink/74">{data.body}</p>
+              <p className="whitespace-pre-line text-sm leading-8 text-ink/74">{data.body}</p>
               <ClickSpark>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   {data.ctas.map((cta) => (
@@ -173,26 +177,24 @@ export function HeroSection() {
 
       <div className="section-shell relative flex min-h-[88svh] items-center pb-28 pt-16">
         <div className="relative max-w-4xl">
-          <RBSplitText
-            className="whitespace-pre-line text-balance font-tight text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
-            delay={26}
-            duration={0.8}
-            ease="power3.out"
-            from={{ opacity: 0, y: 28 }}
-            splitType="chars"
-            tag="h1"
-            text={data.title}
-            textAlign="left"
-            to={{ opacity: 1, y: 0 }}
+          {/* 見出しはデザイナー支給のロゴ画像。下からゆっくり立ち上がるアニメーション */}
+          <motion.img
+            alt={data.title}
+            className="h-auto w-[86%] max-w-[420px] sm:max-w-[520px] lg:max-w-[620px]"
+            initial={{ opacity: 0, y: 56 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.4, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            src="/TOPtextlogo.png"
           />
-          <p className="mt-6 max-w-2xl text-sm font-medium leading-7 text-white/82 sm:text-base">
+          <p className="mt-6 max-w-2xl whitespace-pre-line text-sm font-medium leading-7 text-white/82 sm:text-base">
             {data.body}
           </p>
           <ClickSpark>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              {data.ctas.map((cta) => (
+              {data.ctas.map((cta, i) => (
                 <CtaButton
                   href={cta.href}
+                  imageSrc={heroCtaImages[i]}
                   key={cta.label}
                   label={cta.label}
                   sectionId="hero"
@@ -215,9 +217,19 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-      <div className="rb-stripe absolute inset-x-0 bottom-12" aria-hidden />
-      <div className="rb-ticker-bar absolute inset-x-0 bottom-0 backdrop-blur">
-        <ScrollVelocity items={tickerItems} />
+      {/* 下部バナー: デザイナー支給の Group 15.png を傾きに沿って対角タイルし、右→左へ無限ループ */}
+      <div className="rb-image-ticker absolute inset-x-0 bottom-0" aria-hidden>
+        <div className="rb-image-ticker__track">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <img
+              alt=""
+              className="rb-image-ticker__img"
+              key={i}
+              src="/Group%2015.png"
+              style={{ transform: `translateY(calc(var(--rb-tick-rise) * ${-i}))` }}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
