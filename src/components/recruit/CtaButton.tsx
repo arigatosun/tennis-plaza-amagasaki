@@ -12,6 +12,8 @@ type CtaButtonProps = {
   className?: string;
   /** 指定すると、テキストボタンの代わりにこの画像をボタンとして表示する */
   imageSrc?: string;
+  /** 画像ボタンの<img>サイズ等を上書き（未指定時はヒーロー用の既定サイズ）*/
+  imageClassName?: string;
   /** ボタン本体(<a>)へのインラインスタイル上書き（色のカスタム指定などに使用）*/
   style?: CSSProperties;
 };
@@ -23,6 +25,7 @@ export function CtaButton({
   variant = "primary",
   className = "",
   imageSrc,
+  imageClassName,
   style
 }: CtaButtonProps) {
   const { variant: themeVariant } = useVariant();
@@ -84,7 +87,7 @@ export function CtaButton({
         >
           <img
             alt={label}
-            className="h-16 w-auto sm:h-[4.5rem]"
+            className={imageClassName ?? "h-16 w-auto sm:h-[4.5rem]"}
             src={imageSrc}
           />
         </a>

@@ -1108,9 +1108,11 @@ export function FinalCtaSection() {
           <p className="mt-7 text-base leading-9 text-white/78">{data.body}</p>
           <ClickSpark>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              {data.ctas.map((cta) => (
+              {data.ctas.map((cta, i) => (
                 <CtaButton
                   href={cta.href}
+                  imageSrc={heroCtaImages[i]}
+                  imageClassName="h-12 w-auto"
                   key={cta.label}
                   label={cta.label}
                   sectionId="final"
