@@ -520,17 +520,16 @@ export function DayFlowSection() {
           <video
             aria-hidden
             autoPlay
-            className="absolute inset-0 h-full w-full object-cover opacity-40"
+            className="absolute inset-0 h-full w-full object-cover opacity-75"
             loop
             muted
             playsInline
-            poster="/images/recruit/video/dayflow-bg-loop-poster.jpg"
+            poster="/images/recruit/video/daytimeline-loop-poster.jpg"
             preload="none"
           >
-            <source src="/images/recruit/video/dayflow-bg-loop.mp4" type="video/mp4" />
+            <source src="/images/recruit/video/daytimeline-loop.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-deep/80" />
-          <LightRays variant="dark" />
+          <div className="absolute inset-0 bg-gradient-to-b from-deep/80 via-deep/45 to-deep/75" />
         </>
       ) : (
         <span className="b-noise" aria-hidden />
@@ -558,7 +557,7 @@ export function DayFlowSection() {
         <div className="mt-12 grid gap-px overflow-hidden border border-warm/16 sm:grid-cols-2">
           {data.items.map(([time, text], i) => (
             <MotionReveal delay={(i % 2) * 0.06} key={time} variant={i % 2 === 0 ? "left" : "right"}>
-              <div className="flex h-full items-center gap-5 bg-warm/4 px-6 py-5 backdrop-blur">
+              <div className="flex h-full items-center gap-5 bg-deep/60 px-6 py-5 backdrop-blur">
                 <span
                   className={
                     variant === "b"
