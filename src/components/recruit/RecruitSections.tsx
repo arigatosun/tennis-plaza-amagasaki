@@ -536,10 +536,10 @@ export function DayFlowSection() {
             loop
             muted
             playsInline
-            poster="/images/recruit/video/daytimeline-loop-poster.jpg"
+            poster="/images/recruit/video/dayflow-motion-poster.jpg"
             preload="none"
           >
-            <source src="/images/recruit/video/daytimeline-loop.mp4" type="video/mp4" />
+            <source src="/images/recruit/video/dayflow-motion.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-deep/80 via-deep/45 to-deep/75" />
         </>
