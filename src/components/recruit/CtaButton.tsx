@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { Magnet } from "@/components/react-bits/Magnet";
 import { useVariant } from "./VariantProvider";
 
@@ -11,6 +12,8 @@ type CtaButtonProps = {
   className?: string;
   /** 指定すると、テキストボタンの代わりにこの画像をボタンとして表示する */
   imageSrc?: string;
+  /** ボタン本体(<a>)へのインラインスタイル上書き（色のカスタム指定などに使用）*/
+  style?: CSSProperties;
 };
 
 export function CtaButton({
@@ -19,7 +22,8 @@ export function CtaButton({
   sectionId,
   variant = "primary",
   className = "",
-  imageSrc
+  imageSrc,
+  style
 }: CtaButtonProps) {
   const { variant: themeVariant } = useVariant();
 
@@ -76,6 +80,7 @@ export function CtaButton({
           data-section-id={sectionId}
           href={href}
           onClick={handleClick}
+          style={style}
         >
           <img
             alt={label}
@@ -95,6 +100,7 @@ export function CtaButton({
         data-section-id={sectionId}
         href={href}
         onClick={handleClick}
+        style={style}
       >
         <span className="relative">{label}</span>
       </a>

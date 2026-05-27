@@ -45,6 +45,7 @@ export function RecruitHeader() {
             href="/recruit/persona"
             label="まずは見学してみる"
             sectionId="header"
+            style={{ backgroundColor: "#FFB900", color: "#264831" }}
           />
           <button
             aria-label="メニュー"
