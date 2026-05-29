@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>中村さん用 5分ブリーフィング｜テニスプラザ尼崎</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 12mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #f6f3ea;
+        color: #18382d;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+          "Yu Gothic", "Noto Sans CJK JP", sans-serif;
+        font-size: 12.5px;
+        line-height: 1.75;
+      }
+
+      .page {
+        min-height: 273mm;
+        page-break-after: always;
+        padding: 4mm 2mm;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      .cover {
+        display: grid;
+        min-height: 260mm;
+        align-content: space-between;
+        background: linear-gradient(135deg, #0f3d2e 0%, #18382d 58%, #ffb900 58.2%, #ffb900 60%, #f6f3ea 60.2%);
+        color: #fffaf0;
+        padding: 16mm;
+        border-radius: 4px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 4px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+
+      h1 {
+        margin: 18mm 0 0;
+        font-size: 34px;
+        line-height: 1.32;
+        letter-spacing: 0;
+      }
+
+      .cover .lead {
+        max-width: 155mm;
+        margin-top: 10mm;
+        font-size: 16px;
+        line-height: 1.9;
+        color: rgba(255, 250, 240, 0.88);
+      }
+
+      .cover .mission {
+        margin-top: 16mm;
+        padding: 8mm;
+        background: rgba(255, 255, 255, 0.11);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 1.8;
+      }
+
+      .meta {
+        color: rgba(255, 250, 240, 0.72);
+        font-size: 11px;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding-bottom: 5mm;
+        border-bottom: 2px solid #0f3d2e;
+      }
+
+      .header-title {
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      .header-meta {
+        font-size: 10px;
+        font-weight: 800;
+        color: #8d5635;
+        letter-spacing: 0.08em;
+      }
+
+      h2 {
+        margin: 8mm 0 4mm;
+        color: #0f3d2e;
+        font-size: 20px;
+        line-height: 1.45;
+      }
+
+      h3 {
+        margin: 5mm 0 2mm;
+        color: #8d5635;
+        font-size: 14px;
+      }
+
+      p {
+        margin: 0 0 3mm;
+      }
+
+      ul,
+      ol {
+        margin: 0 0 4mm 0;
+        padding-left: 1.35em;
+      }
+
+      li {
+        margin: 0 0 1.4mm;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5mm;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4mm;
+      }
+
+      .card {
+        background: #fffdf6;
+        border: 1px solid rgba(15, 61, 46, 0.16);
+        border-radius: 4px;
+        padding: 5mm;
+        break-inside: avoid;
+      }
+
+      .card.strong {
+        background: #0f3d2e;
+        color: #fffaf0;
+      }
+
+      .card.yellow {
+        background: #fff3bd;
+        border-color: #ffb900;
+      }
+
+      .quote {
+        margin: 4mm 0;
+        padding: 4mm 5mm;
+        background: #fffdf6;
+        border-left: 5px solid #ffb900;
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.75;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fffdf6;
+        border: 1px solid rgba(15, 61, 46, 0.15);
+      }
+
+      .table th,
+      .table td {
+        padding: 3mm;
+        border-bottom: 1px solid rgba(15, 61, 46, 0.12);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .table th {
+        width: 27%;
+        background: #e9f1ea;
+        color: #0f3d2e;
+        font-weight: 900;
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: 26mm 1fr;
+        gap: 3mm;
+      }
+
+      .time {
+        color: #8d5635;
+        font-weight: 900;
+      }
+
+      .small {
+        color: rgba(24, 56, 45, 0.72);
+        font-size: 10.8px;
+      }
+
+      .tag {
+        display: inline-block;
+        margin: 0 1mm 1.5mm 0;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: #e9f1ea;
+        color: #0f3d2e;
+        font-size: 10px;
+        font-weight: 800;
+      }
+
+      .danger {
+        color: #9e352c;
+        font-weight: 900;
+      }
+
+      .ok {
+        color: #0f3d2e;
+        font-weight: 900;
+      }
+
+      .footer-note {
+        margin-top: 6mm;
+        padding-top: 4mm;
+        border-top: 1px solid rgba(15, 61, 46, 0.16);
+        color: rgba(24, 56, 45, 0.62);
+        font-size: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page cover">
+      <div>
+        <span class="eyebrow">5 MIN PRE-BRIEF / FOR NAKAMURA</span>
+        <h1>中村さん用<br />テニスプラザ尼崎<br />MTG進行ブリーフ</h1>
+        <p class="lead">
+          明日の目的は、HP制作を売ることではなく、山下社長・近江さんに
+          「媒体の前に採用ブランドを整える必要がある」と腹落ちしてもらうこと。
+        </p>
+        <div class="mission">
+          中村さんの役割: 中田さんの熱量を、論点・順番・次アクションに変換する。
+        </div>
+      </div>
+      <div class="meta">
+        訪問日: 2026-05-29 / 案件: テニスプラザ尼崎 成長支援 / 保存版
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="header-title">1. 5分で掴む結論</div>
+        <div class="header-meta">CORE STRATEGY</div>
+      </div>
+
+      <div class="quote">
+        dodaさんやリクルートさんを使うこと自体は全然ありです。<br />
+        ただ、媒体に出す前に「テニプラで働く魅力」「どんな人が活躍できるのか」「どんなキャリアがあるのか」が整理されていないと、どの媒体を使っても刺さりにくいと思っています。
+      </div>
+
+      <div class="grid-2">
+        <div class="card strong">
+          <h3 style="color:#ffdf6e; margin-top:0;">明日の着地</h3>
+          <p>
+            「まず採用要件と採用ブランドを整理して、doda / リクルート / Indeed を使うにしても効果が出る状態を一緒に作りましょう」
+            という次回合意を取る。
+          </p>
+        </div>
+        <div class="card yellow">
+          <h3 style="margin-top:0;">提案名</h3>
+          <p><b>テニスプラザ尼崎 採用ブランド設計プロジェクト</b></p>
+          <p class="small">テニスを教える人を探すのではなく、スクールを育てる人材が集まる入口をつくる。</p>
+        </div>
+      </div>
+
+      <h2>勝ち筋の順番</h2>
+      <ol>
+        <li>相手の話を聞き、売り込み感を消す</li>
+        <li>doda / リクルート / Indeed の話を整理する</li>
+        <li>「媒体の前に採用ブランド」という論点に戻す</li>
+        <li>ペルソナで、理想人材の解像度を上げる</li>
+        <li>採用LPデモで、見せ方の仮説を確認する</li>
+        <li>ロードマップで、採用後の育成・西宮展開までつなげる</li>
+        <li>次回「採用ブランド設計スプリント」に合意する</li>
+      </ol>
+
+      <h2>当日見せるURL</h2>
+      <table class="table">
+        <tr><th>ペルソナ</th><td>http://localhost:3001/recruit/persona</td></tr>
+        <tr><th>採用LP</th><td>http://localhost:3001/recruit</td></tr>
+        <tr><th>ロードマップ</th><td>http://localhost:3001/recruit/roadmap</td></tr>
+      </table>
+      <p class="footer-note">デモは最初から開かない。先にヒアリングで相手の言葉を引き出す。</p>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="header-title">2. 山下社長・近江さんのインサイト仮説</div>
+        <div class="header-meta">STAKEHOLDER INSIGHT</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h2>山下社長</h2>
+          <h3>表に出る言葉</h3>
+          <ul>
+            <li>良いコーチが欲しい</li>
+            <li>営業もできる人が欲しい</li>
+            <li>西宮も伸ばしたい</li>
+            <li>外部サービスも検討している</li>
+          </ul>
+          <h3>内側にありそうな本音</h3>
+          <ul>
+            <li>自分の接客・指導・入会導線を他人が再現できない</li>
+            <li>テニスがうまいだけの人では困る</li>
+            <li>採用媒体にお金をかけても本当に採れるか不安</li>
+            <li>今うまくいっている尼崎を否定されるのは嫌</li>
+            <li>西宮は伸ばしたいが権限・オーナー制約がありそう</li>
+          </ul>
+          <div class="quote" style="font-size:12.5px;">
+            刺す言葉: 社長が現場で作ってきた勝ちパターンを、採用・育成・集客の仕組みに落としていく。
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>近江まやのさん</h2>
+          <h3>表に出る言葉</h3>
+          <ul>
+            <li>doda / リクルート系と話している</li>
+            <li>どの媒体が良いか知りたい</li>
+            <li>採れる人材像が分からない</li>
+            <li>何から整えたら良いか分からない</li>
+          </ul>
+          <h3>内側にありそうな本音</h3>
+          <ul>
+            <li>媒体選びだけでは不安</li>
+            <li>山下社長の理想を求人票に落とせていない</li>
+            <li>応募者に何を伝えれば魅力になるのか分からない</li>
+            <li>採用後にちゃんと育てられるかも不安</li>
+            <li>外部業者を比較判断する軸が欲しい</li>
+          </ul>
+          <div class="quote" style="font-size:12.5px;">
+            刺す言葉: 近江さんが媒体会社さんや応募者と話すときに迷わないよう、採用ターゲット・求人票・スカウト文・面談フローを型にしたい。
+          </div>
+        </div>
+      </div>
+
+      <h2>多角的に突ける論点</h2>
+      <div class="grid-3">
+        <div class="card yellow"><b>採用</b><br />人がいないのではなく、求職者から見たキャリアの見え方が弱い。</div>
+        <div class="card yellow"><b>育成</b><br />完成品を探すより、育つ人を見極めて山下メソッドで育てる。</div>
+        <div class="card yellow"><b>媒体</b><br />doda等は蛇口。採用ブランド・LP・求人票は受け皿。</div>
+        <div class="card yellow"><b>現場</b><br />営業とは売り込みではなく、体験者や保護者の不安を安心に変えること。</div>
+        <div class="card yellow"><b>西宮</b><br />初回で深掘りしすぎず、尼崎の採用・育成の型を作って横展開する。</div>
+        <div class="card yellow"><b>AI</b><br />自動化ではなく、文面・整理・ロープレ支援として現実的に使う。</div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="header-title">3. 2時間MTGの進行台本</div>
+        <div class="header-meta">FACILITATION SCRIPT</div>
+      </div>
+
+      <div class="timeline">
+        <div class="time">0-10分</div>
+        <div class="card">
+          <b>売り込み感を消す</b>
+          <p>今日はHPを売り込みに来たというより、テニプラがこれから人を採って育てていくために、どこが詰まっているのかを一緒に整理したいです。</p>
+        </div>
+
+        <div class="time">10-30分</div>
+        <div class="card">
+          <b>外部サービス面談の整理</b>
+          <p>サービス名、費用感、成功報酬/掲載費/運用費、採れそうな人物像、難しい条件、HP/SNS/求人票で整えるべきと言われたことを回収。</p>
+        </div>
+
+        <div class="time">30-55分</div>
+        <div class="card">
+          <b>採用ブランド設計ワーク</b>
+          <p>山下社長には「譲れない条件」「半年後に任せたいこと」。近江さんには「現場で欲しい人」「採用でしんどい工程」「営業できるコーチの具体行動」を聞く。</p>
+        </div>
+
+        <div class="time">55-75分</div>
+        <div class="card">
+          <b>仮説提示</b>
+          <p>普通のテニスコーチではなく、教育・接客・営業・運営まで関われる人を採る必要がある、という仮説を提示。</p>
+          <span class="tag">スクールを育てる仕事</span><span class="tag">教育・接客・営業・運営</span>
+        </div>
+
+        <div class="time">75-100分</div>
+        <div class="card">
+          <b>デモ確認</b>
+          <p>Persona → Recruit LP → Roadmap。褒めてもらう時間ではなく、認識を合わせる時間。</p>
+        </div>
+
+        <div class="time">100-110分</div>
+        <div class="card">
+          <b>媒体・AI活用</b>
+          <p>媒体に任せきりにせず、採用ターゲット・求人票・スカウト文・候補者管理・返信文面を型化できると説明。</p>
+        </div>
+
+        <div class="time">110-120分</div>
+        <div class="card strong">
+          <b>次アクション合意</b>
+          <p>まずは採用コンセプト・求人票・採用ページ・スカウト文・媒体選定を一度整理させてください、と締める。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="header">
+        <div class="header-title">4. 回収論点・切り返し・NG</div>
+        <div class="header-meta">CHECKLIST</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h2>必ず回収する論点</h2>
+          <ol>
+            <li>採用優先か、育成優先か、西宮集客優先か</li>
+            <li>理想人材の必須条件と妥協条件</li>
+            <li>「営業できるコーチ」の具体行動</li>
+            <li>既存の良いスタッフに共通する特徴</li>
+            <li>外部サービスの費用・提案内容・次回資料</li>
+            <li>GA4 / Search Console / Googleビジネスプロフィールの管理状況</li>
+            <li>次回、採用ブランド設計スプリントをやる合意</li>
+          </ol>
+        </div>
+
+        <div class="card">
+          <h2>当日のNG</h2>
+          <ul>
+            <li><span class="danger">NG</span> HP批判から入る</li>
+            <li><span class="danger">NG</span> 既存業者批判をする</li>
+            <li><span class="danger">NG</span> doda / リクルートを敵にする</li>
+            <li><span class="danger">NG</span> AI自動化を強く言い切る</li>
+            <li><span class="danger">NG</span> 成功報酬型の人材紹介に見える言い方</li>
+            <li><span class="danger">NG</span> 西宮を初回から深掘りしすぎる</li>
+            <li><span class="danger">NG</span> デモを最初から長く見せる</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>切り返し集</h2>
+      <table class="table">
+        <tr>
+          <th>dodaでもできますよね？</th>
+          <td>はい、媒体として使うのは全然ありです。ただ、媒体に載せる求人票やスカウト文、受け皿の採用ページが弱いと、どの媒体でも効果が出にくいです。僕らはその前段を整える役割です。</td>
+        </tr>
+        <tr>
+          <th>HP作る話ですか？</th>
+          <td>HP制作単体ではなく、採用できる状態を作る話です。その中に採用LP、求人票、スカウト文、見学導線、面談フローが含まれます。</td>
+        </tr>
+        <tr>
+          <th>AIで何ができますか？</th>
+          <td>最終判断を置き換えるものではありません。検索条件の整理、スカウト文作成、候補者メモ要約、面談前準備、採用後のロープレ練習を効率化できます。</td>
+        </tr>
+        <tr>
+          <th>まず何からやるべき？</th>
+          <td>まずは採用要件と採用ブランドの整理です。誰に何を伝えるかが決まれば、求人票、LP、スカウト文、媒体選定が全部ブレにくくなります。</td>
+        </tr>
+      </table>
+
+      <h2>最後の締め</h2>
+      <div class="quote">
+        今日伺った内容をもとに、次回は「採用したい人物像」「求人票Before/After」「採用LPの修正版」「スカウト文」「媒体比較」「90日ロードマップ」まで整理して持ってきます。<br />
+        その状態で、dodaさんやリクルートさんを使うべきか、自社導線から始めるべきかを判断できるようにしましょう。
+      </div>
+      <p class="footer-note">
+        明日の勝ち: 「たしかに、媒体の前にうちの採用の見せ方を整理した方がよさそう」と言ってもらうこと。
+      </p>
+    </section>
+  </body>
+</html>

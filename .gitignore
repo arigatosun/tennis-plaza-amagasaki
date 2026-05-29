@@ -52,3 +52,11 @@ hero-*.png
 
 # AI generation raw sources (heavy PNG originals; keep optimized JPEGs in repo)
 public/images/recruit/ai/
+
+# Client meeting recordings (audio originals stored elsewhere)
+client_gijiroku/*.m4a
+client_gijiroku.zip
+# Whisper intermediate/log files (raw md kept, intermediates excluded)
+client_gijiroku/transcripts/_*.log
+client_gijiroku/transcripts/*_first_pass.txt
+client_gijiroku/transcripts/*_chunk*.txt
