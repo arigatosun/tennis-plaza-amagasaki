@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>テニスプラザ尼崎 伴走方針キックオフ｜社内資料</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 12mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #f6f3ea;
+        color: #18382d;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+          "Yu Gothic", "Noto Sans CJK JP", sans-serif;
+        font-size: 11.5px;
+        line-height: 1.68;
+      }
+
+      .page {
+        min-height: 273mm;
+        page-break-after: always;
+        padding: 2mm 2mm;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      /* ===== 表紙 ===== */
+      .cover {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        min-height: 260mm;
+        align-content: space-between;
+        background: #0f3d2e;
+        color: #fffaf0;
+        padding: 16mm;
+        border-radius: 4px;
+      }
+
+      .cover::after {
+        content: "";
+        position: absolute;
+        right: -34mm;
+        bottom: -34mm;
+        width: 96mm;
+        height: 96mm;
+        background: #ffb900;
+        transform: rotate(45deg);
+      }
+
+      .cover > div {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cover .kicker {
+        display: inline-block;
+        padding: 4px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .cover h1 {
+        margin: 16mm 0 0;
+        font-size: 33px;
+        line-height: 1.4;
+      }
+
+      .cover .lead {
+        max-width: 158mm;
+        margin-top: 9mm;
+        font-size: 15px;
+        line-height: 1.95;
+        color: rgba(255, 250, 240, 0.9);
+      }
+
+      .cover .thesis {
+        position: relative;
+        z-index: 1;
+        margin-top: 14mm;
+        padding: 8mm;
+        background: #0a2c21;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-left: 5px solid #ffb900;
+        border-radius: 4px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+        font-size: 16.5px;
+        font-weight: 800;
+        line-height: 1.85;
+      }
+
+      .cover .thesis .small {
+        display: block;
+        margin-top: 4mm;
+        font-size: 12px;
+        font-weight: 600;
+        color: rgba(255, 250, 240, 0.78);
+        line-height: 1.8;
+      }
+
+      .meta {
+        max-width: 132mm;
+        color: rgba(255, 250, 240, 0.74);
+        font-size: 11px;
+        line-height: 1.7;
+      }
+
+      /* ===== 共通ヘッダ ===== */
+      .header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        padding-bottom: 2.6mm;
+        border-bottom: 2px solid #0f3d2e;
+      }
+
+      .header-title {
+        font-size: 16px;
+        font-weight: 900;
+        color: #0f3d2e;
+      }
+
+      .header-note {
+        font-size: 10.5px;
+        font-weight: 800;
+        color: #8d5635;
+      }
+
+      h2 {
+        margin: 4.2mm 0 1.8mm;
+        color: #0f3d2e;
+        font-size: 14.5px;
+        line-height: 1.45;
+      }
+
+      h3 {
+        margin: 2.6mm 0 1mm;
+        color: #8d5635;
+        font-size: 12px;
+      }
+
+      p {
+        margin: 0 0 2mm;
+      }
+
+      ul,
+      ol {
+        margin: 0 0 2mm 0;
+        padding-left: 1.35em;
+      }
+
+      li {
+        margin: 0 0 0.9mm;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5mm;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3.5mm;
+      }
+
+      .card {
+        background: #fffdf6;
+        border: 1px solid rgba(15, 61, 46, 0.16);
+        border-radius: 4px;
+        padding: 3.6mm;
+        break-inside: avoid;
+      }
+
+      .card.strong {
+        background: #0f3d2e;
+        color: #fffaf0;
+      }
+      .card.strong h3 { color: #ffdf6e; }
+
+      .card.yellow {
+        background: #fff3bd;
+        border-color: #ffb900;
+      }
+
+      .card .num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        margin-right: 6px;
+        border-radius: 999px;
+        background: #0f3d2e;
+        color: #fffaf0;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .quote {
+        margin: 2.6mm 0;
+        padding: 3mm 4mm;
+        background: #fffdf6;
+        border-left: 5px solid #ffb900;
+        font-size: 12.6px;
+        font-weight: 800;
+        line-height: 1.8;
+      }
+
+      .note {
+        margin: 2.2mm 0;
+        padding: 2.6mm 3.6mm;
+        background: #eef4ee;
+        border: 1px dashed rgba(15, 61, 46, 0.4);
+        border-radius: 4px;
+        font-size: 10.6px;
+        line-height: 1.66;
+      }
+      .note b { color: #0f3d2e; }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fffdf6;
+        border: 1px solid rgba(15, 61, 46, 0.15);
+      }
+
+      .table th,
+      .table td {
+        padding: 2.2mm 2.6mm;
+        border-bottom: 1px solid rgba(15, 61, 46, 0.12);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .table th {
+        width: 24%;
+        background: #e9f1ea;
+        color: #0f3d2e;
+        font-weight: 900;
+      }
+
+      .table.cols th {
+        width: auto;
+      }
+
+      .danger { color: #9e352c; font-weight: 900; }
+      .ok { color: #0f3d2e; font-weight: 900; }
+
+      .small {
+        color: rgba(24, 56, 45, 0.72);
+        font-size: 10.8px;
+      }
+
+      .tag {
+        display: inline-block;
+        margin: 0 1mm 1.5mm 0;
+        padding: 2px 9px;
+        border-radius: 999px;
+        background: #e9f1ea;
+        color: #0f3d2e;
+        font-size: 10px;
+        font-weight: 800;
+      }
+
+      /* ===== タイムライン ===== */
+      .timeline { margin: 3mm 0; }
+      .tl-row {
+        display: flex;
+        gap: 3.5mm;
+        margin: 0 0 1.8mm;
+        align-items: stretch;
+      }
+      .tl-date {
+        flex: 0 0 24mm;
+        padding: 1.8mm 2.4mm;
+        border-radius: 4px;
+        background: #0f3d2e;
+        color: #fffaf0;
+        font-weight: 900;
+        font-size: 11px;
+        text-align: center;
+        align-self: flex-start;
+      }
+      .tl-date.turn { background: #ffb900; color: #18382d; }
+      .tl-body {
+        flex: 1;
+        padding: 0.6mm 0;
+        font-size: 10.8px;
+        line-height: 1.62;
+      }
+      .tl-body b { color: #0f3d2e; }
+
+      /* ===== 三層ピラミッド ===== */
+      .org { margin: 3mm 0; }
+      .org-row {
+        display: flex;
+        align-items: center;
+        gap: 3.5mm;
+        margin: 0 0 1.6mm;
+      }
+      .org-bar {
+        border-radius: 4px;
+        padding: 2.6mm 3.4mm;
+        font-weight: 800;
+        color: #fffaf0;
+        text-align: center;
+      }
+      .org-bar.l1 { width: 38%; background: #0f3d2e; }
+      .org-bar.l2 { width: 64%; background: #2f6b50; }
+      .org-bar.l3 { width: 90%; background: #ffb900; color: #18382d; border: 1px solid #e0a100; }
+      .org-desc { flex: 1; font-size: 11.2px; line-height: 1.65; }
+
+      /* ===== 数字カード ===== */
+      .figrow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; }
+      .fig {
+        background: #fffdf6;
+        border: 1px solid rgba(15, 61, 46, 0.16);
+        border-top: 4px solid #0f3d2e;
+        border-radius: 4px;
+        padding: 3mm;
+        break-inside: avoid;
+      }
+      .fig .role { font-size: 11px; font-weight: 900; color: #0f3d2e; }
+      .fig .pay { margin: 1.2mm 0 0.4mm; font-size: 17px; font-weight: 900; color: #8d5635; line-height: 1.2; }
+      .fig .pay small { font-size: 11px; color: rgba(24,56,45,0.7); font-weight: 700; }
+
+      /* ===== チェックリスト ===== */
+      .check {
+        margin: 2mm 0;
+        padding: 0;
+        list-style: none;
+      }
+      .check li {
+        position: relative;
+        margin: 0 0 1.4mm;
+        padding: 2mm 3.5mm 2mm 10.5mm;
+        background: #fffdf6;
+        border: 1px solid rgba(15, 61, 46, 0.16);
+        border-radius: 4px;
+        font-weight: 700;
+      }
+      .check li::before {
+        content: "";
+        position: absolute;
+        left: 3.2mm;
+        top: 3mm;
+        width: 4.2mm;
+        height: 4.2mm;
+        border: 2px solid #0f3d2e;
+        border-radius: 1mm;
+        background: #fff;
+      }
+      .check li .sub {
+        display: block;
+        margin-top: 0.8mm;
+        font-size: 10.8px;
+        font-weight: 500;
+        color: rgba(24, 56, 45, 0.72);
+      }
+
+      .footer-note {
+        margin-top: 2mm;
+        padding-top: 2mm;
+        border-top: 1px solid rgba(15, 61, 46, 0.16);
+        color: rgba(24, 56, 45, 0.62);
+        font-size: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============ 表紙 ============ -->
+    <section class="page cover">
+      <div>
+        <span class="kicker">テニスプラザ尼崎 成長支援 / 社内キックオフ</span>
+        <h1>テニプラ尼崎と、<br />これからどう組むか。</h1>
+        <p class="lead">
+          中田の元恩師・山下社長のテニススクールに対する伴走方針を、60分で決めるための資料です。
+          中村さんは初回ヒアリング同席済み。吉川さん・西本さんはこの資料が初めての前提で、
+          「経緯 → 事実 → 論点 → 決定」の順に進めます。
+        </p>
+        <div class="thesis">
+          これは「LPを1本作る案件」ではなく、<br />
+          「採用 × 脱属人化 × 西宮新拠点」の組織開発パートナー案件。
+          <span class="small">
+            今日決めるのは3つ。①この長期伴走方針で行くか　②採用ペルソナの統合方針（6/3に現場統括・近江さんから
+            ちゃぶ台返しに近い再設計が届いた）　③誰が何を担うか。
+          </span>
+        </div>
+      </div>
+      <div class="meta">
+        作成日: 2026-06-04 ／ 作成: 中田 ／ 出席: 中田・中村・西本・吉川 ／ 持ち時間: 60分<br />
+        出典: 5/28訪問ヒアリング議事録（2h10m・文字起こし）、社内Slackフィードバック、近江メモ採用ペルソナ整理（6/3）
+      </div>
+    </section>
+
+    <!-- ============ 0. 今日のゴールと進め方 ============ -->
+    <section class="page">
+      <div class="header">
+        <div class="header-title">0. 今日のゴールと進め方</div>
+        <div class="header-note">最初の5分で共有</div>
+      </div>
+
+      <h2>今日決めること（3つだけ）</h2>
+      <div class="grid-3">
+        <div class="card strong">
+          <p><span class="num" style="background:#ffb900;color:#18382d;">1</span><b>伴走方針</b></p>
+          <p>単発のWeb受託ではなく、採用→育成→制度→西宮展開まで踏み込む<b>長期パートナー型</b>で行くか。</p>
+        </div>
+        <div class="card strong">
+          <p><span class="num" style="background:#ffb900;color:#18382d;">2</span><b>ペルソナ統合方針</b></p>
+          <p>初回MTGの合意・現行LP・近江さん新メモの<b>「3つのズレ」</b>をどう統合し、採用LPをどの方向に直すか。</p>
+        </div>
+        <div class="card strong">
+          <p><span class="num" style="background:#ffb900;color:#18382d;">3</span><b>役割分担</b></p>
+          <p>中田・中村・西本・吉川の担当と、<b>直近2週間のアクション</b>。次回クライアント提案の柱と時期。</p>
+        </div>
+      </div>
+
+      <h2>60分の進め方</h2>
+      <table class="table">
+        <tr><th>0〜5分</th><td>前提合わせ（このページ）</td></tr>
+        <tr><th>5〜15分</th><td><b>1章・2章: 経緯とクライアント理解</b> ―― 吉川さん・西本さんのキャッチアップ。<b>事前読了を推奨</b>し、当日はポイント確認のみ。中村さんは確認だけでOK</td></tr>
+        <tr><th>15〜35分</th><td><b>3章: ペルソナ「3つのズレ」の議論</b> ―― 今日のメイン論点。ここに一番時間を使う</td></tr>
+        <tr><th>35〜50分</th><td><b>4章: 提案テーマ4本と進め方</b> ―― フェーズ・収益モデルの方針（吉川さん重点）</td></tr>
+        <tr><th>50〜60分</th><td><b>5章: 決定事項の確認・役割分担・ネクストアクション</b></td></tr>
+      </table>
+
+      <div class="note">
+        <b>読み方の目安：</b> 吉川さんは <b>4章の収益モデル</b> と <b>5章の決定事項</b>、西本さんは <b>3章のLP改修方向</b> を重点で見てください。
+        1〜2章は「何が起きてきたか」の事実共有なので、議論より同期を優先します。
+      </div>
+
+      <h2>前提：なぜこの案件に本気で取り組むのか</h2>
+      <ul>
+        <li>クライアントは中田が習っていたスクールの恩師。<b>関係資本があり、本音ヒアリングが既にできている</b>（通常の新規開拓では取れない深度）</li>
+        <li>会員・売上とも好調で、<b>「既存利益を一回吐き出して人材投資に振り切る」と社長が明言</b>。予算意思がある</li>
+        <li>採用・育成・制度・新拠点と論点が連鎖しており、<b>スポット制作ではなく長期伴走の構造</b>がある</li>
+        <li>アリガトサン自身の脱属人化メソッド（未経験者が1週間ブートキャンプで案件を回す）を<b>そのまま移植できる初の外部案件</b>。ここで型化できれば他案件に転用できる</li>
+      </ul>
+    </section>
+
+    <!-- ============ 1-1. クライアント理解（詳細） ============ -->
+    <section class="page">
+      <div class="header">
+        <div class="header-title">1. 案件の全体像 ① クライアント理解</div>
+        <div class="header-note">数字は5/28ヒアリング議事録ベース</div>
+      </div>
+
+      <h2>クライアント概要（詳細）</h2>
+      <table class="table">
+        <tr><th>クライアント</th><td>テニスプラザ尼崎（尼崎市の小規模インドアテニススクール）。経営は黒字・売上右肩上がり。「楽しませる・寄り添う」カジュアル路線で、ゴリゴリ指導型の大手チェーンと差別化</td></tr>
+        <tr><th>キーパーソン</th><td><b>山下社長</b>（中田の元恩師・元現場コーチ。現場から離れたいが離れられない）／ <b>近江まやのさん</b>（現場統括・営業エース・20代。入会率を引き上げた立役者）</td></tr>
+        <tr><th>スタッフ体制</th><td>全体<b>約15人</b>。内訳：<b>コーチ約10人</b>、フロント専任（テニス指導なし）の<b>パート2人</b>ほか。体験のカウンセリング〜クロージングまで担えるのは<b>実質、山下社長と近江さんの2人のみ</b>。営業に興味のあるコーチは2人程度</td></tr>
+        <tr><th>会員規模</th><td><b>総数は議事録で明言なし</b>（※次回確認）。増加ペース：7〜8年で約100人増 → <b>直近1年だけで約50人増</b>（2倍以上に加速）。施設キャパには<b>あと100〜150人の余地</b>（20クラス増設×5〜6人/クラス≒100人増の試算）</td></tr>
+        <tr><th>体験→入会</th><td>体験500円・<b>当日1回でクロージング</b>。入会率は2年連続6割 → 近江さん参画後<b>約8割</b>。体験者の内訳は「入る気2割・迷い6割・入らない2割」＝山下理論では「8割は取れて当然」</td></tr>
+        <tr><th>顧客層</th><td>30〜70代にバランス分散（年配3：中間3：若め3：その他1）。入会動機は<b>健康がメイン</b>。ジュニア層は人数はいるが収益源ではない</td></tr>
+        <tr><th>商品・契約</th><td>月単位契約・いつでも退会可。「2ヶ月お試しキャンペーン」など心理的ハードルを下げる設計あり</td></tr>
+        <tr><th>給与・労働環境</th><td><b>週休2日・残業ゼロ・持ち帰りなし</b>の超ホワイト。基本給で生活できる設計＋インセンティブは「あったら増える／なくても減らない」のみ。評価制度は「明確にはなく感覚的」</td></tr>
+        <tr><th>採用の予算感</th><td>「去年の利益で予算は十分。いい人がいたら採っていい」状態。山下社長の目標＝<b>今年中に社員1人＋アルバイト</b>（資金度外視なら社員1＋バイト5で20クラス増が回る試算）。近江メモ（6/3）＝<b>社員1人（年収280〜300万）＋バイト2人（月4.5万）の計3人</b></td></tr>
+        <tr><th>関連事業</th><td><b>西宮テニスクラブ</b>：スクール生ほぼ<b>0人 → 1年で50人</b>が目標。上位オーナーの意向で尼崎とブランドを分離する制約あり（理由は未確認）</td></tr>
+        <tr><th>意思決定構造</th><td class="danger">山下社長の上に発言力の強い上位オーナーが存在。山下社長も頭が上がらず<b>一定の承認が必要</b>。西宮は全権限を任されていない可能性（主務はジュニア育成で、「西宮も右肩上がりにしてよ」と緩く言われている程度の関与との見立て）。<b>大型提案はオーナー承認リスクを織り込むこと</b></td></tr>
+        <tr><th>相談の入口</th><td>「良いコーチを採りたい」「スタッフが揃えば西宮も伸ばしたい」</td></tr>
+      </table>
+
+      <div class="note">
+        <b>まだ取れていない数字（次回クライアントMTGの確認リスト）：</b>
+        会員総数 ／ 月商・客単価 ／ 退会率 ／ 月間体験数 ／ 広告費 ／ GA4・Search Console等の計測有無。
+        「データがないと感想ベースに見える」という永吉さんの指摘とも直結するため、次回ヒアリングの質問項目に組み込む。
+        ※体験→入会は紙シートで記録・統計化されている模様（「全部統計とっている」と山下社長）。データ取得の足がかりはある。
+      </div>
+    </section>
+
+    <!-- ============ 1-2. 経緯 ============ -->
+    <section class="page">
+      <div class="header">
+        <div class="header-title">1. 案件の全体像 ② 経緯</div>
+        <div class="header-note">吉川さん・西本さんのキャッチアップ用</div>
+      </div>
+
+      <h2>「集客の相談」が「組織開発の案件」に変わるまで</h2>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-date">5月中旬</div>
+          <div class="tl-body"><b>相談開始。</b>当初の見立ては「集客支援」。既存HPのリプレイス案を軸に社内Slackで議論（吉川さん：現状の問題・放置リスク・施策の相乗効果・ロードマップが必要 ／ 永吉さん：データがないと感想ベースになる。施策の前にペルソナ理解とブランド設計。「媒体は蛇口、受け皿はバケツ」）</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">5月下旬</div>
+          <div class="tl-body">近江さんがdoda等の採用サービスと面談していることが判明。<b>方針を「HPリプレイス」から「採用ブランド設計」へ転換</b>。中村さんのフィードバック（テニス業界×営業のキャリアが見えないことが本質）もここで反映</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date turn">5/28</div>
+          <div class="tl-body"><b>初回訪問ヒアリング（中田・中村、2時間10分）。前提が180度転換した日。</b>生徒は潤沢で、足りないのは人。真の課題は「採用・育成・属人化・社長と近江さんの手離れ」だと判明 → 詳細は次章</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">5/29〜</div>
+          <div class="tl-body">採用LPデモ v3を実装（A/B切替・11セクション・代表ペルソナ付き）。当日も簡易版を提示済みで、次回提案の最有力アセット</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date turn">6/3</div>
+          <div class="tl-body"><b>近江さんから手書きメモ→採用ペルソナの再設計を受領。</b>「営業もできる優秀な人は逆に要らない。現場を長く回してくれるコマ人材が欲しい」 ―― これまでの方向と食い違う内容で、<b>今日の最大論点</b>（3章）</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">6/4 今日</div>
+          <div class="tl-body">社内キックオフ。伴走方針・ペルソナ統合・役割分担を決める</div>
+        </div>
+      </div>
+
+      <div class="note">
+        <b>認識のアップデート（特に吉川さん向け）：</b> Slackで議論した「HPリプレイス提案」はもう主役ではありません。
+        HP/LPは「採用を成功させるための手段の一つ」に位置づけが変わっています。提案の本丸は
+        <b>採用 × 近江さんナレッジの形式知化 × 西宮立ち上げ</b>の長期伴走です。
+      </div>
+
+      <h2>現在ある武器 ―― 実装済みアセット（西本さんのキャッチアップ用）</h2>
+      <table class="table cols">
+        <tr><th style="width:30%;">アセット</th><th>内容</th></tr>
+        <tr>
+          <th>採用LP本体<br /><span class="small">/recruit</span></th>
+          <td>v3・11セクション構成。Hero「好きなテニスを、誰かの成長に変える仕事。」共感→キャリア再定義→毎日の仕事→未経験導線→人・文化→哲学→FAQ→CTA。<b>A/Bデザイン切替つき</b>（A＝Rally Burst：若年×勢い・現デフォルト ／ B＝Court Editorial：上品・保護者/西宮転用向き）</td>
+        </tr>
+        <tr>
+          <th>ペルソナページ<br /><span class="small">/recruit/persona</span></th>
+          <td>社内・クライアントデモ用（noindex）。代表ペルソナ＝25歳・高校テニス×ToC営業。<span class="danger">※近江メモとの整合が今日の論点（3章）</span></td>
+        </tr>
+        <tr>
+          <th>ロードマップページ<br /><span class="small">/recruit/roadmap</span></th>
+          <td>社長デモ用（noindex）。現状整理→採用導線→育成導線→西宮展開の4段階で長期伴走の絵を見せる</td>
+        </tr>
+        <tr>
+          <th>公開先・リポジトリ</th>
+          <td>本番: <b>tennis-plaza-amagasaki.vercel.app</b>（Vercel）／ GitHub: <b>arigatosun/tennis-plaza-amagasaki</b>（Next.js 15）。5/28のヒアリング末尾で簡易版をクライアントに提示済み</td>
+        </tr>
+        <tr>
+          <th>提案同梱物の下書き</th>
+          <td>求人票Before/After・スカウト文3種・媒体比較シート・90日ロードマップ（`visit_briefing_2026-05-29.md` 内）。<span class="danger">※いずれも旧ペルソナ前提のため、3章の決定後に組み替えが必要</span></td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- ============ 2. 初回ヒアリングのファクト ============ -->
+    <section class="page">
+      <div class="header">
+        <div class="header-title">2. 初回ヒアリングのファクト ① 数字と本音</div>
+        <div class="header-note">5/28訪問・2時間10分の議事録より</div>
+      </div>
+
+      <h2>事前認識と実情の決定的なズレ</h2>
+      <table class="table cols">
+        <tr><th style="width:18%;"></th><th>中田の事前認識</th><th>実際の状況</th></tr>
+        <tr><th>主課題</th><td>生徒を増やしたい</td><td>生徒は<b>右肩上がりで潤沢</b>。<b>スタッフが足りない</b></td></tr>
+        <tr><th>ボトルネック</th><td>集客導線</td><td>採用・育成・<b>属人化</b>・社長の手離れ</td></tr>
+        <tr><th>提案方向</th><td>集客系LP / Web</td><td>採用LP・人事制度・組織開発・脱属人化</td></tr>
+      </table>
+
+      <h2>数字（近江さんの営業力 ＝ 異常値）</h2>
+      <div class="figrow">
+        <div class="fig">
+          <div class="role">体験→入会の決定</div>
+          <div class="pay">1回<small>（当日）</small></div>
+        </div>
+        <div class="fig">
+          <div class="role">入会率</div>
+          <div class="pay">6割→8割<small>近江さん参画後</small></div>
+        </div>
+        <div class="fig">
+          <div class="role">会員増ペース</div>
+          <div class="pay">50人/年<small>過去7-8年は100人</small></div>
+        </div>
+        <div class="fig">
+          <div class="role">クロージングの担い手</div>
+          <div class="pay">実質2人<small>山下社長＋近江さん</small></div>
+        </div>
+      </div>
+      <div class="note">
+        <b>属人化の核心：</b> この数字はほぼ近江さん個人の能力（雑談から入る信頼構築・「断られへんことを全部先回り」するクロージング）に依存。
+        本人は「私のキャラやからシステム化は無理」と主張。中田の返しは<b>「8割を仕組みに落とし、残り2割は近江さん本人を触媒として残す」</b>。
+        アリガトサン自社の脱属人化事例（未経験者が1週間ブートキャンプで案件を回す）を話した結果、近江さんから「できるのは分かった」まで引き出せている。
+      </div>
+
+      <h2>山下社長の本音（提案の地盤）</h2>
+      <ul>
+        <li>「自分はもう爆発するつもりはない。<b>これからは人にギラつかせる仕事をする</b>」―― 既存事業の利益を一回吐き出して人材投資に振り切る覚悟を明言</li>
+        <li><b>人事評価制度のスポット外注を自分でも検討していた</b>（＝制度設計はこちらに直接振れる玉）</li>
+        <li>自身も「現場から離れたいのに、自分が行けば100%取れると分かるから戻ってしまう」―― 近江さんと同じ属人化の構造</li>
+        <li>西宮テニスクラブ：<b>0→50人/1年</b>。近江さんを事業責任者として送り出したい。バス全面改装はNGだが軽量キャンペーンの予算はOK</li>
+      </ul>
+
+      <h2>踏んではいけない地雷（ヒアリングで確定済み）</h2>
+      <div class="grid-2">
+        <div class="card">
+          <ul>
+            <li><span class="danger">×</span> マニュアル化を0か100かで語る（近江さんが強く反発）</li>
+            <li><span class="danger">×</span> 既存スタッフへのインセンティブ導入（社長が明確にNG。週休2日・基本給型の超ホワイト環境は守る）</li>
+          </ul>
+        </div>
+        <div class="card">
+          <ul>
+            <li><span class="danger">×</span> 「テニスが好きな人を採りましょう」（議論で否定済み）</li>
+            <li><span class="danger">×</span> コンサル的な上から目線・HP/既存業者批判（「コンサル嫌い」と明言あり。「俺らも同じ状態やった」の共感ベースで）</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2-2. 人物理解と外部環境 ============ -->
+    <section class="page">
+      <div class="header">
+        <div class="header-title">2. 初回ヒアリングのファクト ② 人物理解と外部環境</div>
+        <div class="header-note">伴走相手として知っておくべきこと</div>
+      </div>
+
+      <h2>キーパーソンの人物理解（接し方の前提）</h2>
+      <div class="grid-2">
+        <div class="card strong">
+          <h3>山下社長</h3>
+          <ul>
+            <li>元現場のトッププレイヤー。「自分が行けば100%取れる」と分かるから<b>つい現場に戻ってしまう</b>（本人も自覚あり）</li>
+            <li>動機は「これからは<b>人にギラつかせる側</b>に回る」。利益を人材投資に吐き出す覚悟</li>
+            <li>上位オーナーに頭が上がらず、<b>大きな意思決定には承認が必要</b></li>
+            <li>刺さる接し方：手離れを直接指摘せず、<b>「俺らも同じ状態だった」の共感ベース</b>で</li>
+          </ul>
+        </div>
+        <div class="card yellow">
+          <h3>近江まやのさん</h3>
+          <ul>
+            <li>「バリバリ稼ぎたい・自分のキャリアが欲しい」野心と、<b>本心は協業型</b>（「みんなで能力を出し合いたい」）の二面性</li>
+            <li>過去の社内対立で「こっちの優しさを利用された」と<b>防衛的・ドライになった経緯</b>あり</li>
+            <li>報酬や肩書より「<b>上がってる感」のゲーム感覚</b>を重視</li>
+            <li>刺さる接し方：競わせる相手ではなく、<b>「やりたいことに伴走してくれる人」</b>。否定はNG、承認と尊重が前提</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note">
+        <b>関係の現在地：</b> 中田は初回MTGで「近江さんと組んで西宮0→50をやりたい」とすでに踏み込んでおり、
+        近江さんからは脱属人化について「できるのは分かった」まで引き出せている。この信頼貯金が長期パートナーシップの最大のフック。
+      </div>
+
+      <h2>外部環境 ―― 競合と既存業者の動き</h2>
+      <table class="table cols">
+        <tr><th style="width:26%;">プレイヤー</th><th>状況</th></tr>
+        <tr>
+          <th>doda / リクルート / Indeed / 人材バンク</th>
+          <td><b>近江さんが面談済み＝採用の温度感が高い。</b>面談で出た話：採用ペルソナが必要 ／「大卒×営業経験者」をコーチとして採るのは現実的に難しい ／ HP・SNSに顔・理念・職場の雰囲気を載せるべき ―― 結局「<b>媒体の前に受け皿が必要</b>」という、こちらと同じ結論に向かっている</td>
+        </tr>
+        <tr>
+          <th>あましん（尼崎信用金庫）系ソリューション</th>
+          <td>近江さんが面談済み。採用支援の文脈で<b>「ある意味競合。最低でも勝つ必要がある」</b>（中田）。提案内容・費用感は次回までに確認</td>
+        </tr>
+        <tr>
+          <th>株式会社アレッジ（既存Web業者）</th>
+          <td>Google ビジネスプロフィール／MEO系で<b>月5千円のツール契約</b>が継続中と見られる（実態は不明・ロカオプ系OEMの可能性）。<span class="danger">批判はしない</span>。Google周りの棚卸しは後段フェーズで</td>
+        </tr>
+      </table>
+
+      <div class="note">
+        <b>勝ち筋の整理：</b> 媒体と候補者データベースの量では戦わない。<b>媒体に出す前の上流（採用ブランド・求人票・受け皿LP・スカウト文・育成）を取る</b>。
+        「dodaさんを使うにしても、効果が出やすい状態を一緒に作れます」のスタンス。
+        このため初回提案では <b>HP全体リプレイス／MEO・Google棚卸し／西宮の深掘り は出さない</b>（いずれも後段フェーズの拡張カード）。
+      </div>
+    </section>
+
+    <!-- ============ 3. 最大の論点：ペルソナ3つのズレ ============ -->
+    <section class="page">
+      <div class="header">
+        <div class="header-title">3. 最大の論点 ―― 採用ペルソナ「3つのズレ」</div>
+        <div class="header-note">今日のメイン議題。20分使う</div>
+      </div>
+
+      <p>
+        採りたい人物像に<strong>出どころの違う3つのバージョン</strong>が併存中。統合しないまま進めると、LP・求人票・媒体選定が全部ブレます。
+      </p>
+
+      <table class="table cols">
+        <tr><th style="width:20%;">出どころ</th><th>採りたい人物像</th><th style="width:24%;">状態</th></tr>
+        <tr>
+          <th>① 5/28 初回MTGの合意</th>
+          <td><b>ギラギラ事業開発人材。</b>不動産・コンサル・金融出身で権限が欲しい野心層。「営業」でなく「事業開発」枠・フルインセン別パッケージ</td>
+          <td>中田提案 → <b>山下社長が完全同意</b>（「ギラギラ言いましょうよ」）</td>
+        </tr>
+        <tr>
+          <th>② 現行LPデモ v3</th>
+          <td>25歳前後・高校までテニス×ToC営業。「売り込まない営業」共感型の<b>育成枠</b>。営業を「不安を安心に変える力」と再定義</td>
+          <td>実装済み。①をマイルドにした中間案</td>
+        </tr>
+        <tr>
+          <th>③ 6/3 近江さん新メモ</th>
+          <td><b>コマ人材。</b>「能力のある人は逆に要らない」「ちょっと営業できます、はむしろNG」。同じことを長く元気に続けられる若手。<b>社員1＋バイト2＝計3人</b>（条件は1章参照）</td>
+          <td class="danger">最新。①②と正面衝突して見える</td>
+        </tr>
+      </table>
+
+      <div class="quote" style="margin-top:3.5mm;">
+        読み解き ―― ③は①の否定ではない。近江メモの結論は「コマ人材で現場を安定させ、<b>近江さん自身の手を事業開発に向ける</b>」。
+        つまり、事業開発を担うギラギラ人材は外部採用ではなく<b>「近江さんの昇格」が第一候補</b>に変わった。
+      </div>
+
+      <h2>統合仮説：採用の三層アーキテクチャ</h2>
+      <div class="org">
+        <div class="org-row">
+          <div class="org-bar l1">事業開発レイヤー</div>
+          <div class="org-desc"><b>近江さん本人</b>（西宮0→50の責任者へ）。外部のギラギラ採用は「将来オプション」に後ろ倒し</div>
+        </div>
+        <div class="org-row">
+          <div class="org-bar l2">運営候補（例外枠）</div>
+          <div class="org-desc">現場を回しつつ、いずれ運営側に上がる素質の人。<b>少数・別基準</b>（近江メモにも明記あり）</div>
+        </div>
+        <div class="org-row">
+          <div class="org-bar l3">現場コーチ（コマ人材）</div>
+          <div class="org-desc"><b>今回の採用ターゲット。</b>社員1＋バイト2。若く元気で、現場を長く安定して回してくれる人</div>
+        </div>
+      </div>
+
+      <h2>含意：現行LPはこのままでは使えない可能性（西本さん重点）</h2>
+      <p>
+        現行LPの「営業・運営に広げるキャリア」訴求はコマ層には<b>過剰</b>。向上心の強い人を引き寄せ、「優秀な人ほど現場の反復に飽きて辞める」という近江さんの読み通りなら<b>定着しない人を集めてしまう</b>恐れ。
+      </p>
+      <div class="grid-3">
+        <div class="card">
+          <p><span class="num">a</span><b>コマ層向けに振り切る</b></p>
+          <p class="small">「安定・働きやすさ・元気な現場」訴求に書き換え。キャリア訴求は撤去</p>
+        </div>
+        <div class="card">
+          <p><span class="num">b</span><b>2導線に分ける</b></p>
+          <p class="small">コマ層向けメイン＋例外枠（運営候補）向けの控えめな導線を併設</p>
+        </div>
+        <div class="card">
+          <p><span class="num">c</span><b>現行を例外枠用と割り切る</b></p>
+          <p class="small">LPは運営候補向けのまま、コマ層は媒体運用（バイト媒体等）で獲る</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <b>ここで議論したいこと：</b> ❶三層アーキテクチャで行ってよいか ❷LP改修は a/b/c のどれか ❸<b>山下社長は近江メモを把握しているか？</b>（社長×近江さんの温度差を次回MTGでどう確認するか）
+      </div>
+    </section>
+
+    <!-- ============ 4. 提案テーマ4本と進め方 ============ -->
+    <section class="page">
+      <div class="header">
+        <div class="header-title">4. 提案テーマ4本と進め方</div>
+        <div class="header-note">フェーズ・収益モデル（吉川さん重点）</div>
+      </div>
+
+      <h2>提案テーマ（5/28ヒアリングから整理済み）</h2>
+      <table class="table cols">
+        <tr><th style="width:6%;"></th><th style="width:30%;">テーマ</th><th>位置づけ・補足</th></tr>
+        <tr>
+          <th>A</th>
+          <td><b>採用LP本実装＋採用運用</b></td>
+          <td>入口・即着手。<span class="danger">※近江メモを受けて、ペルソナと訴求の組み替えが必要（3章の決定に依存）</span>。求人票・スカウト文・媒体運用も含む採用マーケ支援として設計</td>
+        </tr>
+        <tr>
+          <th>B</th>
+          <td><b>近江さんナレッジの形式知化</b></td>
+          <td>中核・差別化。体験当日のヒアリング〜クロージングの言語化、ケースDB、AIロープレ、新人向け社内アプリ。<b>自社ブートキャンプ式メソッドの横展開</b>＝信頼の根拠。「8割の仕組み＋2割の近江触媒」フレーミング厳守</td>
+        </tr>
+        <tr>
+          <th>C</th>
+          <td><b>評価・給与制度の二層化設計</b></td>
+          <td>制度系。既存ホワイト環境は維持し、新枠だけ別パッケージ。<b>山下社長が「外注も検討していた」と明言した玉</b></td>
+        </tr>
+        <tr>
+          <th>D</th>
+          <td><b>西宮テニスクラブ立ち上げ伴走</b></td>
+          <td>後期・長期収益。0→50人/1年。近江さんを責任者として送り出す前提のオペ再構築＋Web/集客運用。ブランド分離制約の理由は要確認</td>
+        </tr>
+      </table>
+
+      <h2>フェーズ分け（推奨）</h2>
+      <table class="table cols">
+        <tr><th>Phase</th><th style="width:14%;">期間</th><th>やること</th><th style="width:22%;">課金モデル</th></tr>
+        <tr><th>0. 次回提案</th><td>〜2週間</td><td>Aの精緻提案 ＋ BのミニPoC（AIロープレのMVPか、ケースDBのサンプル）</td><td>提案無料・フック作り</td></tr>
+        <tr><th>1. クイックウィン</th><td>1〜2ヶ月</td><td>A本実装 ＋ B第1弾着手</td><td>プロジェクト型</td></tr>
+        <tr><th>2. 仕組み化深化</th><td>3〜6ヶ月</td><td>B本格化 ＋ C制度設計</td><td>月額伴走</td></tr>
+        <tr><th>3. 拡張</th><td>6ヶ月〜</td><td>D西宮立ち上げ</td><td>月額＋成果報酬ハイブリッド</td></tr>
+      </table>
+
+      <h2>吉川さんに方針判断してほしいこと</h2>
+      <ul>
+        <li><b>契約形態の軸</b>：プロジェクト型から入って月額に移行するか、最初から月額伴走で提案するか（金額の確定は今日しない。形態の方針だけ決める）</li>
+        <li><b>Phase 0 の投資判断</b>：次回提案は無料想定。BのPoCをどこまで作り込むか＝社内リソースをどれだけ先行投資するか</li>
+        <li><b>リソース承認</b>：中田・西本の稼働をこの案件にどの比重で割り当てるか</li>
+      </ul>
+
+      <div class="note">
+        <b>守りの確認（全員）：</b> 候補者を直接紹介して成功報酬を得る形は<b>有料職業紹介の許可領域</b>に入る恐れがあるため踏み込まない。
+        あくまで「テニプラが自社で採用できる状態を作る」採用マーケティング支援・採用広報支援として設計する。AIスカウトも「全自動」ではなく
+        「文面生成・候補者整理の半自動化＋最終判断は人」で説明する。
+      </div>
+    </section>
+
+    <!-- ============ 5. 今日決めること・役割分担・ネクスト ============ -->
+    <section class="page">
+      <div class="header">
+        <div class="header-title">5. 今日決めること・役割分担・ネクストアクション</div>
+        <div class="header-note">最後の10分でここを埋めて終わる</div>
+      </div>
+
+      <h2>決定チェックリスト</h2>
+      <ul class="check">
+        <li>長期パートナー方針で行く／行かない
+          <span class="sub">行かない場合：A（採用LP）のみのスポット受託に縮退するか、見送るか</span>
+        </li>
+        <li>採用の三層アーキテクチャ（3章）の採否
+          <span class="sub">条件付き採用の場合：山下社長×近江さんの擦り合わせ確認を先行させる</span>
+        </li>
+        <li>LP改修の方向：a（コマ層振り切り）／ b（2導線）／ c（現行は例外枠用）
+          <span class="sub">西本さんのデザイン着手範囲がここで決まる</span>
+        </li>
+        <li>次回クライアント提案の柱と時期
+          <span class="sub">たたき台：A精緻提案＋BミニPoCを2週間以内に。提案前に近江メモの社長把握確認を挟む</span>
+        </li>
+        <li>契約形態の軸（プロジェクト型→月額 ／ 最初から月額）※金額レンジは吉川さん持ち帰り可</li>
+      </ul>
+
+      <h2>役割分担（たたき台）</h2>
+      <table class="table cols">
+        <tr><th style="width:14%;">担当</th><th>役割</th></tr>
+        <tr><th>中田</th><td>全体推進・クライアントリレーション・B（仕組み化/AIロープレ）の設計と実装・LP実装</td></tr>
+        <tr><th>中村</th><td>提案ストーリーと見積もり整理・次回クライアントMTGの進行/論点回収/クロージング設計（中田が熱量で広げ、中村さんが着地）</td></tr>
+        <tr><th>西本</th><td>採用LP改修のデザイン・採用ブランドのビジュアル設計・次回提案資料のビジュアル品質</td></tr>
+        <tr><th>吉川</th><td>契約形態・値付けレンジの経営判断・社内リソース配分の承認・Phase 0 投資の意思決定</td></tr>
+      </table>
+
+      <h2>ネクストアクション（〜2週間）</h2>
+      <table class="table cols">
+        <tr><th style="width:8%;">#</th><th>アクション</th><th style="width:14%;">担当</th></tr>
+        <tr><th>1</th><td><b>近江メモを山下社長が把握しているか確認</b>（温度差の確認。次回提案の前提）</td><td>中田</td></tr>
+        <tr><th>2</th><td>ペルソナ統合方針を反映した次回クライアントMTGのアジェンダ作成・日程打診</td><td>中田・中村</td></tr>
+        <tr><th>3</th><td>LP改修方針（a/b/c）の確定 → デザイン着手</td><td>西本（中田支援）</td></tr>
+        <tr><th>4</th><td>B（ナレッジ形式知化）のミニPoC範囲決めと制作（次回提案で見せる脱属人化サンプル）</td><td>中田</td></tr>
+        <tr><th>5</th><td>契約形態・値付けレンジの方針決定</td><td>吉川</td></tr>
+        <tr><th>6</th><td>求人票Before/After・媒体比較・90日ロードマップの提案同梱物の更新（コマ人材版に組み替え）</td><td>中村・中田</td></tr>
+      </table>
+
+      <p class="footer-note">
+        本資料は社内用。近江さんメモ由来の口語表現は対外提示時に再編集。一次情報：client_gijiroku/、omi_saiyo_persona_2026-06-03.html
+      </p>
+    </section>
+  </body>
+</html>
