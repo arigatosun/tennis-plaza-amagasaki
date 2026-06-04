@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>テニスプラザ尼崎 採用ペルソナ整理｜近江メモより</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 12mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #f6f3ea;
+        color: #18382d;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+          "Yu Gothic", "Noto Sans CJK JP", sans-serif;
+        font-size: 12.5px;
+        line-height: 1.78;
+      }
+
+      .page {
+        min-height: 273mm;
+        page-break-after: always;
+        padding: 4mm 2mm;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      /* ===== 表紙 ===== */
+      .cover {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        min-height: 260mm;
+        align-content: space-between;
+        background: #0f3d2e;
+        color: #fffaf0;
+        padding: 16mm;
+        border-radius: 4px;
+      }
+
+      /* 右下のコート風イエローアクセント（テキストには重ねない） */
+      .cover::after {
+        content: "";
+        position: absolute;
+        right: -34mm;
+        bottom: -34mm;
+        width: 96mm;
+        height: 96mm;
+        background: #ffb900;
+        transform: rotate(45deg);
+      }
+
+      .cover > div {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cover .kicker {
+        display: inline-block;
+        padding: 4px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .cover h1 {
+        margin: 16mm 0 0;
+        font-size: 33px;
+        line-height: 1.4;
+      }
+
+      .cover .lead {
+        max-width: 158mm;
+        margin-top: 9mm;
+        font-size: 15px;
+        line-height: 1.95;
+        color: rgba(255, 250, 240, 0.9);
+      }
+
+      .cover .thesis {
+        position: relative;
+        z-index: 1;
+        margin-top: 14mm;
+        padding: 8mm;
+        background: #0a2c21;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-left: 5px solid #ffb900;
+        border-radius: 4px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+        font-size: 16.5px;
+        font-weight: 800;
+        line-height: 1.85;
+      }
+
+      .cover .thesis .small {
+        display: block;
+        margin-top: 4mm;
+        font-size: 12px;
+        font-weight: 600;
+        color: rgba(255, 250, 240, 0.78);
+        line-height: 1.8;
+      }
+
+      .meta {
+        max-width: 122mm;
+        color: rgba(255, 250, 240, 0.74);
+        font-size: 11px;
+        line-height: 1.7;
+      }
+
+      /* ===== 共通ヘッダ ===== */
+      .header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        padding-bottom: 4mm;
+        border-bottom: 2px solid #0f3d2e;
+      }
+
+      .header-title {
+        font-size: 18px;
+        font-weight: 900;
+        color: #0f3d2e;
+      }
+
+      .header-note {
+        font-size: 10.5px;
+        font-weight: 800;
+        color: #8d5635;
+      }
+
+      h2 {
+        margin: 7mm 0 3mm;
+        color: #0f3d2e;
+        font-size: 17px;
+        line-height: 1.45;
+      }
+
+      h3 {
+        margin: 4mm 0 1.5mm;
+        color: #8d5635;
+        font-size: 13.5px;
+      }
+
+      p {
+        margin: 0 0 3mm;
+      }
+
+      ul,
+      ol {
+        margin: 0 0 3mm 0;
+        padding-left: 1.35em;
+      }
+
+      li {
+        margin: 0 0 1.4mm;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5mm;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4mm;
+      }
+
+      .card {
+        background: #fffdf6;
+        border: 1px solid rgba(15, 61, 46, 0.16);
+        border-radius: 4px;
+        padding: 5mm;
+        break-inside: avoid;
+      }
+
+      .card.strong {
+        background: #0f3d2e;
+        color: #fffaf0;
+      }
+      .card.strong h3 { color: #ffdf6e; }
+
+      .card.yellow {
+        background: #fff3bd;
+        border-color: #ffb900;
+      }
+
+      .card .num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        margin-right: 6px;
+        border-radius: 999px;
+        background: #0f3d2e;
+        color: #fffaf0;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .quote {
+        margin: 4mm 0;
+        padding: 4mm 5mm;
+        background: #fffdf6;
+        border-left: 5px solid #ffb900;
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.8;
+      }
+
+      .note {
+        margin: 3mm 0;
+        padding: 3.5mm 4.5mm;
+        background: #eef4ee;
+        border: 1px dashed rgba(15, 61, 46, 0.4);
+        border-radius: 4px;
+        font-size: 11.5px;
+        line-height: 1.75;
+      }
+      .note b { color: #0f3d2e; }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fffdf6;
+        border: 1px solid rgba(15, 61, 46, 0.15);
+      }
+
+      .table th,
+      .table td {
+        padding: 3mm;
+        border-bottom: 1px solid rgba(15, 61, 46, 0.12);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .table th {
+        width: 24%;
+        background: #e9f1ea;
+        color: #0f3d2e;
+        font-weight: 900;
+      }
+
+      .danger { color: #9e352c; font-weight: 900; }
+      .ok { color: #0f3d2e; font-weight: 900; }
+
+      .small {
+        color: rgba(24, 56, 45, 0.72);
+        font-size: 10.8px;
+      }
+
+      .tag {
+        display: inline-block;
+        margin: 0 1mm 1.5mm 0;
+        padding: 2px 9px;
+        border-radius: 999px;
+        background: #e9f1ea;
+        color: #0f3d2e;
+        font-size: 10px;
+        font-weight: 800;
+      }
+
+      /* ===== 組織ピラミッド ===== */
+      .org { margin: 3mm 0; }
+      .org-row {
+        display: flex;
+        align-items: center;
+        gap: 4mm;
+        margin: 0 0 2mm;
+      }
+      .org-bar {
+        border-radius: 4px;
+        padding: 3.5mm 4mm;
+        font-weight: 800;
+        color: #fffaf0;
+        text-align: center;
+      }
+      .org-bar.l1 { width: 38%; background: #0f3d2e; }
+      .org-bar.l2 { width: 64%; background: #2f6b50; }
+      .org-bar.l3 { width: 90%; background: #ffb900; color: #18382d; border: 1px solid #e0a100; }
+      .org-desc { flex: 1; font-size: 11.2px; line-height: 1.65; }
+
+      /* ===== 売上分配バー ===== */
+      .split {
+        display: flex;
+        width: 100%;
+        margin: 2mm 0 1mm;
+        border-radius: 4px;
+        overflow: hidden;
+        border: 1px solid rgba(15, 61, 46, 0.2);
+      }
+      .split .seg {
+        padding: 4mm 3mm;
+        font-weight: 900;
+        color: #fffaf0;
+        text-align: center;
+        line-height: 1.4;
+      }
+      .split .seg.big { width: 80%; background: #0f3d2e; }
+      .split .seg.small-seg { width: 20%; background: #c9a227; color: #18382d; font-weight: 900; }
+
+      /* ===== 数字カード ===== */
+      .figrow { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+      .fig {
+        background: #fffdf6;
+        border: 1px solid rgba(15, 61, 46, 0.16);
+        border-top: 4px solid #0f3d2e;
+        border-radius: 4px;
+        padding: 5mm;
+        break-inside: avoid;
+      }
+      .fig .role { font-size: 14px; font-weight: 900; color: #0f3d2e; }
+      .fig .pay { margin: 2mm 0 1mm; font-size: 22px; font-weight: 900; color: #8d5635; line-height: 1.2; }
+      .fig .pay small { font-size: 12px; color: rgba(24,56,45,0.7); font-weight: 700; }
+      .fig ul { margin-top: 2mm; }
+
+      .footer-note {
+        margin-top: 6mm;
+        padding-top: 4mm;
+        border-top: 1px solid rgba(15, 61, 46, 0.16);
+        color: rgba(24, 56, 45, 0.62);
+        font-size: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============ 表紙 ============ -->
+    <section class="page cover">
+      <div>
+        <span class="kicker">テニスプラザ尼崎 / 採用ペルソナ整理</span>
+        <h1>テニプラが採用したい<br />スタッフ像</h1>
+        <p class="lead">
+          近江さんの手書きメモを、近江さんの意図をくみ取って社内共有用に整理したものです。
+          中村さん・他メンバーと「どんな人を、どんな条件で採るのか」の認識をそろえるための保存版。
+        </p>
+        <div class="thesis">
+          欲しいのは「レッスンのコマをたくさん持って、長く現場に立ち続けてくれるコーチ」。
+          <span class="small">
+            “ちょっと営業もできます”というタイプは、むしろ要らない。能力・向上心が高い人ほど
+            現場の繰り返しに飽きて辞めてしまう —— というのが近江さんの読みです。
+          </span>
+        </div>
+      </div>
+      <div class="meta">
+        出典: 近江さん手書きメモ（2枚）／ 整理: アリガトサン ／ 作成日: 2026-06-03 ／ 共有先: 中村さん 他<br />
+        ※ 文字起こしできない箇所・読み取りの解釈は「補足」として明記しています。
+      </div>
+    </section>
+
+    <!-- ============ 1. 結論 + なぜ ============ -->
+    <section class="page">
+      <div class="header">
+        <div class="header-title">1. 結論 ―― 何を採りたいのか</div>
+        <div class="header-note">まずここだけ読めばOK</div>
+      </div>
+
+      <div class="quote">
+        コーチを探す上で、能力のある人は逆に要らない（!?）。<br />
+        とにかくレッスンのコマをたくさん持って、一生コーチをしてくれたらいい。<br />
+        変に「ちょっと営業できます」っていうコーチは、要らないんじゃないか。
+      </div>
+      <p class="small">― 近江メモ「現場」ページより（原文ニュアンスのまま）</p>
+
+      <div class="grid-2" style="margin-top:5mm;">
+        <div class="card strong">
+          <h3>採りたいのは</h3>
+          <ul>
+            <li>レッスンの<b>コマを安定して回してくれる</b>現場コーチ</li>
+            <li>同じことを<b>長く続けられる</b>人</li>
+            <li>若くて<b>元気なレッスン</b>ができる人</li>
+            <li>一定の給料・休みがあれば満足、という人</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>あえて求めない（NGに近い）</h3>
+          <ul>
+            <li><span class="danger">×</span> 「営業もできます」系の器用なコーチ</li>
+            <li><span class="danger">×</span> 向上心が強く、すぐ次を求める人</li>
+            <li><span class="danger">×</span> ベテラン・昭和世代のコーチ</li>
+            <li><span class="danger">×</span> 数字で詰められたい／自分で開発したいタイプ</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>2. なぜ「優秀すぎる人」を求めないのか</h2>
+      <p>
+        近江さんの頭の中にあるロジックはシンプルです。<strong>現場コーチの仕事は「同じことを繰り返すコマ仕事」</strong>。
+        だからこそ、それに疑問を持たずに続けられる人でないと、早晩こうなる ―― という流れです。
+      </p>
+      <ul>
+        <li>能力・向上心が高い人 → 現場の反復に「ここはつまらない」と感じ始める</li>
+        <li>→ 現場に出ることを渋りはじめる → <b class="danger">「退職します」</b>という結果になりやすい</li>
+        <li>だから採るべきは <b>「一生、現場で同じことをすることに疑念が出ない人」</b></li>
+      </ul>
+
+      <h2>売上分配の構造（近江さんの世界観）</h2>
+      <p class="small">メモのピラミッド図＝「価値（売上）はどこに分配されるか」の整理。</p>
+      <div class="split">
+        <div class="seg big">経営・運営側チーム<br />売上の約 8 割</div>
+        <div class="seg small-seg">現場・その他<br />約 2 割</div>
+      </div>
+      <div class="note">
+        <b>読み取り：</b> 現場コーチは「コマ＝レッスンを提供する役割」。事業の利益設計や運営は別レイヤー（経営・運営側チーム）が担う、という前提。
+        だから現場には“経営者目線”ではなく、<b>安定して現場を回し続けてくれること</b>を期待している。
+      </div>
+    </section>
+
+    <!-- ============ 3. 採用したい3タイプ + 4. 理想マインド ============ -->
+    <section class="page">
+      <div class="header">
+        <div class="header-title">3. 採用したい人物タイプ（3つの入口）</div>
+        <div class="header-note">どんな人が来てくれると嬉しいか</div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <p><span class="num">1</span><b>テニス一筋の若い子</b></p>
+          <p class="small">区分：社員候補</p>
+          <p>テニスしかやってこなかった。社会でやっていく自信が薄く、「テニスコーチなら（自分にも）やれそう・楽そう」と思っている若い人。</p>
+        </div>
+        <div class="card">
+          <p><span class="num">2</span><b>社会人を経た出戻り</b></p>
+          <p class="small">区分：社員候補</p>
+          <p>一度は社会人になったものの続かず、いまテニスコーチで“お茶を濁している”ような若い人。腰を据える場所を探している。</p>
+        </div>
+        <div class="card">
+          <p><span class="num">3</span><b>副業・かけもち層</b></p>
+          <p class="small">区分：バイト・業務委託</p>
+          <p>本業のかたわら、副業で少しテニスコーチに関わりたい人。学生・業務委託・副業ワーカーが中心。</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <b>共通条件：</b> <span class="tag">平成生まれ／若め</span> <span class="tag">元気なレッスンができる</span>
+        <span class="tag">ベテラン・昭和世代はNG</span>　―― 年齢の若さと現場の元気さを重視。
+      </div>
+
+      <div class="header" style="margin-top:6mm;">
+        <div class="header-title">4. 現場スタッフの理想マインド</div>
+        <div class="header-note">性格・働き方のタイプ</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>こういう人が向いている</h3>
+          <ul>
+            <li>同じことを淡々と<b>やり続けられる</b></li>
+            <li>指示されたことを、疑いなく<b>そのまま実行できる</b></li>
+            <li>余計なことを感じすぎない／場の空気に振り回されない</li>
+            <li><b>一定の給料・一定の休み</b>があれば満足</li>
+            <li>「開発的に考える」「数字で詰められる」のは苦手でいい</li>
+          </ul>
+        </div>
+        <div class="card yellow">
+          <h3>近江さんの本音メモ</h3>
+          <p style="font-weight:800;">「コマ（バイト・社員）＝ ある意味バカなやつ（笑）」</p>
+          <p class="small" style="color:#5a4a1f;">
+            ※ 見下しの意味ではなく、<b>余計な野心や不満を持たず、純粋に現場を担い続けてくれる人</b>という意味合い。
+            “賢く立ち回ろうとしない”ことが、むしろ現場では強みになる、という近江さんの実感。
+          </p>
+        </div>
+      </div>
+
+      <div class="quote" style="font-size:13px;">
+        【絶対条件】 「一生、現場で同じことをしていることに疑念が出ない人」であること。<br />
+        ここがズレると、現場に出るのを嫌がり始め →「つまらない」→ 退職、という流れになってしまう。
+      </div>
+    </section>
+
+    <!-- ============ 5. 例外枠 + 6. 組織体制 ============ -->
+    <section class="page">
+      <div class="header">
+        <div class="header-title">5. 例外枠 ―― いずれ運営側に上がる素質の人</div>
+        <div class="header-note">少数だが別ルートで欲しい</div>
+      </div>
+
+      <p>
+        現場コーチ（コマ）とは別に、<strong>もっと現場をしっかり回せて、わりと運営側寄りのスタッフ</strong>も少数欲しい、というのが近江さんのもう一つの軸です。
+      </p>
+      <div class="grid-2">
+        <div class="card strong">
+          <h3>イメージ（近江さんの例示）</h3>
+          <p>「加藤さん（？）」のような人材。現場をしっかりこなしつつ、運営側の視点も持ち、<b>いずれはこちら側（経営・運営）になる素質</b>のあるスタッフ。</p>
+        </div>
+        <div class="card">
+          <h3>位置づけ</h3>
+          <ul>
+            <li>「コマ」とは<b>別枠</b>。数は少なくてよい</li>
+            <li>現場 → 運営側へ上がっていく前提の人材</li>
+            <li>※ 前ページの「コマ人材」とは採用基準を分けて考える</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="header" style="margin-top:6mm;">
+        <div class="header-title">6. 組織体制とレッスンの回し方</div>
+        <div class="header-note">誰がどう関わるか</div>
+      </div>
+
+      <div class="org">
+        <div class="org-row">
+          <div class="org-bar l1">管理職</div>
+          <div class="org-desc">たまに現場をチェックする。全体の品質を最終的に見る役割。</div>
+        </div>
+        <div class="org-row">
+          <div class="org-bar l2">チーフコーチ</div>
+          <div class="org-desc">コートでフォローし、お客様の状況を確認する。メインコーチが作ったメニューに沿って現場を支える。</div>
+        </div>
+        <div class="org-row">
+          <div class="org-bar l3">バイト・若い社員（現場コーチ）</div>
+          <div class="org-desc">実際にレッスンを担当する“コマ”の中心。今回いちばん採りたい層。</div>
+        </div>
+      </div>
+
+      <h3>レッスンが回る流れ</h3>
+      <ol>
+        <li>メインコーチが<b>メニューを作り</b>、自身もコーチをする</li>
+        <li>チーフコーチが<b>コートでフォロー</b>（お客様の状況確認）</li>
+        <li><b>たまに管理職がチェック</b>して品質を担保</li>
+      </ol>
+      <div class="note">
+        <b>狙い：</b> メニュー設計と品質管理を上のレイヤーが担うので、現場コーチは「決められたことを元気にやり切る」ことに集中できる。
+        だからこそ“コマ人材”で回る設計になっている。
+      </div>
+    </section>
+
+    <!-- ============ 7. 採用区分・条件 + 8. ゴール ============ -->
+    <section class="page">
+      <div class="header">
+        <div class="header-title">7. 採用区分と条件（具体プラン）</div>
+        <div class="header-note">人数・コマ数・給与</div>
+      </div>
+
+      <div class="figrow">
+        <div class="fig">
+          <div class="role">社員　1人</div>
+          <div class="pay">年収 280〜300万 <small>スタート</small></div>
+          <ul>
+            <li>稼働：まずは <b>1週あたり 2.5コマ</b> から</li>
+            <li>位置づけ：腰を据えて長く現場に立つ中核</li>
+            <li>想定：上記タイプ①②（テニス一筋／社会人経験あり）</li>
+          </ul>
+        </div>
+        <div class="fig" style="border-top-color:#ffb900;">
+          <div class="role">バイト　2人</div>
+          <div class="pay">1人あたり 月 4.5万 <small>交通費込み</small></div>
+          <ul>
+            <li>稼働：<b>1人あたり 4コマずつ</b></li>
+            <li>対象：学生・業務委託・副業ワーカー</li>
+            <li>想定：上記タイプ③（副業・かけもち層）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note">
+        <b>全区分の共通条件：</b> 平成生まれの若めのコーチ／元気なレッスンができること／ベテラン・昭和世代はNG。
+      </div>
+
+      <table class="table" style="margin-top:4mm;">
+        <tr><th>採りたい人数</th><td>社員 1人 ＋ バイト（業務委託含む）2人 ＝ <b>合計3人</b>を想定</td></tr>
+        <tr><th>社員の条件</th><td>年収280〜300万スタート／1週2.5コマからスタート／長期定着前提</td></tr>
+        <tr><th>バイトの条件</th><td>月4.5万（交通費込み）／1人4コマ／学生・業務委託・副業OK</td></tr>
+        <tr><th>年齢・雰囲気</th><td>平成生まれの若め・元気重視。<span class="danger">ベテラン／昭和世代はNG</span></td></tr>
+      </table>
+
+      <h2>8. これが実現すると（採用のゴール）</h2>
+      <div class="grid-2">
+        <div class="card strong">
+          <h3>近江さんが描くゴール</h3>
+          <p>
+            若いコーチ（社員・バイト）が<b>あと2人くらい入れば</b>、近江さん自身が少し現場から離れて、
+            <b>事業開発に移れる</b>。
+          </p>
+        </div>
+        <div class="card yellow">
+          <h3>現実的な前提</h3>
+          <p style="color:#5a4a1f;">
+            とはいっても、近江さんが<b>完全にプラザから離れるのは現実的にムリ</b>。
+            あくまで「現場の比重を下げて、開発に時間を割けるようにする」のがねらい。
+          </p>
+        </div>
+      </div>
+
+      <div class="quote">
+        ねらいを一言で：　現場を“コマ人材”で安定して回せる体制を作り、近江さんの手を事業開発に向けられるようにすること。
+      </div>
+
+      <p class="footer-note">
+        本資料は近江さん手書きメモ（2枚）の社内向け整理版です。「補足」「読み取り」と記した箇所はアリガトサン側の解釈を含みます。
+        採用要件として確定させる前に、近江さん本人に最終確認することを推奨します。
+      </p>
+    </section>
+  </body>
+</html>
