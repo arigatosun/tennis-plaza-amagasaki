@@ -1,3 +1,5 @@
+> ⚠️ **この版（運用代行スコープ別 Light/Standard/Full）は旧版です。** 現行の確定版は制作起点の3プラン（A:採用LP単体／B:HP致命的問題解消＋LP／C:全領域＋ブランドフレームワーク＋運用伴走）＝ `tennis_plaza_3plan_proposal_v2.md`（内部仕様）と `tennis_plaza_proposal_client.html`（クライアント提示用）。本ファイルは運用代行の発想・参考として残置。
+
 # テニスプラザ尼崎｜3プラン設計書（Light／Standard／Full）
 
 作成: アリガトサン（中田／中村）｜2026-06-08｜6/15 MTG提示用・その場でプラン選択するための1枚資料群

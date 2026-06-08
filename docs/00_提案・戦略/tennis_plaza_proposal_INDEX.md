@@ -22,7 +22,12 @@
 | 2f | `tennis_plaza_kpi_summary_1pager.md` | **社内提出サマリー1枚**（吉川/中村/永吉向け・結論→実数3点→KPI→各人依頼→3択） | 火曜社内共有 |
 | 2g | `tennis_plaza_recruit_media_strategy.md` | **採用媒体戦略（無料優先・確定版）** 最新Web調査。人材紹介(doda/リクルート=社員1人85〜123万)除外、engage/Google for Jobs/リファラル等の無料で構築。唯一の有料補強スポキャリ¥55,000 | 4-3配分の根拠・媒体運用 |
 | 3 | `tennis_plaza_sns_content_ops.md` | SNS/コンテンツ運用設計（ブランド統一・リール戦略・コラム/SEO・ネタ供給の仕組み・LINE/X・顔出し・分担表） | 3プランの根拠。MTGで「運用の手間」懸念に回答 |
-| 4 | `tennis_plaza_3plan_proposal.md` | **15日提案・3プラン（Light/Standard/Full＋価格レンジ＋KPI連動＋法務）** | MTG終盤・その場でプラン選択 |
+| ★ | `tennis_plaza_proposal_deck.pptx` | **★★MTG本番用 通し提案書（PPTX・29枚・図解中心）** 表紙→現状報告(GA4)→現状維持のコスト→方向性(計測→採用接続)→3プラン→投資回収→なぜ当社→想定Q&A→クロージング→上申用1枚。クライアント視点レビュー反映済 | **提案MTGで投影・編集はPowerPoint** |
+| ★ | `design.md` | 上記PPTXのデザインシステム（配色/図解パターン/構成） | デッキ改訂の指針 |
+| ★ | `_deck_builder.py` | PPTX生成スクリプト（python-pptx・再生成/微修正用） | デッキ再生成 |
+| 4 | `tennis_plaza_proposal_client.html` | クライアント提示用 提案資料（HTML版・PPTXの元コンテンツ） | 軽量共有/PDF |
+| 4a | `tennis_plaza_3plan_proposal_v2.md` | 上記の**内部詳細仕様**（5領域=経営/デザイン/マーケ/AI/営業を統合） | 提案の中身確認・改訂用 |
+| 4b | `tennis_plaza_3plan_proposal.md` | 旧版（運用代行Light/Standard/Full）※参考残置 | アーカイブ |
 | 5 | `tennis_plaza_mtg_playbook.md` | 6/15進行台本＋火曜までの中田アクション＋想定Q&A＋NG言動 | 当日の台本・直前準備 |
 
 **火曜(6/9)まで**: #2を社内提出。準備は#5の冒頭チェックリスト。

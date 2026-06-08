@@ -44,6 +44,9 @@ next-env.d.ts
 .vscode/
 .idea/
 
+# office temp/lock files
+~$*
+
 # test / mcp artifacts
 .playwright-mcp/
 tmp_pdf_pages/

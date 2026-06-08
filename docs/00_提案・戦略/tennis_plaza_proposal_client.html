@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>テニスプラザ尼崎 ご提案 ─ 3つのプラン｜アリガトサン</title>
+<style>
+  :root{--green:#0F3D2E;--green2:#264831;--gold:#E8A100;--crit:#C0392B;--warn:#C77C18;--good:#1E8449;--ink:#1f2a26;--mut:#5d6b64;--line:#e3e1d8;--warm:#F7F6F2;--card:#fff;}
+  *{box-sizing:border-box;}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Meiryo",sans-serif;color:var(--ink);background:var(--warm);line-height:1.85;font-size:15px;}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px 90px;}
+  .cover{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:64px 48px;border-radius:0 0 18px 18px;margin-bottom:34px;}
+  .cover .kicker{font-size:13px;letter-spacing:.2em;color:var(--gold);font-weight:700;margin:0 0 14px;}
+  .cover h1{font-size:34px;line-height:1.35;margin:0 0 10px;font-weight:800;}
+  .cover .sub{font-size:16px;color:#eaf2ee;margin:0 0 20px;}
+  .cover .meta{font-size:13px;color:#cfe0d8;line-height:1.9;border-top:1px solid rgba(255,255,255,.18);padding-top:16px;}
+  h2{font-size:23px;color:var(--green);border-left:6px solid var(--gold);padding:4px 0 4px 14px;margin:54px 0 10px;}
+  h3{font-size:17px;color:var(--green2);margin:26px 0 8px;}
+  p{margin:9px 0;}
+  .big-statement{font-size:20px;font-weight:800;color:var(--green);background:#edf5f0;border-left:6px solid var(--green);padding:16px 20px;border-radius:8px;margin:14px 0;line-height:1.6;}
+  .plain{background:#edf5f0;border-left:5px solid var(--green);padding:10px 16px;border-radius:6px;margin:10px 0;font-size:14.5px;}
+  .plain .h{font-weight:700;color:var(--green);}
+  table.data{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;}
+  table.data th,table.data td{border:1px solid var(--line);padding:8px 11px;text-align:left;}
+  table.data th{background:var(--green);color:#fff;font-weight:600;}
+  table.data tr:nth-child(even) td{background:#faf9f5;}
+  .center{text-align:center;}
+  /* プランカード */
+  .plans{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:20px 0;}
+  @media(max-width:880px){.plans{grid-template-columns:1fr;}}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;position:relative;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(15,61,46,.05);}
+  .plan.rec{border:2px solid var(--gold);box-shadow:0 6px 22px rgba(232,161,0,.16);}
+  .plan.main{border:2px solid var(--green);}
+  .ribbon{position:absolute;top:-12px;left:20px;font-size:12px;font-weight:800;color:#fff;padding:3px 12px;border-radius:999px;}
+  .ribbon.g{background:var(--gold);color:#3a2c00;} .ribbon.d{background:var(--green);}
+  .plan .pname{font-size:13px;color:var(--gold);font-weight:800;letter-spacing:.05em;margin-top:4px;}
+  .plan h3{margin:2px 0 4px;font-size:20px;color:var(--green);}
+  .plan .catch{font-size:13.5px;color:var(--mut);min-height:38px;}
+  .plan .price{font-size:30px;font-weight:800;color:var(--ink);margin:10px 0 0;}
+  .plan .price small{font-size:14px;font-weight:600;color:var(--mut);}
+  .plan .term{font-size:12px;color:var(--mut);margin:2px 0 12px;}
+  .plan ul{list-style:none;padding:0;margin:8px 0 0;font-size:13px;}
+  .plan li{padding:5px 0 5px 22px;position:relative;border-top:1px dashed #eee5d8;}
+  .plan li:before{content:"✓";position:absolute;left:0;color:var(--good);font-weight:800;}
+  .plan li.add:before{content:"＋";color:var(--gold);}
+  .plan .for{margin-top:auto;padding-top:12px;font-size:12.5px;color:var(--mut);}
+  .legend{font-size:12px;color:var(--mut);margin:6px 0;}
+  .hl{color:var(--crit);font-weight:700;}
+  .cmark{color:var(--good);font-weight:800;} .cpart{color:var(--warn);font-weight:700;} .cno{color:#c2c2c2;}
+  .note{font-size:12.5px;color:var(--mut);}
+  .pb{page-break-before:always;}
+  .steps td:first-child{white-space:nowrap;font-weight:700;color:var(--green2);}
+  footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--mut);}
+  @media print{body{background:#fff;font-size:12px;}.cover{border-radius:0;}.plan,.plain,.big-statement{break-inside:avoid;}.plans{grid-template-columns:1fr 1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <p class="kicker">ARIGATOSAN ／ ご提案</p>
+  <h1>テニスプラザ尼崎さま<br>事業成長のご提案 ─ 3つのプラン</h1>
+  <p class="sub">採用を起点に、「採れる → 現場が回る → 集客 → 西宮再建」まで。デザイン×マーケ×営業×AI×経営の総合力でご一緒します。</p>
+  <div class="meta">
+    ご提案先：テニスプラザ尼崎 山下社長／近江さま　｜　ご提案：アリガトサン（中田・中村）　｜　2026-06-08<br>
+    ※本提案は、御社のGoogle Analytics 4 実数（別紙「現状報告」）の分析に基づいています。
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- 1. 全体ストーリー -->
+  <h2>1. なぜ今、これをやるのか</h2>
+  <div class="big-statement">テニスプラザ尼崎さんは「お客さんはちゃんと来ているのに、レジが無い店」です。</div>
+  <p>集客が弱いのではありません。むしろ土壌は良い。問題は「<b>何件取れているか誰も数えられない</b>」こと、そして「<b>いちばん強い武器（Instagram）がホームページに繋がっていない</b>」ことです。<br>
+  だから本提案は「もっとお客を呼ぶ」話ではなく、<b>今来ているお客を取りこぼさず、数えられる状態にする</b>ことから始めます。</p>
+
+  <h3>私たちが実際の数字（GA4）で見つけた問題</h3>
+  <table class="data">
+    <tr><th>　</th><th>何が起きているか</th><th>ひとことで言うと</th></tr>
+    <tr><td>①</td><td>予約・問い合わせ・電話・入会の<b>計測がゼロ</b></td><td>レジが無い。何件取れているか不明</td></tr>
+    <tr><td>②</td><td>Instagram（フォロワー893・リール最大18.5万再生）→ HPは<b>月25訪問（全体の1.5%）</b></td><td>最強の武器がHPに繋がっていない</td></tr>
+    <tr><td>③</td><td>有料SNS広告が動いているのに<b>滞在22秒</b>で離脱</td><td>広告費の無駄打ち（出稿元・費用も不明）</td></tr>
+    <tr><td>④</td><td>Search Console未連携</td><td>どんな検索語で来ているか見えない</td></tr>
+    <tr><td>⑤</td><td>リンク切れ（404）が<b>月275回</b></td><td>来た人を取りこぼしている</td></tr>
+    <tr><td>⑥</td><td>モバイル68%・月約1,650訪問・検索のエンゲージ率76%</td><td>スマホ中心。<b>土壌そのものは良い</b></td></tr>
+  </table>
+  <div class="plain"><span class="h">💬 つまり</span><br><b>蛇口（SNS・検索）は強い。バケツ（HP）に穴があり、レジ（計測）が無い。</b>──まずバケツの穴を塞ぎ、レジを置く。これが出発点です。</div>
+
+  <h3>だから、何をするか（順番）</h3>
+  <p>採用ブランドの設計を起点に、最速で<b>社員1名＋アルバイト2名</b>を採用し、近江さんを現場実務から手離れさせる。そのうえで集客の取りこぼしを止め、ゆくゆくは<b>西宮テニスクラブの再建</b>まで一緒に走る。この順番を、3つの選択肢でご用意しました。</p>
+
+  <!-- 2. 3プラン -->
+  <h2 class="pb">2. 3つのプラン</h2>
+  <div class="plans">
+
+    <div class="plan">
+      <span class="pname">PLAN A</span>
+      <h3>採用の入口</h3>
+      <p class="catch">まず、人を採れる状態をつくる</p>
+      <div class="price">55<small>万円（税別・単発）</small></div>
+      <div class="term">期間 3〜4週 ／ 着手50%・納品50%</div>
+      <ul>
+        <li>採用ペルソナ設計（三浦さん像）</li>
+        <li>採用LPの磨き込み・本番稼働化<span class="note">（実装済み資産を活用）</span></li>
+        <li>Google しごと検索の有効化（無料掲載）</li>
+        <li>Instagram採用導線・採用バナー・OGP</li>
+        <li>採用CVの計測ポイント設計</li>
+      </ul>
+      <p class="for"><b>こんな方に：</b>失敗のダメージを小さく、最速で求人を出したい。まず小さく承認を通したい。</p>
+    </div>
+
+    <div class="plan rec">
+      <span class="ribbon g">推奨ライン</span>
+      <span class="pname">PLAN B</span>
+      <h3>バケツの穴を塞ぐ</h3>
+      <p class="catch">蛇口は強い。穴を塞ぎ、レジを置く</p>
+      <div class="price">120<small>万円（税別・単発）</small></div>
+      <div class="term">期間 6〜8週 ／ 着手40%・中間30%・納品30%</div>
+      <ul>
+        <li>プランA の内容すべて</li>
+        <li class="add"><b>CV計測の実装＝「レジを置く」</b>（主要6種）</li>
+        <li class="add">CV4ボタンUI＋追従/固定CTA（全ページ）</li>
+        <li class="add">Instagram→HP断絶の解消（リンク集＋計測）</li>
+        <li class="add">有料広告の正体特定（UTM運用）</li>
+        <li class="add">Search Console連携／404修正＋出口付き404</li>
+        <li class="add">モバイル最適化（主要ページ）</li>
+        <li class="add">無料求人媒体の面展開＋公式LINE開設</li>
+        <li class="add">AI半自動スカウト／KPIダッシュボード</li>
+      </ul>
+      <p class="for"><b>こんな方に：</b>好調なうちにHPの穴を塞ぎ、今後の全判断の土台（数字）を一度の工事で手に入れたい堅実派。</p>
+    </div>
+
+    <div class="plan main">
+      <span class="ribbon d">本命・長期伴走</span>
+      <span class="pname">PLAN C</span>
+      <h3>数えて、磨いて、伴走する</h3>
+      <p class="catch">直すだけで終わらせない。回し続ける</p>
+      <div class="price">160<small>万円＋月15万</small></div>
+      <div class="term">初期160万（税別）＋月額15万（税別・最低6ヶ月）</div>
+      <ul>
+        <li>プランB の内容すべて</li>
+        <li class="add">HP全体のビジュアル刷新・情報設計</li>
+        <li class="add"><b>ブランドフレームワーク／テンプレート</b><span class="note">（Instagram投稿3種・リール型・ハイライト設計・運用マニュアル）</span></li>
+        <li class="add">AIロープレ（保護者・クロージング練習）</li>
+        <li class="add">LINE自動応答／FAQ・週次自動レポート</li>
+        <li class="add">SEOコラム（AI下書き＋監修・継続）</li>
+        <li class="add">月次レポート＋戦略MTG／採用KPI進捗管理</li>
+        <li class="add">HP・LPの継続改善（小改修込み）</li>
+      </ul>
+      <p class="for"><b>こんな方に：</b>近江さんを現場から外し、集客強化→西宮再建まで本気で進めたい本命層（＝山下社長の本来の狙いに最も合致）。</p>
+    </div>
+  </div>
+  <p class="legend">読み筋：A＝採用の蛇口を開ける ／ B＝バケツの穴を塞ぎレジを置く ／ C＝強い蛇口とバケツをブランドで一本化し、近江さん不在でも回る仕組みまで作る。</p>
+
+  <!-- 3. 比較表 -->
+  <h2 class="pb">3. 3プラン比較表</h2>
+  <p class="legend">凡例：<span class="cmark">◎</span>フル対応／○対応／<span class="cpart">△</span>部分・検知のみ／<span class="cno">−</span>対象外</p>
+  <table class="data">
+    <tr><th>含まれるもの</th><th class="center">A</th><th class="center">B</th><th class="center">C</th></tr>
+    <tr><td>採用ペルソナ設計</td><td class="center">○</td><td class="center">○</td><td class="center">○</td></tr>
+    <tr><td>採用LP（既存資産の磨き込み・本番化）</td><td class="center">○</td><td class="center">○</td><td class="center">○</td></tr>
+    <tr><td>Google しごと検索 有効化（無料掲載）</td><td class="center">○</td><td class="center">○</td><td class="center">○</td></tr>
+    <tr><td>採用バナー・OGP・Instagram採用導線</td><td class="center">○</td><td class="center">○</td><td class="center">○</td></tr>
+    <tr><td>① CV計測の実装（レジ設置・主要6種）</td><td class="center cno">−</td><td class="center">○</td><td class="center cmark">◎</td></tr>
+    <tr><td>CV4ボタンUI＋追従/固定CTA</td><td class="center cno">−</td><td class="center">○</td><td class="center cmark">◎</td></tr>
+    <tr><td>② Instagram→HP断絶の解消</td><td class="center cno">−</td><td class="center">○</td><td class="center cmark">◎</td></tr>
+    <tr><td>③ 有料SNS広告の着地検証（UTM）</td><td class="center cno">−</td><td class="center">○</td><td class="center cmark">◎</td></tr>
+    <tr><td>④ Search Console連携</td><td class="center cno">−</td><td class="center">○</td><td class="center cmark">◎</td></tr>
+    <tr><td>⑤ 404修正＋出口付き404</td><td class="center cno">−</td><td class="center">○</td><td class="center">○</td></tr>
+    <tr><td>⑥ モバイル最適化（主要ページ）</td><td class="center cno">−</td><td class="center">○</td><td class="center cmark">◎</td></tr>
+    <tr><td>無料求人媒体の面展開（engage/HW/ジモティー）</td><td class="center cno">−</td><td class="center">○</td><td class="center">○</td></tr>
+    <tr><td>公式LINE</td><td class="center cno">−</td><td class="center">○手動</td><td class="center cmark">◎AI自動</td></tr>
+    <tr><td>AI半自動スカウト（最終送信は人）</td><td class="center cno">−</td><td class="center">○</td><td class="center">○</td></tr>
+    <tr><td>KPIダッシュボード</td><td class="center cno">−</td><td class="center">○基本</td><td class="center cmark">◎拡張＋週次自動</td></tr>
+    <tr><td>HP全体ビジュアル刷新・情報設計</td><td class="center cno">−</td><td class="center cpart">△部分</td><td class="center cmark">◎</td></tr>
+    <tr><td>ブランドガイド／投稿・リールテンプレ</td><td class="center cno">−</td><td class="center cno">−</td><td class="center">○</td></tr>
+    <tr><td>運用マニュアル／ハイライト設計</td><td class="center cno">−</td><td class="center cno">−</td><td class="center">○</td></tr>
+    <tr><td>AIロープレ（保護者・クロージング練習）</td><td class="center cno">−</td><td class="center cno">−</td><td class="center">○</td></tr>
+    <tr><td>SEOコラム（AI下書き＋監修・継続）</td><td class="center cno">−</td><td class="center cno">−</td><td class="center">○</td></tr>
+    <tr><td>月次レポート＋戦略MTG／KPI進捗管理</td><td class="center cno">−</td><td class="center cno">−</td><td class="center">○</td></tr>
+    <tr><td>HP・LP継続改善（小改修込み）</td><td class="center cno">−</td><td class="center cno">−</td><td class="center">○</td></tr>
+    <tr><td><b>初期費用（税別）</b></td><td class="center"><b>55万</b></td><td class="center"><b>120万</b></td><td class="center"><b>160万</b></td></tr>
+    <tr><td><b>月額（税別）</b></td><td class="center cno">−</td><td class="center cno">−</td><td class="center"><b>15万／月</b></td></tr>
+  </table>
+
+  <!-- 4. 推奨 -->
+  <h2 class="pb">4. おすすめと、その理由</h2>
+  <div class="big-statement">おすすめは「プランB」。ただしゴールは「プランC」。</div>
+  <p>初手のベストは<b>プランB</b>です。</p>
+  <table class="data">
+    <tr><th>理由</th><th>中身</th></tr>
+    <tr><td>承認が通りやすい</td><td>「計測＝レジ設置」「致命傷の止血」は、誰が見ても“やらない理由がない”投資。上位の方への説明が数字で完結します。</td></tr>
+    <tr><td>両輪に同時に効く</td><td>Aだと採用しか動かない。Bは近江さん手離れ後に向かう“集客の受け皿（計測された状態）”まで先に用意できます。</td></tr>
+    <tr><td>順番が正しい</td><td>運用伴走（C）の価値は「数字が見えてから」が一番伝わる。<b>まず計測（B）、次に運用（C）</b>が正しい順番です。</td></tr>
+  </table>
+
+  <h3>単発（B）→ 伴走（C）への自然な道筋</h3>
+  <div class="plain"><span class="h">💬 一言で</span><br>Bでレジを置くと、初めて“出血量”が数字で見える。その数字が、Cを必要にします。</div>
+  <table class="data">
+    <tr><th>段階</th><th>起きること</th></tr>
+    <tr><td>① B（単発）</td><td>レジを置く →「Instagram経由で月◯件取れていた／いなかった」「広告から何件入会したか」が初めて見える。問題が“感覚”から“数字”に。</td></tr>
+    <tr><td>② 数字が問いを生む</td><td>「リール18.5万再生がCV◯件なら、型化したら何件？」「広告を止めて運用に回したら？」。この問いはBのダッシュボードが自動で示します。</td></tr>
+    <tr><td>③ C（伴走）へ</td><td>問いに答え続ける体制＝月次伴走。押し売りでなく、数字が次を求める構造。</td></tr>
+    <tr><td>④ 西宮へ</td><td>近江さんが手離れし集客が回り出した実績が、上位の方への「西宮も任せられる」最大の証跡になります。</td></tr>
+  </table>
+
+  <h3>金額の隣に置く「価値の根拠」</h3>
+  <table class="data">
+    <tr><th>観点</th><th>内容</th></tr>
+    <tr><td>人材紹介を使わない節約</td><td>doda／リクルート等は成功報酬30〜35%＝社員1人で<b>85〜123万円</b>。社員1＋バイト2なら<b>約170〜250万円</b>が消えます。本提案は無料媒体＋スポキャリ（¥55,000）で同じ採用を狙う設計。<b>この浮いた採用コストの範囲内で、採用LPだけでなくHPの止血や運用の仕組みまで残ります。</b></td></tr>
+    <tr><td>消える費用か、残る資産か</td><td>人材紹介は採るたびに毎回消える。私たちは<b>採用の仕組みそのものを御社に残し</b>、次の採用も自前で回せるようにします。</td></tr>
+    <tr><td>数字が見える</td><td>B以上は計測ダッシュボード付き。承認した投資が効いているかを、毎月ご自身で確認できます。</td></tr>
+  </table>
+
+  <!-- 5. 次アクション -->
+  <h2 class="pb">5. ご契約後の流れ（プランB／C 共通の立ち上げ）</h2>
+  <table class="data steps">
+    <tr><th>週</th><th>やること</th></tr>
+    <tr><td>1週目</td><td>キックオフ／GA4・Search Console・既存環境の権限確認／採用ペルソナ最終確定</td></tr>
+    <tr><td>2〜3週目</td><td><b>CV計測（レジ）の実装</b>／採用LP磨き込み・Google しごと検索有効化／公式LINE開設</td></tr>
+    <tr><td>3〜4週目</td><td>404修正・Instagram→HP導線・UTM運用開始／無料求人媒体への展開／中間確認（<b>計測が動いていることを数字で確認</b>）</td></tr>
+    <tr><td>5〜8週目</td><td>モバイル最適化・回遊設計／ダッシュボード納品／（C）ブランドテンプレ・運用マニュアル納品</td></tr>
+    <tr><td>以降（Cのみ）</td><td>月次レポート＋戦略MTG／採用KPI（応募50件→90日で社員1＋バイト2）の進捗を見ながら配分調整／西宮を見据えた打ち手</td></tr>
+  </table>
+  <div class="plain"><span class="h">初月のお約束（“可視化”）</span><br>初月で「何件取れているか」が数字で見える状態にします（効果保証ではなく“可視化”のお約束。見えなければ計測部分は作り直します）。応募が、どの媒体から何件来ているかも数えられる状態にします。</div>
+
+  <footer>
+    本提案の数値根拠は御社GA4実数（別紙「HP現状報告」）。金額（A=55万／B=120万／C=初期160万＋月15万・いずれも税別）は提案時点の推し金額であり、最終調整の余地があります。<br>
+    アリガトサン（デザイン×マーケティング×営業×AIエンジニアリング×経営）／ご提案：中田・中村
+  </footer>
+
+</div>
+</body>
+</html>

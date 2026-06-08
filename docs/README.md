@@ -24,6 +24,10 @@
 3e. `tennis_plaza_phase0_setup_guide.md`（Phase0計測設定 手順書・吉川向け）
 3f. `tennis_plaza_kpi_summary_1pager.md`（社内提出サマリー1枚）
 3g. `tennis_plaza_recruit_media_strategy.md`（**採用媒体戦略・無料優先確定版**／人材紹介除外・engage/Google for Jobs/リファラル）
+★ `tennis_plaza_proposal_deck.pptx`（**★★MTG本番用 通し提案書・PPTX29枚・図解中心**／クライアント視点レビュー反映済）＋ `design.md`（デザイン仕様）＋ `_deck_builder.py`（生成スクリプト）
+4. `tennis_plaza_proposal_client.html`（クライアント提示用 提案資料・HTML版／PPTXの元コンテンツ）
+4a. `tennis_plaza_3plan_proposal_v2.md`（提案の内部詳細仕様・5領域統合）
+4b. `tennis_plaza_3plan_proposal.md`（旧運用代行版・参考残置）
 4. `tennis_plaza_sns_content_ops.md`（SNS/コンテンツ運用設計）
 5. `tennis_plaza_3plan_proposal.md`（3プラン）
 6. `tennis_plaza_mtg_playbook.md`（6/15進行台本）
