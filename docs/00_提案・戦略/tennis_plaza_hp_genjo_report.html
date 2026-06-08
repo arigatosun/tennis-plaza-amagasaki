@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>テニスプラザ尼崎 HP現状診断レポート（GA4実数・証跡版）</title>
+<style>
+  :root{
+    --green:#0F3D2E; --green2:#264831; --gold:#E8A100;
+    --crit:#C0392B; --warn:#C77C18; --good:#1E8449;
+    --ink:#1f2a26; --mut:#5d6b64; --line:#e3e1d8; --warm:#F7F6F2; --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  body{
+    margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Meiryo",sans-serif;
+    color:var(--ink);background:var(--warm);line-height:1.85;font-size:15px;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px 80px;}
+  .cover{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:60px 48px;border-radius:0 0 18px 18px;margin-bottom:34px;}
+  .cover .kicker{font-size:13px;letter-spacing:.18em;color:var(--gold);font-weight:700;margin:0 0 14px;}
+  .cover h1{font-size:31px;line-height:1.4;margin:0 0 18px;font-weight:800;}
+  .cover .meta{font-size:13.5px;color:#dfe9e3;line-height:2;}
+  .cover .meta b{color:#fff;}
+  h2{font-size:22px;color:var(--green);border-left:6px solid var(--gold);padding:4px 0 4px 14px;margin:50px 0 8px;}
+  h3{font-size:17px;color:var(--green2);margin:28px 0 8px;}
+  p{margin:8px 0;}
+  .lead{color:var(--mut);font-size:14px;margin:0 0 8px;}
+  .badge{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 10px;border-radius:999px;color:#fff;vertical-align:middle;}
+  .b-crit{background:var(--crit);} .b-warn{background:var(--warn);} .b-good{background:var(--good);} .b-info{background:var(--green2);}
+  /* かみ砕き説明 */
+  .plain{background:#edf5f0;border-left:5px solid var(--green);padding:10px 16px;border-radius:6px;margin:8px 0 16px;font-size:14.5px;}
+  .plain .h{font-weight:700;color:var(--green);}
+  /* 用語ミニ辞典 */
+  .gloss{background:#fffdf5;border:1px solid #ecdfb6;border-radius:12px;padding:8px 20px 16px;margin:18px 0 8px;}
+  .gloss h3{color:var(--gold);margin:14px 0 6px;}
+  .gloss table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .gloss td{border-bottom:1px dashed #e7ddc4;padding:8px 8px;vertical-align:top;}
+  .gloss td.t{width:210px;font-weight:700;color:var(--green2);white-space:nowrap;}
+  .gloss .en{color:var(--mut);font-weight:400;font-size:12px;}
+  .sum{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0;}
+  .sum .item{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--crit);border-radius:10px;padding:14px 16px;}
+  .sum .item.warn{border-left-color:var(--warn);}
+  .sum .item h4{margin:0 0 4px;font-size:15px;}
+  .sum .item p{margin:0;font-size:13px;color:var(--mut);}
+  .ev{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:18px 0;box-shadow:0 2px 10px rgba(15,61,46,.05);}
+  .ev figure{margin:0 0 14px;}
+  .ev img{width:100%;border:1px solid var(--line);border-radius:8px;display:block;}
+  .ev figcaption{font-size:12px;color:var(--mut);margin-top:6px;}
+  .tag{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.08em;}
+  .nums{background:var(--warm);border-radius:8px;padding:10px 16px;margin:12px 0;font-size:13.5px;}
+  .nums b{color:var(--green);}
+  .note{color:var(--mut);font-size:12.5px;}
+  .find{margin:10px 0;padding:10px 14px;border-radius:8px;background:#fbeeec;border:1px solid #f0cfc9;}
+  .find.warn{background:#fbf3e6;border-color:#eedcc0;}
+  .find.good{background:#eaf5ee;border-color:#cfe7d8;}
+  .find .h{font-weight:700;display:block;margin-bottom:2px;}
+  .prop{margin:10px 0;padding:10px 14px;border-radius:8px;background:#eef4f1;border:1px solid #d4e3db;}
+  .prop .h{font-weight:700;color:var(--green);display:block;margin-bottom:2px;}
+  table.data{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;}
+  table.data th,table.data td{border:1px solid var(--line);padding:7px 10px;text-align:left;}
+  table.data th{background:var(--green);color:#fff;font-weight:600;}
+  table.data tr:nth-child(even) td{background:#faf9f5;}
+  .hl{color:var(--crit);font-weight:700;}
+  .legend{font-size:12px;color:var(--mut);margin:8px 0 0;}
+  .pb{page-break-before:always;}
+  footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--mut);}
+  @media print{
+    body{background:#fff;font-size:12px;}
+    .wrap{max-width:none;padding:0 8mm;}
+    .cover{border-radius:0;margin-bottom:24px;padding:40px;}
+    .ev,.sum .item,.prop,.find,.gloss{box-shadow:none;break-inside:avoid;}
+    h2{break-after:avoid;}
+  }
+  @media (max-width:680px){.sum{grid-template-columns:1fr;}.gloss td.t{width:130px;}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <p class="kicker">アリガトサン ／ 提案前 現状報告</p>
+  <h1>テニスプラザ尼崎<br>HP現状診断レポート<span style="font-size:18px;font-weight:600;">（GA4実数・証跡版）</span></h1>
+  <div class="meta">
+    <div>データの出どころ：<b>Google Analytics 4（GA4＝サイトの訪問者を記録する無料ツール）</b>。実際の画面のスクショを証跡として全部添付しています。</div>
+    <div>見ている期間：<b>直近28日（2026-05-11〜06-07）</b>と<b>直近12か月（2025-06-08〜2026-06-08）</b></div>
+    <div>作成：<b>アリガトサン（中田）</b>／ 2026-06-08　｜　用途：6/15 MTG 冒頭の現状報告（投影・配布用）</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="plain">
+    <span class="h">💬 この資料の読み方</span><br>
+    難しい言葉が出てきますが、すぐ下に「やさしい意味」を並べた<b>ミニ辞典</b>を置いています。各章の最初にも「<b>ひとことで言うと</b>」で要点をかみ砕いています。専門用語には文中でも（カッコ書き）で補足を付けているので、知識ゼロでもそのまま読めます。
+  </div>
+
+  <!-- 用語ミニ辞典 -->
+  <div class="gloss">
+    <h3>📖 用語ミニ辞典 ― この資料に出てくる言葉</h3>
+    <table>
+      <tr><td class="t">セッション</td><td>サイトへの「訪問」1回ぶん。お店に1回入ってきたイメージ。</td></tr>
+      <tr><td class="t">ユーザー／アクティブユーザー</td><td>訪れた「人」の数。</td></tr>
+      <tr><td class="t">新規ユーザー</td><td>初めて来た人。</td></tr>
+      <tr><td class="t">チャネル <span class="en">channel</span></td><td>「どこから来たか」の入口の種類。下の5つが代表。</td></tr>
+      <tr><td class="t">└ Organic Search <span class="en">オーガニック検索</span></td><td>Googleなどで<b>検索して、広告ではない普通の検索結果</b>をクリックして来た訪問。</td></tr>
+      <tr><td class="t">└ Direct <span class="en">ダイレクト</span></td><td>URL直接入力・ブックマーク・QRなど、<b>入口が特定できない直接の来訪</b>。既存会員のスケジュール確認などが多い。</td></tr>
+      <tr><td class="t">└ Organic Social <span class="en">オーガニックソーシャル</span></td><td><b>Instagram等のSNS投稿から、広告ではなく自然に</b>来た訪問。＝普段の投稿を見て来てくれた人。</td></tr>
+      <tr><td class="t">└ Paid Social <span class="en">ペイドソーシャル</span></td><td><b>SNSに出した「お金を払う広告」</b>から来た訪問。誰かが広告費を出している印。</td></tr>
+      <tr><td class="t">└ Referral <span class="en">リファラル</span></td><td>他サイトに貼られたリンクから来た訪問。</td></tr>
+      <tr><td class="t">エンゲージメント率 <span class="en">ER</span></td><td>来た人のうち「<b>ちゃんと見てくれた人</b>」の割合（すぐ帰らなかった率）。高いほど良い。</td></tr>
+      <tr><td class="t">平均エンゲージメント時間／滞在</td><td>実際にページを見ていた時間。短い＝すぐ離脱。</td></tr>
+      <tr><td class="t">キーイベント／コンバージョン(CV)</td><td>「<b>成果</b>」。予約・問い合わせ・申込など、お店のゴールになる行動。これを設定して初めて成果が数えられる。</td></tr>
+      <tr><td class="t">リテンション／維持率</td><td>一度来た人が、また<b>戻ってくる割合</b>。低い＝1回きりで終わる。</td></tr>
+      <tr><td class="t">404エラー</td><td>「ページが見つかりません」の表示。<b>リンク切れ</b>。</td></tr>
+      <tr><td class="t">Search Console <span class="en">サーチコンソール</span></td><td>「<b>Google検索でどんな言葉で表示・クリックされたか</b>」を見る無料ツール。GA4は「来てから」、こちらは「検索の時点」を見る。</td></tr>
+      <tr><td class="t">utm <span class="en">ユーティーエム</span></td><td>リンクに付ける<b>目印タグ</b>。「どの投稿／広告から来たか」を見分けるための仕掛け。</td></tr>
+      <tr><td class="t">ボット <span class="en">bot</span></td><td>人間ではなくプログラムの自動アクセス。数字のノイズになる。</td></tr>
+      <tr><td class="t">指名検索／一般検索</td><td>「テニスプラザ尼崎」と<b>名前で探す人</b>／「尼崎 テニス」と<b>一般的な言葉で探す人</b>（＝新規開拓）。</td></tr>
+    </table>
+  </div>
+
+  <h2 class="pb">結論サマリー ― 実データで分かったこと</h2>
+  <div class="plain">
+    <span class="h">💬 ひとことで言うと</span><br>
+    テニプラHPは「<b>人はそこそこ来ている（月およそ1,062人）</b>のに、①<b>成果を測る計器が付いていない</b>＝予約や問い合わせが何件来たか分からない、②<b>一番強い武器であるSNSがHPに繋がっていない</b>」状態。<b>水道にたとえると、勢いのいい蛇口（SNS・検索）はあるのに、水を受けるバケツ（HP側の受け皿）に穴が空いている</b>イメージです。お金をかけなくても、計器を付けて導線を繋ぐだけで成果が見え始めます。
+  </div>
+  <div class="sum">
+    <div class="item"><h4><span class="badge b-crit">致命的</span> ① 成果(CV)の計測がゼロ</h4><p>予約・問い合わせ・電話・入会の「成果」が1件も記録されていない（全183ページでゼロ）。何が効いたか分からない状態。</p></div>
+    <div class="item"><h4><span class="badge b-crit">致命的</span> ② SNS→HPが月25訪問（全体の1.5%）</h4><p>フォロワー893・最大18.5万回再生のリールがあるのに、その勢いがHPにほぼ流れていない。</p></div>
+    <div class="item"><h4><span class="badge b-crit">致命的</span> ③ SNS広告にお金が出ているのに無駄打ち</h4><p>有料のSNS広告が動いている（12か月で292訪問）のに、滞在22秒・成果計測ゼロで効果が全く不明。</p></div>
+    <div class="item warn"><h4><span class="badge b-warn">重大</span> ④ 検索の中身を見る設定が未接続</h4><p>「どんな言葉で検索されているか」を見るツール(Search Console)がGA4と繋がっておらず、誰も見ていない。</p></div>
+    <div class="item warn"><h4><span class="badge b-warn">重大</span> ⑤ リンク切れ(404)が月275回</h4><p>「ページが見つかりません」が毎月275回。来てくれた人を取りこぼしている。</p></div>
+    <div class="item warn"><h4><span class="badge b-warn">重大</span> ⑥ 来訪の6〜7割が検索1本に偏り</h4><p>検索からの流入頼み。しかも「名前で探す既存客」か「新規開拓」かが（④未設定のため）分からない。</p></div>
+    <div class="item warn"><h4><span class="badge b-warn">重大</span> ⑦ 記録は2026年3月から</h4><p>1年を選んでも実質3か月半ぶんしかデータがない＝これまで数字で振り返れていなかった。</p></div>
+    <div class="item warn"><h4><span class="badge b-warn">重大</span> ⑧ SNSから来た人は11〜22秒で即離脱</h4><p>受け皿のページが用意されていない証拠。蛇口より先にバケツの穴をふさぐべき。</p></div>
+  </div>
+  <p class="legend">色の意味：<span class="badge b-crit">致命的</span> 施策以前の土台が欠けている　<span class="badge b-warn">重大</span> 早く直すと効果が大きい　<span class="badge b-good">良い兆し</span> 活かせる資産</p>
+
+  <!-- 1 -->
+  <h2 class="pb">1. 流入構造 ― どこから来ているか</h2>
+  <div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+  訪問の入口を分けて見ると、<b>大半が「検索」</b>から。SNS（普段の投稿）からはほとんど来ておらず、しかも<b>SNSから来た人はすぐ帰ってしまう</b>。＝SNSの受け皿が用意できていません。</div>
+  <div class="ev">
+    <figure>
+      <img src="assets/ga4/10_traffic_acquisition_12m.png" alt="トラフィック獲得 12か月">
+      <figcaption><span class="tag">証跡①</span> GA4「トラフィック獲得（どこから来たか・質つき）」直近12か月</figcaption>
+    </figure>
+    <div class="nums">
+      訪問数（12か月）：<b>Organic Search＝検索からの自然流入 4,305（62.3%／よく見た率75.8%・滞在1分04秒）</b>｜Direct＝直接 2,125（30.8%／42.7%・29秒）｜<span class="hl">Paid Social＝SNS広告 292（4.2%／46.6%・22秒）</span>｜<span class="hl">Organic Social＝SNS自然流入 173（2.5%／28.9%・11秒）</span>｜Referral＝他サイト経由 30｜合計 6,909。<b>「成果(CV)」はどの入口も0件</b>。
+    </div>
+    <div class="find good"><span class="h">良い兆し：検索からの流入は質が良い</span>検索で来た人は「よく見た率」75.8%・滞在1分04秒と、しっかり読んでくれている。＝検索対策（記事づくり等）が効く土壌がある。</div>
+    <div class="find"><span class="h">🔴 指摘：SNSから来た人はすぐ帰る</span>SNS自然流入の滞在は<span class="hl">わずか11秒</span>（全入口で最低）、SNS広告も22秒。＝SNSから来た人が着地するページ（受け皿）が用意されていない。</div>
+    <div class="prop"><span class="h">💡 こうする（提案）</span>SNSの露出を増やす前に、SNSから来た人の着地ページを整える。具体的には、体験予約・LINEへの行き先（ボタン）をスマホ最優先で作り、リンクに目印タグ（utm）を付けて「どの投稿から来たか」を見えるようにする。</div>
+  </div>
+
+  <!-- 2 -->
+  <h2 class="pb">2. 【致命的】成果(CV)の計測がゼロ</h2>
+  <div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+  「予約された」「問い合わせが来た」「電話がかかった」といった<b>“成果”を1件も数えていません</b>。＝今は、どの施策がお客さんを連れてきたのか<b>誰も判断できない</b>状態。レジのないお店で「今日いくら売れた？」が分からないのと同じです。</div>
+  <div class="ev">
+    <figure>
+      <img src="assets/ga4/05_events_28d.png" alt="イベント一覧 28日">
+      <figcaption><span class="tag">証跡②</span> GA4「記録されている行動の一覧」― 自動で取れる7種だけ（成果は未設定）</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/ga4/04_pages_28d.png" alt="ページ別 キーイベント0.00">
+      <figcaption><span class="tag">証跡③</span> GA4「ページ別」― 右端「キーイベント(=成果)」が<b>全ページ 0.00</b></figcaption>
+    </figure>
+    <div class="nums">
+      記録されているのは「ページが見られた」「スクロールした」などの<b>自動で取れる7種だけ</b>。体験予約・問い合わせ・電話タップ・入会申込といった<b>“成果”が1つも設定されていない</b>。12か月の成果レポートも「データがありません」。
+    </div>
+    <div class="find"><span class="h">🔴 指摘：成果を1件も測れていない（施策以前の問題）</span>どの入口が予約や問い合わせに繋がったか判断できず、改善も、費用対効果の説明（社内承認）もできない。MEO業者（月5,000円）が付いていてもこの状態。</div>
+    <div class="prop"><span class="h">💡 こうする（提案・最優先・お金ほぼ不要）</span>次の行動を「成果(CV)」として設定する：①体験予約完了 ②問い合わせ送信 ③電話番号タップ ④入会フォーム到達 ⑤LINE登録クリック ⑥資料ダウンロード。これだけで「何件成果が出たか」が見える状態になります（＝レジを付けるイメージ）。</div>
+  </div>
+
+  <!-- 3 -->
+  <h2 class="pb">3. 【致命的】SNSがHPに繋がっていない ＆ 広告の無駄打ち</h2>
+  <div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+  Instagramのフォロワー893人・最大18.5万回再生のリールという<b>強い武器があるのに、その勢いがHPに月25回しか流れていません</b>。さらに<b>誰かがSNS広告にお金を払っている</b>のに、来た人は22秒で帰る＝お金がムダになっています。</div>
+  <div class="ev">
+    <figure>
+      <img src="assets/ga4/02_snapshot_28d.png" alt="スナップショット 28日 チャネル">
+      <figcaption><span class="tag">証跡④</span> GA4「全体サマリー」直近28日 ― SNS自然流入(Organic Social)はわずか25</figcaption>
+    </figure>
+    <div class="nums">
+      28日の訪問：検索 1,247｜直接 357｜<span class="hl">SNS自然流入 25（全体の1.5%）</span>｜他サイト経由 10。<br>
+      12か月では<b>SNS広告(Paid Social) 292</b>が動いている＝<b>誰かが既にSNS広告にお金を払っている</b>（証跡①）。
+    </div>
+    <div class="find"><span class="h">🔴 指摘①：一番強い武器がHPに繋がっていない</span>フォロワー893・最大18.5万再生の到達が、HPに月25回しか流れていない。Instagramのプロフィール欄に行き先（HP/予約/LINEへのリンク）が無い、または機能していない疑いが濃い。</div>
+    <div class="find"><span class="h">🔴 指摘②：広告費が無駄打ち</span>SNS広告にお金が出ているのに、来た人は滞在22秒＋成果計測ゼロ。誰が・いくらで回しているか（MEO業者？別？近江さん？）をMTGで要確認。効果が全く不明。</div>
+    <div class="prop"><span class="h">💡 こうする（提案）</span>①Instagramのプロフィール欄の行き先を、予約LP／LINEに集約 ②投稿・リールの締めを「プロフィールから予約」に統一 ③目印タグ(utm)で流入を可視化 ④<b>今ムダになっている広告費を、計測付きの運用に振り替える</b>（払っているお金を成果につなぐ）。</div>
+  </div>
+
+  <!-- 4 -->
+  <h2 class="pb">4. 【重大】検索の中身を見る設定(Search Console)が未接続</h2>
+  <div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+  「お客さんが<b>どんな言葉で検索して来たか</b>」を見る無料ツール（Search Console）が、GA4と繋がっていません。＝検索が一番の入口なのに、その中身を<b>誰も見ていない</b>状態です。</div>
+  <div class="ev">
+    <figure>
+      <img src="assets/ga4/12_searchconsole_unlinked.png" alt="Search Console 未連携">
+      <figcaption><span class="tag">証跡⑤</span> GA4 設定画面「Search Consoleのリンク」― <b>「リンクはまだありません」</b></figcaption>
+    </figure>
+    <div class="nums">GA4 と Search Console（検索の言葉・掲載順位を見るツール）が<b>未接続</b>。どんな検索語で表示・クリックされたかをGA4側で一切見られない。</div>
+    <div class="find"><span class="h">🔴 指摘：計測の土台が二重に欠けている</span>成果(CV)が測れない（第2章）うえに、検索の中身も見られない。流入の6〜7割を占める検索が、「名前で探す既存客（指名検索）」なのか「新規開拓（一般検索）」なのかすら分からない。</div>
+    <div class="prop"><span class="h">💡 こうする（提案）</span>Search Consoleを接続（成果計測と並ぶ最優先・お金不要）。接続後、「尼崎 テニス」など新規開拓の言葉で取れているかを確認し、弱ければ地域に強い記事づくりで開拓する。<span class="note">※まずSearch Console自体が登録済みかを確認。未登録なら登録から。</span></div>
+  </div>
+
+  <!-- 5 -->
+  <h2 class="pb">5. ページ別の見られ方と リンク切れ(404)</h2>
+  <div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+  <b>ジュニア・一般スクール・入会のページはじっくり読まれている</b>＝興味が濃い人がいる。でもそこに「予約・相談ボタン」が弱く、もったいない。さらに<b>リンク切れ(404)が月275回</b>も起きています。</div>
+  <div class="ev">
+    <figure>
+      <img src="assets/ga4/03_traffic_overview_28d.png" alt="トラフィック概要 28日 ページ・地域">
+      <figcaption><span class="tag">証跡⑥</span> GA4「概要」直近28日（人気ページ・地域・言語・行動）</figcaption>
+    </figure>
+    <table class="data">
+      <tr><th>ページ</th><th>表示(28日)</th><th>滞在時間</th><th>読み取り</th></tr>
+      <tr><td>/（トップ）</td><td>1,644</td><td>25秒</td><td>入口だが滞在は浅い</td></tr>
+      <tr><td>ジュニアスクール</td><td>190</td><td class="hl">1分47秒</td><td>親がじっくり検討</td></tr>
+      <tr><td>一般スクール</td><td>427</td><td>1分22秒</td><td>検討が濃い・滞在長い</td></tr>
+      <tr><td>入会</td><td>266</td><td>1分14秒</td><td>入りたい意欲層</td></tr>
+      <tr><td>レンタルコート</td><td>322</td><td>33秒</td><td>需要あり（2番目に人気）</td></tr>
+      <tr><td><span class="hl">ページが見つかりません(404)</span></td><td><span class="hl">275</span></td><td>—</td><td>リンク切れが多発</td></tr>
+    </table>
+    <div class="find warn"><span class="h">🔴 指摘①：興味の濃いページに予約ボタンが無い</span>ジュニア(1分47秒)・一般(1分22秒)・入会(1分14秒)はしっかり読まれているのに、体験予約やLINEへの導線が弱く、取りこぼしている。</div>
+    <div class="find warn"><span class="h">🔴 指摘②：リンク切れ(404)が月275回（年1,061回）</span>古いリンク・URL変更などで、来てくれた人をエラーページに飛ばして失っている。検索の評価も下がる。</div>
+    <div class="prop"><span class="h">💡 こうする（提案）</span>①よく読まれるページ（特にジュニア＝親の「安心・送迎」訴求）に予約・相談ボタンを集中配置 ②レンタル利用者をスクール体験へ案内 ③リンク切れの発生元を特定して正しいページへ転送(リダイレクト)。</div>
+  </div>
+
+  <!-- 6 -->
+  <h2 class="pb">6. 来ている人の特徴 ― スマホ中心・地域</h2>
+  <div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+  訪問の<b>7割近くがスマホ</b>＝ページもボタンも「スマホで見やすい・押しやすい」が最優先。地域は大阪・尼崎・神戸が中心で、<b>西宮はまだごくわずか（＝伸びしろ）</b>。一度来た人がまた来る率は低めです。</div>
+  <div class="ev">
+    <figure>
+      <img src="assets/ga4/09_device_12m.png" alt="デバイスカテゴリ 12か月">
+      <figcaption><span class="tag">証跡⑦</span> GA4「使われている端末」直近12か月</figcaption>
+    </figure>
+    <div class="nums">
+      <b>スマホ(mobile) 68.2%（よく見た率69.1%）</b>｜パソコン(desktop) 30.7%（46.1%）｜タブレット 1.1%。スマホの人ほどよく見ている。
+    </div>
+    <div class="find good"><span class="h">読み取り：完全にスマホ中心</span>スマホの人がよく動く。パソコンは情報確認（会員・事務）で短時間。</div>
+    <figure style="margin-top:18px;">
+      <img src="assets/ga4/06_engagement_overview_28d.png" alt="エンゲージメント・地域・リテンション">
+      <figcaption><span class="tag">証跡⑧</span> GA4「来訪者と再訪の概要」直近28日（地域・リピート率など）</figcaption>
+    </figure>
+    <div class="nums">
+      地域（市区町村・28日）：Osaka 315 ＞ <b>Amagasaki 170</b> ＞ Kobe 130 ＞ <b>Nishinomiya（西宮）37</b>。初めての人の割合88.9%、再訪率は1週間後5.9%→5週間後0.7%。<br>
+      <span class="note">※12か月の国別でSingapore 636が突出＝ボット（自動アクセス）のノイズの疑い。数字は海外を除いて読むのが正解。</span>
+    </div>
+    <div class="find warn"><span class="h">🔴 指摘：西宮はまだ薄い／一度きりが多い</span>商圏は大阪・神戸まで広いが西宮はわずか37＝西宮再建フェーズの伸びしろ。ほとんどが初訪問でリピートが弱い（用事を済ませて帰る情報サイト型）。</div>
+    <div class="prop"><span class="h">💡 こうする（提案）</span>①ページ・ボタンはスマホ最優先で設計 ②LINE登録で「来訪→継続的なつながり」を作り、再訪に頼らない関係を持つ ③西宮はほぼ認知ゼロからの出発＝横展開の余地として位置づける。</div>
+  </div>
+
+  <!-- 7 -->
+  <h2 class="pb">7. 【重大】データの記録は2026年3月から</h2>
+  <div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+  「1年分」を選んでも、実際にデータがあるのは<b>3月ごろから＝約3か月半ぶんだけ</b>。つまり今まで誰も数字で振り返れていませんでした（記録の仕組みが最近まで無かった）。</div>
+  <div class="ev">
+    <figure>
+      <img src="assets/ga4/08_snapshot_12m.png" alt="スナップショット 12か月 トレンド">
+      <figcaption><span class="tag">証跡⑨</span> GA4「全体サマリー」直近12か月 ― グラフが3月に急に立ち上がる</figcaption>
+    </figure>
+    <div class="nums">訪問者の推移が<b>2026年2〜3月から急に立ち上がり</b>、それ以前はほぼゼロ。＝GA4の導入が最近（2〜3月ごろ）の可能性が高い。</div>
+    <div class="find warn"><span class="h">🔴 指摘：1年分の比較ができない</span>季節ごとの増減や去年との比較が今はできない。これまで判断材料となる数字が無かったということ。</div>
+    <div class="prop"><span class="h">💡 こうする（提案）</span>「正しく記録して積み上げる」こと自体に価値がある。成果計測＋Search Console接続＋月次レポートで、今後は数字で判断できる状態にする。</div>
+  </div>
+
+  <!-- 8 -->
+  <h2 class="pb">8. 隠れた重要行動（資料ダウンロード）</h2>
+  <div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+  申込書や料金表らしき<b>資料のダウンロードが12か月で2,446回</b>も起きている＝興味の強い行動。でも「何のファイルか」を記録していないので活かせていません。</div>
+  <div class="ev">
+    <figure>
+      <img src="assets/ga4/11_filedownload_12m.png" alt="file_download 詳細 12か月">
+      <figcaption><span class="tag">証跡⑩</span> GA4「ファイルのダウンロード」詳細 直近12か月</figcaption>
+    </figure>
+    <div class="nums">資料DL：<b>12か月 2,446回 / 670人</b>（＝見込みの高い行動）。だが<b>ファイル名が記録されておらず「データがありません」</b>＝何が落とされたか見られない。</div>
+    <div class="find warn"><span class="h">🔴 指摘：見込み客のサインを取りこぼし</span>申込書・料金表・スケジュール等のDLが月およそ200回あるのに中身が分からず、成果にも繋がっていない。記録設定が浅い証拠。</div>
+    <div class="prop"><span class="h">💡 こうする（提案）</span>ファイル名を記録する設定を入れ、ダウンロード＝「見込み客のサイン」として成果(CV)に数え、LINE登録などへ案内する。電話タップらしき行動(クリック)も同様に中身を分解する。</div>
+  </div>
+
+  <!-- 9 -->
+  <h2 class="pb">9. まとめ：問題 → どうするか 一覧</h2>
+  <table class="data">
+    <tr><th>テーマ</th><th>今の状態（証跡）</th><th>どうするか（優先度）</th></tr>
+    <tr><td>成果の計測</td><td>成果(CV)が全部0件（証跡②③）</td><td><b>成果の計測を設定（★最優先・お金ほぼ不要）</b></td></tr>
+    <tr><td>検索の可視化</td><td>Search Console未接続（証跡⑤）</td><td><b>接続して検索語を分析（★最優先・お金不要）</b></td></tr>
+    <tr><td>SNS導線</td><td>SNS流入25/月・滞在11秒（証跡①④）</td><td>プロフィール行き先を集約＋目印タグ＋ボタン統一（★高）</td></tr>
+    <tr><td>SNS広告</td><td>広告292・22秒・効果不明（証跡①）</td><td>出稿主を確認→計測付き運用へ振替（高）</td></tr>
+    <tr><td>リンク切れ</td><td>404が年1,061回（証跡⑥）</td><td>発生元を特定して正しいページへ転送（高）</td></tr>
+    <tr><td>入会導線</td><td>濃いページに予約ボタンが弱い（証跡⑥）</td><td>予約・相談ボタンを集中配置＋成果計測（高）</td></tr>
+    <tr><td>端末</td><td>スマホ68%（証跡⑦）</td><td>スマホ最優先でページ設計（中）</td></tr>
+    <tr><td>隠れ成果</td><td>資料DL 2,446回・中身不明（証跡⑩）</td><td>ファイル名を記録→成果に数える（中）</td></tr>
+    <tr><td>商圏</td><td>西宮わずか37（証跡⑧）</td><td>西宮展開フェーズの根拠（参考）</td></tr>
+  </table>
+
+  <h3>最初の一手（まず受け皿＝バケツの穴をふさぐ・お金ほぼ不要）</h3>
+  <p>① 成果(CV)の計測を設定　② Search Consoleを接続　③ SNS→HPの行き先を整える（プロフィール＋目印タグ）。<br>
+  この3つは大きな出費なしで「<b>成果が見える・検索が見える・SNSが繋がる</b>」状態を作ります。ここを整えてから、SNS露出・記事・広告という蛇口を太くするのが正しい順番です。</p>
+
+  <footer>
+    本レポートの数値はGA4管理画面の実画面（添付スクショ＝証跡①〜⑩）からの目視抽出。期間：直近28日（2026-05-11〜06-07）／直近12か月（2025-06-08〜2026-06-08）。実際のデータ蓄積は2026年3月〜のため、季節比較は今後の積み上げ待ち。<br>
+    作成：アリガトサン（中田）／関連資料：KPI戦略設計書・SNS/コンテンツ運用設計・15日提案3プラン（同フォルダ）。
+  </footer>
+
+</div>
+</body>
+</html>

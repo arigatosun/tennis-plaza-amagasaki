@@ -35,11 +35,20 @@ export const metadata: Metadata = {
 };
 
 export default function RecruitPage() {
+  // Google しごと検索の必須項目（掲載日・掲載終了日）を動的に付与する。
+  // 固定値だと陳腐化するため、ビルド/レンダリング時の日付を基準に自動更新する。
+  const now = new Date();
+  const datePosted = now.toISOString().slice(0, 10);
+  const validThrough = new Date(now.getTime() + 120 * 24 * 60 * 60 * 1000)
+    .toISOString()
+    .slice(0, 10);
+  const jobPostingLd = { ...jobPostingJsonLd, datePosted, validThrough };
+
   return (
     <VariantProvider>
       <script
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jobPostingJsonLd)
+          __html: JSON.stringify(jobPostingLd)
         }}
         type="application/ld+json"
       />

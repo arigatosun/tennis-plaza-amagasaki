@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>テニスプラザ尼崎｜KPI戦略設計計画（やさしい版）</title>
+<style>
+:root{--green:#0F3D2E;--green2:#264831;--gold:#E8A100;--crit:#C0392B;--warn:#C77C18;--good:#1E8449;--ink:#1f2a26;--mut:#5d6b64;--line:#e3e1d8;--warm:#F7F6F2;--card:#fff;}
+*{box-sizing:border-box;} html{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;color:var(--ink);background:var(--warm);line-height:1.85;font-size:15px;}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px 80px;}
+.cover{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;padding:56px 48px;border-radius:0 0 18px 18px;margin-bottom:30px;}
+.cover .kicker{font-size:13px;letter-spacing:.18em;color:var(--gold);font-weight:700;margin:0 0 12px;}
+.cover h1{font-size:30px;line-height:1.4;margin:0 0 16px;font-weight:800;}
+.cover .meta{font-size:13.5px;color:#dfe9e3;line-height:1.9;}
+h2{font-size:22px;color:var(--green);border-left:6px solid var(--gold);padding:4px 0 4px 14px;margin:48px 0 8px;}
+h3{font-size:16px;color:var(--green2);margin:24px 0 6px;}
+.plain{background:#edf5f0;border-left:5px solid var(--green);padding:10px 16px;border-radius:6px;margin:8px 0 16px;font-size:14.5px;}
+.plain .h{font-weight:700;color:var(--green);}
+.gloss{background:#fffdf5;border:1px solid #ecdfb6;border-radius:12px;padding:8px 20px 16px;margin:18px 0;}
+.gloss h3{color:var(--gold);} .gloss table{width:100%;border-collapse:collapse;font-size:13.5px;}
+.gloss td{border-bottom:1px dashed #e7ddc4;padding:7px;vertical-align:top;} .gloss td.t{width:200px;font-weight:700;color:var(--green2);}
+table.data{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;}
+table.data th,table.data td{border:1px solid var(--line);padding:7px 10px;text-align:left;} table.data th{background:var(--green);color:#fff;}
+table.data tr:nth-child(even) td{background:#faf9f5;}
+.find{margin:10px 0;padding:10px 14px;border-radius:8px;background:#fbeeec;border:1px solid #f0cfc9;}
+.prop{margin:10px 0;padding:10px 14px;border-radius:8px;background:#eef4f1;border:1px solid #d4e3db;}
+.prop .h{font-weight:700;color:var(--green);}
+.hl{color:var(--crit);font-weight:700;}
+.pb{page-break-before:always;}
+@media print{body{background:#fff;font-size:12px;}.cover{border-radius:0;}.find,.prop,.gloss{break-inside:avoid;}}
+</style>
+</head>
+<body>
+
+<div class="cover">
+<p class="kicker">TENNIS PLAZA AMAGASAKI ｜ ARIGATOSAN 戦略資料</p>
+<h1>テニスプラザ尼崎<br>KPI戦略設計計画 ＜やさしい版＞</h1>
+<p class="meta">
+読む人：中田（マーケ初心者でもOK）／作成：アリガトサン戦略チーム<br>
+North Star（最終ゴール）＝90日で「社員1人＋バイト2人」を採用し、近江さん（まやのオーナー）を現場から手離れさせる<br>
+社内提出：2026-06-09（火）　／　山下社長・近江さんとのMTG：2026-06-15（月）10:00
+</p>
+</div>
+
+<div class="wrap">
+
+<h2>この資料の読み方</h2>
+<div class="plain">
+<span class="h">3つだけ覚えてください。</span><br>
+① <b>蛇口（じゃぐち）</b>＝お客さん・応募者を呼び込む入口（SNSや検索）。テニスプラザ尼崎はここが強い。<br>
+② <b>バケツ</b>＝呼び込んだ人を受け止める場所（ホームページ＝HP、求人ページ、LINEなど）。ここに「穴」が空いている。<br>
+③ <b>レジ</b>＝お客さんが「申し込んだ・問い合わせた」を数える仕組み（＝計測）。今これが付いていないので、何件取れているか分からない。
+</div>
+<div class="plain">
+<span class="h">読み方のルール</span><br>
+・各章のあたまに「💬 ひとことで言うと」があります。まずそこだけ読めば全体がつかめます。<br>
+・むずかしいカタカナ語には、その場で（カッコ書きの意味）を付けています。<br>
+・数字のうち、まだ確定していない「えいやで置いた推測値」には <span class="hl">【仮置き】</span> と書いています。MTGで本物の数字に差し替えます。
+</div>
+
+<div class="gloss">
+<h3>📖 用語ミニ辞典（このページに戻ってこればOK）</h3>
+<table>
+<tr><td class="t">セッション（訪問）</td><td>誰かがサイトに1回来た、の単位。「お店に1回入ってきた」と同じ感覚。同じ人が2回来れば2セッション。</td></tr>
+<tr><td class="t">チャネル</td><td>お客さんが「どの入口から来たか」の種類。検索から／SNSから／直接URLから、など。お店でいう「正面入口・裏口・紹介」の違い。</td></tr>
+<tr><td class="t">Organic Search<br>（オーガニック検索＝自然検索）</td><td>Googleなどで検索して、広告ではなく普通の検索結果から来た人。「お金を払わずに検索で見つけてもらえた」入口。テニスプラザ尼崎の主力（76%）。</td></tr>
+<tr><td class="t">Organic Social<br>（SNS自然流入）</td><td>InstagramやXなどSNSの投稿を見て、広告ではなく自然に来てくれた人。「投稿を見て遊びに来た」入口。</td></tr>
+<tr><td class="t">Paid Social<br>（ペイドソーシャル＝SNS広告）</td><td>お金を払って出すSNSの広告から来た人。今これが動いているが、<b>誰がお金を払って出しているか不明</b>という謎の状態。</td></tr>
+<tr><td class="t">Direct（ダイレクト＝直接）</td><td>URLを直接入力・ブックマーク・QRなどで、入口を経由せず来た人。「お店の名前を知っていて直接来た常連さん」に近い。</td></tr>
+<tr><td class="t">エンゲージメント率</td><td>来た人が「ちゃんと中身を見てくれた割合」。高いほど「来た人が満足して読んでいる」。テニスプラザ尼崎は76%＝かなり良い。</td></tr>
+<tr><td class="t">コンバージョン（CV＝成果）</td><td>サイトに来た人が「予約した・問い合わせた・電話した・入会した」など、こちらが欲しい行動をしてくれること。＝<b>レジで会計が成立した瞬間</b>。今これを数えていない。</td></tr>
+<tr><td class="t">Search Console<br>（サーチコンソール）</td><td>Googleが無料でくれる「どんな検索ワードで来たか」が分かる健康診断ツール。今これがサイトとつながっていない（未連携）。</td></tr>
+<tr><td class="t">utm（ユーティーエム）</td><td>リンクの末尾に付ける「目印タグ」。これを付けると「このInstagram投稿から何人来た」が分かる。＝荷物に貼る追跡シール。</td></tr>
+<tr><td class="t">リテンション<br>（＝定着・継続）</td><td>一度入った会員が「やめずに続けてくれること」。退会の反対。採用でも「採った人が辞めずに残る」の意味で使う。</td></tr>
+<tr><td class="t">404（よんまるよん）エラー</td><td>「そのページは見つかりません」という行き止まり画面。月275回も発生＝<b>来た人が壁にぶつかって帰っている</b>状態。</td></tr>
+</table>
+</div>
+
+<h2 class="pb">① 現状ベースライン（今の実数）</h2>
+<div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+「人はちゃんと来ているし、来た人の満足度も高い。でも“何件申し込まれたか”を数える仕組みがゼロで、せっかくの入口（SNS）がHPにつながっていない」。蛇口は強い、でもバケツに穴。</div>
+
+<table class="data">
+<tr><th>項目</th><th>実数（確定）</th><th>やさしい意味</th></tr>
+<tr><td>月間の訪問</td><td>約1,650セッション/月</td><td>毎月1,650回サイトに人が来ている。少なくはない。</td></tr>
+<tr><td>入口の内訳</td><td>検索76% / 直接22% / SNS自然1.5%</td><td>ほとんどが「検索」で見つけて来てくれている。SNSからの自然流入は月25訪問だけ＝伸びしろの宝庫。</td></tr>
+<tr><td>SNS広告（Paid Social）</td><td>12か月で292訪問・滞在22秒</td><td>誰かがお金を払って広告を出しているが、<span class="hl">出稿主も費用も不明</span>。滞在22秒は短い＝来てもすぐ帰っている。</td></tr>
+<tr><td>スマホ比率</td><td>68%</td><td>3人に2人はスマホで見ている。スマホで見やすいことが最優先。</td></tr>
+<tr><td>来た人の質（エンゲージメント率）</td><td>検索流入76%</td><td>来た人の質は高い。中身はちゃんと読まれている。</td></tr>
+<tr><td class="hl">成果（CV）の計測</td><td class="hl">ゼロ・未設定</td><td><span class="hl">何件予約・問い合わせ・入会が出たか、まったく数えていない。＝レジが付いていない。</span></td></tr>
+<tr><td>Search Console</td><td>未連携</td><td>「どんなワードで来たか」が見えない。健康診断を受けていない状態。</td></tr>
+<tr><td class="hl">404エラー</td><td class="hl">月275回</td><td>月に275回も「ページが見つかりません」の行き止まりが発生。来た人を取りこぼしている。</td></tr>
+<tr><td>Instagram</td><td>フォロワー893・リール最大18.5万再生</td><td>大きな資産。だが見た人がHPに来ていない（つながっていない）。</td></tr>
+<tr><td>X（@tennipla）</td><td>放置</td><td>使われていない。</td></tr>
+<tr><td>公式LINE</td><td>未開設</td><td>受け皿（バケツ）がそもそも無い。</td></tr>
+<tr><td>MEO（アレッジ社）</td><td>月5,000円</td><td>地図検索対策に払っているが、費用対効果は不明。</td></tr>
+</table>
+
+<div class="find"><b>結論：</b>「集客力が無い」のではなく「成果を数える仕組みと、入口から受け皿への導線が無い」。直すべきは集客より先に<b>計測と受け皿</b>。</div>
+
+<h2 class="pb">② North Star（最終ゴール）</h2>
+<div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+「90日で、社員1人とバイト2人を採用しきる。そうすれば近江さん（現場をひとりで回しているオーナー）が決まった現場シフトから外れられる。そこが第一目標」。</div>
+
+<div class="prop">
+<span class="h">North Star（北極星＝迷ったらここに立ち返る唯一のゴール）</span><br>
+<b>90日で「社員1＋バイト2」を採用完了し、近江さんが現場の固定シフトから外れる。</b>
+</div>
+
+<h3>なぜこの順番か（採用 → 集客 → 西宮）</h3>
+<table class="data">
+<tr><th>順番</th><th>やること</th><th>理由（やさしく）</th></tr>
+<tr><td>1番目</td><td>採用（社員1＋バイト2）</td><td>まず人を増やさないと、近江さんが現場に縛られたまま。人が増えて初めて手が空く。</td></tr>
+<tr><td>2番目</td><td>集客（生徒を増やす）</td><td>近江さんの手が空けば、集客に頭を使える。先に集客しても回す人がいない。</td></tr>
+<tr><td>3番目</td><td>西宮テニスクラブ再建</td><td>尼崎が安定して初めて、次の大きな再建に着手できる。</td></tr>
+</table>
+<div class="find"><b>大事：</b>この順番は「同時にやれば速い」ものではなく<b>順次必須</b>（前が終わらないと次が始まらない）。だから採用を最速で片付ける。</div>
+
+<h2 class="pb">③【Phase 0】計測基盤＝「レジを付ける」</h2>
+<div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+「いちばん最初にやるのは、広告でも求人でもなく“数える仕組み”を付けること。今はお店にレジが無くて、何個売れたか分からないまま営業している状態。だからまずレジ（計測）を付ける」。これが全ての前提。</div>
+
+<div class="find">
+<b>今の問題：</b>成果（CV）の計測が<span class="hl">ゼロ</span>。Search Console（検索ワードの健康診断）も未連携。これでは「広告にいくら使えば何件取れる」が一生分からない＝お金の使い方を決められない。
+</div>
+
+<h3>Phase 0でやること（受け皿に穴を空けないための土台）</h3>
+<table class="data">
+<tr><th>やること</th><th>やさしい意味（たとえ）</th></tr>
+<tr><td>① CVキーイベント6種の設定<br>（体験予約完了／問い合わせ送信／電話タップ tel:／入会フォーム到達／LINE登録クリック／資料ダウンロード）</td><td>「どの行動を“成果”として数えるか」をレジに登録する。6種類のボタンを押された回数を数えられるようにする。</td></tr>
+<tr><td>② Search Console 連携</td><td>Googleの無料健康診断ツールをサイトにつなぐ。「どんなワードで来ているか」が見えるようになる。</td></tr>
+<tr><td>③ utm（追跡シール）の付与</td><td>Instagramなどのリンクに目印を付け、「どの投稿から何人来たか」を分かるようにする。</td></tr>
+<tr><td>④ 採用管理シート</td><td>応募者を一覧で管理する名簿。誰がどこまで進んだか（応募→面談→内定）を1枚で見る。</td></tr>
+<tr><td>⑤ KPIダッシュボード</td><td>大事な数字（応募数・成果数など）を1画面でいつでも見られる計器パネル。</td></tr>
+<tr><td>⑥ 404 → 301 の修正</td><td>月275回の行き止まり（404）を、正しいページへ自動転送（301）して取りこぼしを止める。＝壁に扉を付ける。</td></tr>
+</table>
+
+<div class="prop"><span class="h">順序の鉄則（永吉フレーム：蛇口とバケツ）</span><br>
+媒体・広告＝<b>蛇口（水を出す）</b>。ブランド・LP（応募の受け皿ページ）・求人票・面談導線＝<b>バケツ</b>。<br>
+<b>バケツの穴を先に塞ぐ。</b>穴の空いたバケツに水（広告費）を注いでも全部こぼれる。だから順番は必ず：<br>
+<b>計測（レジ）→ ブランド確定 → 受け皿（求人票・LP・LINE）→ 流入（蛇口を開ける）</b>。</div>
+
+<h2 class="pb">④ 採用の逆算（応募は何件必要か）</h2>
+<div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+「3人採るには、面接や面談で人が減っていくぶんを見越して、最初に“応募50件”を集める必要がある。ゴールから逆算すると、入口に何人呼べばいいかが見える」。</div>
+
+<div class="find"><b>注意：</b>下の歩留まり（次の段階に進む割合）は <span class="hl">【仮置き】</span>。実際の採用が進めば本物の数字に差し替えます。安全係数2.5＝「読みより厳しめに2.5倍多めに集める」安全マージン。</div>
+
+<table class="data">
+<tr><th>段階</th><th>必要数（90日）</th><th>次に進む割合【仮置き】</th><th>やさしい意味</th></tr>
+<tr><td>LP到達（求人ページに来る）</td><td>650人</td><td>―</td><td>まず求人ページに650人来てもらう。</td></tr>
+<tr><td>応募</td><td>50件</td><td>LP→応募 8%</td><td>650人のうち約8%、50件が実際に応募。</td></tr>
+<tr><td>カジュアル面談</td><td>22件</td><td>応募→面談 60%</td><td>応募者の6割と気軽な面談を実施。</td></tr>
+<tr><td>最終面接</td><td>9件</td><td>面談→最終 50%</td><td>面談者の半分が最終面接へ。</td></tr>
+<tr><td>内定</td><td>5件</td><td>最終→内定 70%</td><td>最終面接者の7割に内定を出す。</td></tr>
+<tr><td class="hl">承諾（採用決定）</td><td class="hl">3人</td><td>内定→承諾 80%</td><td>内定の8割が承諾＝<b>社員1＋バイト2が成立</b>。</td></tr>
+</table>
+<div class="prop"><span class="h">読み方</span><br>「3人ほしい」→ 内定5 → 最終9 → 面談22 → <b>応募50</b> → 求人ページに<b>650人</b>呼ぶ。<br>つまり最終ゴールは「求人ページに90日で650人」を集めること。次の章でその650人をどこから連れてくるかを決める。</div>
+
+<h2 class="pb">⑤ どこから何人（チャネル配分）</h2>
+<div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+「650人をどの入口から連れてくるか。いちばん伸びしろが大きいのはInstagram。今ほぼHPに送れていないが、ここを約10倍にできれば主力になる」。</div>
+
+<table class="data">
+<tr><th>入口（チャネル）</th><th>配分</th><th>求人ページ到達の目安</th><th>やさしい意味</th></tr>
+<tr><td>Instagram</td><td>40%</td><td>約260人/90日</td><td>最大の武器。18.5万再生の資産あり。今は月25訪問しかHPに来ていない → <span class="hl">月260（約10倍）が伸び代</span>。</td></tr>
+<tr><td>採用媒体（doda等）</td><td>30%</td><td>約195人/90日</td><td>応募者を集める専門サービス。お金で蛇口を太くする。競合ではなく上流の補完として使う。</td></tr>
+<tr><td>HP・SEO（検索対策）</td><td>20%</td><td>約130人/90日</td><td>もともと強い検索の流れに「求人ページ」を載せる。既存の強みを活かす。</td></tr>
+<tr><td>チラシ</td><td>10%</td><td>約65人/90日</td><td>地域へ紙で配る。配布先の可否はMTGで確認。</td></tr>
+</table>
+<div class="find"><b>キモ：</b>Instagram（18.5万再生・フォロワー893）という<b>すでにある資産</b>を、HPの求人ページにつなぐだけで大きく伸びる。新しく何かを作るより「今ある蛇口を受け皿につなぐ」のが最短。</div>
+
+<h2 class="pb">⑥ 90日の流れ（週ごとの大枠）</h2>
+<div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+「最初の2週間でレジ（計測）と受け皿を作り、そのあとで初めて蛇口（広告・SNS）を開ける。土台ができる前に水を出さない」。</div>
+
+<table class="data">
+<tr><th>時期</th><th>やること</th><th>たとえ</th></tr>
+<tr><td>第1〜2週</td><td>Phase 0：計測6種・SC連携・utm・404修正・採用管理シート・ダッシュボード</td><td>レジを付け、バケツの穴を塞ぐ。</td></tr>
+<tr><td>第2〜3週</td><td>採用ブランド確定（どんな職場として見せるか）</td><td>看板を決める。</td></tr>
+<tr><td>第3〜4週</td><td>受け皿づくり：求人票・LP（応募ページ）・公式LINE開設</td><td>バケツを用意する。</td></tr>
+<tr><td>第4週〜</td><td>流入開始：Instagram運用・媒体出稿・チラシ → 応募を集める</td><td>蛇口を開ける。</td></tr>
+<tr><td>第5〜10週</td><td>応募対応・カジュアル面談・最終面接（数字を見ながら微調整）</td><td>来た水をバケツで受ける。</td></tr>
+<tr><td>第10〜13週</td><td>内定・承諾 → 社員1＋バイト2 確定／近江さん手離れ</td><td>ゴール到達。</td></tr>
+</table>
+<div class="find"><b>原則：</b>順序（計測→ブランド→受け皿→流入）は短縮しない。前が終わる前に次を始めると、結局やり直しになって遅くなる。</div>
+
+<h2 class="pb">⑦ MTG（6/15）で埋める数字</h2>
+<div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+「今“えやで置いている【仮置き】の数字”を、山下社長・近江さんとのMTGで本物に差し替える。ここが決まらないと予算も計画も確定できない」。</div>
+
+<table class="data">
+<tr><th>確認したい項目</th><th>なぜ必要か（やさしく）</th></tr>
+<tr><td>採用人数・期限</td><td>本当に「社員1＋バイト2」「90日」でいいか。ゴールの再確認。</td></tr>
+<tr><td>採用予算</td><td>媒体・広告にいくら使えるか。蛇口の太さが決まる。</td></tr>
+<tr><td>待遇条件（給与・勤務形態）</td><td>求人票に書く中身。これが無いと応募ページが作れない。</td></tr>
+<tr><td class="hl">SNS広告の出稿主・費用</td><td>今動いている謎のPaid Social（SNS広告）は誰が・いくら払っているのか。無駄なら止める。</td></tr>
+<tr><td>現スタッフ数</td><td>今何人で回しているか。採用後の体制を設計する前提。</td></tr>
+<tr><td>過去の採用経路</td><td>これまでどこから人を採ったか。効く入口のヒント。</td></tr>
+<tr><td>月謝単価</td><td>1人の生徒がいくらか。集客の価値（売上インパクト）を計算する材料。</td></tr>
+<tr><td>体験 → 入会率</td><td>体験に来た人の何割が入会するか。集客効率の基準値。</td></tr>
+<tr><td>退会率（リテンション）</td><td>会員がどれだけ続く／辞めるか。集客と同じくらい大事。</td></tr>
+<tr><td>チラシ配布先の可否</td><td>どこに配れるか（近隣施設・提携先など）。チャネル10%の前提。</td></tr>
+</table>
+<div class="prop"><span class="h">MTGの狙い</span><br>この10項目が埋まれば、<span class="hl">【仮置き】</span>が消えて「本物の数字に基づく計画」になる。MTGは“説明の場”ではなく“数字を確定させる場”。</div>
+
+<h2 class="pb">⑧ うまくいかない時の3択</h2>
+<div class="plain"><span class="h">💬 ひとことで言うと</span><br>
+「もし途中で“時間が足りない・予算が足りない”となったら、勝手に手を抜かず、必ずこの3つから社長に選んでもらう。何を犠牲にするかを正直に出す」。</div>
+
+<table class="data">
+<tr><th>選択肢</th><th>内容</th><th>犠牲になるもの</th></tr>
+<tr><td>[A] 品質維持＋納期延長<br><b>（推奨）</b></td><td>やることは削らず、期限を後ろに伸ばす。</td><td>スピード（少し遅くなる）。だが計画通りの質を守れる。</td></tr>
+<tr><td>[B] スコープ削減</td><td>やることを絞る。<b>Instagram＋媒体＋LINEの3つに集中</b>し、他は後回し。</td><td>チラシ・SEOなど一部の入口を一旦やらない。</td></tr>
+<tr><td>[C] 近道許容<br><b>（非推奨）</b></td><td>急いで手早く回す。</td><td><span class="hl">計測の精度や受け皿の作り込みが甘くなる。後でやり直しコスト。具体的な犠牲箇所はその都度明示する。</span></td></tr>
+</table>
+
+<h3>守る約束（法務・進め方のルール）</h3>
+<table class="data">
+<tr><th>ルール</th><th>やさしい意味</th></tr>
+<tr><td>候補者紹介の成功報酬には踏み込まない</td><td>「人を紹介してお金をもらう（職業紹介事業）」には手を出さない。法律の許可が要る領域なので避ける。</td></tr>
+<tr><td>AIスカウトは半自動（最終送信は人）</td><td>AIで効率化はするが、最後に送るボタンは必ず人が押す。誤送信・失礼を防ぐ。</td></tr>
+<tr><td>媒体は競合ではなく上流補完</td><td>doda等の採用媒体は敵ではなく、自社の入口を太くする味方として使う。</td></tr>
+</table>
+
+<div class="prop"><span class="h">この資料のまとめ（30秒）</span><br>
+① 人は来ている、質も高い。でも<b>レジ（計測）が無く、入口がHPにつながっていない</b>。<br>
+② だから順番は <b>計測 → ブランド → 受け皿 → 流入</b>。バケツの穴を先に塞ぐ。<br>
+③ 90日で<b>応募50件</b>を集め、<b>社員1＋バイト2</b>を採用 → <b>近江さん手離れ</b>がゴール。<br>
+④ <span class="hl">【仮置き】の数字は6/15のMTGで本物に差し替える。</span></div>
+
+</div>
+</body>
+</html>
