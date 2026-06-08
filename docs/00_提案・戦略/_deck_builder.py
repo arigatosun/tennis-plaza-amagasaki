@@ -262,7 +262,7 @@ tb(s,0.8,5.5,11.8,0.7,[{'t':'※これは私たちの分析からのご提言で
 
 # ============ 12. 全体ロードマップ ============
 s=slide(); title(s,'尼崎で型を作り、西宮へ。全体ロードマップ','方向性｜本日のスコープと将来')
-phases=[("PHASE 1","採用","社員1+バイト2を90日で"),("PHASE 1","近江 手離れ","現場から離れられる状態"),
+phases=[("PHASE 1","採用","社員1+バイト2を採用"),("PHASE 1","近江 手離れ","現場の比重を下げる"),
         ("PHASE 2","集客強化","取りこぼしを止め伸ばす"),("PHASE 3","西宮 再建","尼崎の型を横展開")]
 x0=0.7
 for i,(p,a,b) in enumerate(phases):
@@ -277,47 +277,85 @@ box(s,0.7,4.35,5.95,0.6,fill=GOLD,line=None)
 shp_text(box(s,0.7,4.35,5.95,0.6,fill=GOLD,line=None),[{'t':'◀ 本日ご提案するスコープ','size':12,'bold':True,'color':GREEN}])
 tb(s,0.8,5.4,11.8,0.9,[{'t':[('西宮再建は“3年後のゴール”として見据えますが、',INK,False),('本日決めるのは尼崎の第一歩（採用＋計測）だけ',GREEN,True),('です。まずここから。',INK,False)],'size':14}])
 
-# ============ 13. 採用の逆算 ============
-s=slide(); title(s,'社員1＋バイト2を採るための“逆算”','方向性｜採用の数値設計')
-fun=[("採用LP到達","650",GREEN2),("応募","50",GREEN),("カジュアル面談","22",GREEN),("最終面談","9",WARN),("内定・承諾","3",GOLD)]
-y=1.7; fullw=7.2
-for i,(lab,num,col) in enumerate(fun):
-    w=fullw*(1-i*0.16); x=0.8+(fullw-w)/2
-    bx=box(s,x,y,w,0.62,fill=col,line=None)
-    shp_text(bx,[{'t':[(lab+'　',WHITE,True),(num+'件',WHITE,True)],'size':13}])
-    y+=0.74
-tb(s,0.8,5.5,7.2,0.8,[{'t':'※歩留まりは業界相場の仮置き。実数で「逆算シート」が自動計算します。','size':10.5,'color':MUT}])
-# channels right
-ch=[("Instagram＋LINE","35%"),("無料求人エンジン(engage等)","30%"),("リファラル＋地域(ハロワ/ジモティ)","25%"),("チラシ/オフライン","10%")]
-tb(s,8.4,1.55,4.3,0.4,[{'t':'どこから集めるか（全て無料媒体）','size':12,'bold':True,'color':GREEN}])
-yy=2.05
-for lab,pct in ch:
-    bx=box(s,8.4,yy,4.3,0.72,fill=LGREEN,line=LINE)
-    shp_text(bx,[{'t':[(lab+'　',INK,True),(pct,GREEN,True)],'size':12}])
-    yy+=0.84
+# ============ 13. 採用ペルソナ（近江さん定義） ============
+s=slide(); title(s,'採りたいのは、こんなコーチ（近江さん定義）','方向性｜誰を採るか')
+shp_text(box(s,0.62,1.45,12.1,0.8,fill=LYEL,line=GOLD,line_w=1.2),[{'t':'「レッスンのコマをたくさん持って、長く現場に立ち続けてくれるコーチ」','size':16,'bold':True,'color':GREEN}],anchor=MSO_ANCHOR.MIDDLE)
+shp_text(box(s,0.62,2.45,5.9,2.0,fill=LGREEN,line=GREEN,line_w=1.3),[{'t':'◎ 採りたい','size':14,'bold':True,'color':GREEN,'space_after':4},
+  {'t':'・コマを安定して回す現場コーチ','size':12.5,'color':INK,'space_after':2,'align':PP_ALIGN.LEFT},
+  {'t':'・同じことを長く続けられる','size':12.5,'color':INK,'space_after':2,'align':PP_ALIGN.LEFT},
+  {'t':'・若くて元気・一定の給料と休みで満足','size':12.5,'color':INK,'align':PP_ALIGN.LEFT}],anchor=MSO_ANCHOR.MIDDLE)
+shp_text(box(s,6.82,2.45,5.9,2.0,fill=LRED,line=CRIT,line_w=1.3),[{'t':'✕ あえて求めない','size':14,'bold':True,'color':CRIT,'space_after':4},
+  {'t':'・「営業もできます」系の器用貧乏','size':12.5,'color':INK,'space_after':2,'align':PP_ALIGN.LEFT},
+  {'t':'・向上心が強すぎ、すぐ次を求める人','size':12.5,'color':INK,'space_after':2,'align':PP_ALIGN.LEFT},
+  {'t':'・ベテラン／昭和世代','size':12.5,'color':INK,'align':PP_ALIGN.LEFT}],anchor=MSO_ANCHOR.MIDDLE)
+types=[("① テニス一筋の若手","社員候補"),("② 社会人から戻った若手","社員候補"),("③ 副業・かけもち","バイト/委託")]
+for i,(t,sub) in enumerate(types):
+    bx=box(s,0.62+i*4.05,4.65,3.85,0.78,fill=CARD,line=LINE)
+    shp_text(bx,[{'t':[(t+'　',INK,True),(sub,GOLD,True)],'size':12.5}],anchor=MSO_ANCHOR.MIDDLE)
+tb(s,0.62,5.6,12.1,0.95,[
+  {'t':[('条件：',GREEN,True),('社員1人＝年収280〜300万・週2.5コマ〜 ／ バイト2人＝月4.5万(交通費込)・各4コマ ／ 平成生まれ・元気重視。',INK,False)],'size':12.5,'space_after':2},
+  {'t':'※近江さんの手書きメモ(2026-06-03)を整理。＝「私たちはちゃんと聞きました」を示す1枚。','size':11,'color':MUT}])
+
+# ============ 13b. KPI設計：採用逆算(中村式) ============
+s=slide(); title(s,'KPI設計：採用3名までを“数字”で逆算','方向性｜中村方式：何人集めれば何人採れるか')
+tb(s,0.62,1.45,12.1,0.6,[{'t':[('採用 ',INK,False),('←',GOLD,True),(' 面接通過率 ',INK,False),('←',GOLD,True),(' 応募(LP閲覧×CVR) ',INK,False),('←',GOLD,True),(' 各チャネル流入。',INK,False),('この逆算で「どこから何人」まで落とします。',GREEN,True)],'size':13}])
+chain=[("各チャネル流入 → LP閲覧","500",GREEN2,"CVR 10%"),("応募","50",GREEN,"面談化 44%"),("カジュアル面談","22",GREEN,"通過 50%"),("最終面接","9",WARN,"採用 33%"),("採用（社員1＋バイト2）","3",GOLD,"")]
+y=2.25; fullw=8.6
+for i,(lab,num,col,rate) in enumerate(chain):
+    w=fullw*(1-i*0.13)
+    bx=box(s,0.8,y,w,0.66,fill=col,line=None)
+    shp_text(bx,[{'t':[(lab+'　',WHITE,True),(num+('名' if i>0 else ''),WHITE,True)],'size':13}],anchor=MSO_ANCHOR.MIDDLE)
+    if rate: tb(s,0.8+w+0.18,y+0.08,3.4,0.5,[{'t':'▼ '+rate,'size':11,'bold':True,'color':MUT}])
+    y+=0.82
+tb(s,0.8,6.05,11.9,0.7,[{'t':'※CVR10%・各通過率は中村KPI＋業界相場の仮置き。実数を入れれば「逆算シート」が自動計算します。','size':11,'color':MUT}])
+
+# ============ 13c. どこから何人 ============
+s=slide(); title(s,'どこから、何人 連れてくるか','方向性｜チャネル別の具体数字（すべて無料媒体）')
+dd=[["チャネル（無料）","流入(LP閲覧)","応募","この数字の作り方"],
+ ["Instagram／リール＋公式LINE","175 人","18 人","リール約1.8万再生→プロフ→LP(遷移約1%)。最大の伸びしろ"],
+ ["無料求人エンジン(engage→Indeed/しごと検索)","150 人","15 人","1回登録で複数媒体へ自動掲載＋無料スカウト"],
+ ["リファラル＋地域(ハローワーク/ジモティー)","125 人","12 人","生徒・OB・体育会＋地域無料。テニス好きに直撃"],
+ ["チラシ／オフライン(高校・大学→QR)","50 人","5 人","Z世代・新卒枠。近江さんが配布"],
+ ["合計","500 人","50 人","→ 最終面接 9名 → 採用 3名"]]
+gt=s.shapes.add_table(len(dd),4,Inches(0.62),Inches(1.7),Inches(12.1),Inches(3.6)).table
+gt.columns[0].width=Inches(4.3);gt.columns[1].width=Inches(1.9);gt.columns[2].width=Inches(1.3);gt.columns[3].width=Inches(4.6)
+for ri,row in enumerate(dd):
+    gt.rows[ri].height=Inches(0.55)
+    for ci,val in enumerate(row):
+        cell=gt.cell(ri,ci);cell.margin_left=Pt(6);cell.margin_right=Pt(4);cell.margin_top=Pt(2);cell.margin_bottom=Pt(2);cell.vertical_anchor=MSO_ANCHOR.MIDDLE
+        cell.text_frame.word_wrap=True;p=cell.text_frame.paragraphs[0]
+        p.alignment=PP_ALIGN.CENTER if 1<=ci<=2 else PP_ALIGN.LEFT
+        r=p.add_run();r.text=val;r.font.name=FONT;_ea(r)
+        header=(ri==0);last=(ri==len(dd)-1)
+        r.font.size=Pt(12 if not header else 12.5);r.font.bold=header or last or ci==2
+        if header: r.font.color.rgb=WHITE;cell.fill.solid();cell.fill.fore_color.rgb=GREEN
+        elif last: r.font.color.rgb=(GREEN if ci<3 else INK);cell.fill.solid();cell.fill.fore_color.rgb=LGREEN
+        else:
+            r.font.color.rgb=(CRIT if ci==2 else INK);cell.fill.solid();cell.fill.fore_color.rgb=(WARM if ri%2 else WHITE)
+tb(s,0.62,5.55,12.1,0.95,[{'t':[('ペルソナ＝「テニス好き・長く続けたい」若手（社員）＋副業層（バイト）。',INK,True)],'size':11.5,'space_after':2},{'t':'数字は仮置き。実数（インスタ再生・HP流入・LINE友だち）を入れれば「逆算シート」が自動更新します。','size':11,'color':MUT}])
 
 # ============ 14. 媒体: 人材紹介を使わない ============
 s=slide(); title(s,'採用に“消える費用”は使いません','方向性｜採用媒体の方針')
 l=box(s,0.8,1.8,5.7,3.0,fill=LRED,line=CRIT,line_w=1.5)
 shp_text(l,[{'t':'人材紹介（doda/リクルート）','size':14,'bold':True,'color':CRIT,'space_after':4},
-   {'t':'170〜250万円','size':40,'bold':True,'color':CRIT,'space_after':2},
-   {'t':'社員1＋バイト2を採ると（成功報酬30-35%）','size':11,'color':MUT,'space_after':4},
+   {'t':'約90〜100万円','size':40,'bold':True,'color':CRIT,'space_after':2},
+   {'t':'社員1人あたり（年収280-300万の30-35%）','size':11,'color':MUT,'space_after':4},
    {'t':'✕ 採るたびに消える','size':12,'bold':True,'color':CRIT}],anchor=MSO_ANCHOR.MIDDLE)
 r=box(s,6.85,1.8,5.7,3.0,fill=LGREEN,line=GREEN,line_w=1.5)
 shp_text(r,[{'t':'私たちの設計（無料媒体）','size':14,'bold':True,'color':GREEN,'space_after':4},
    {'t':'ほぼ ¥0','size':40,'bold':True,'color':GREEN,'space_after':2},
    {'t':'engage一括配信／Googleしごと検索／リファラル／ハローワーク／ジモティー','size':10.5,'color':MUT,'space_after':4},
    {'t':'◎ 仕組みが御社に残る（唯一の有料補強＝スポキャリ¥55,000）','size':11,'bold':True,'color':GREEN}],anchor=MSO_ANCHOR.MIDDLE)
-tb(s,0.8,5.15,11.8,0.9,[{'t':[('この“使わずに済む170〜250万円”が、',INK,False),('そのまま制作・改善・仕組みづくりの原資',GOLD,True),('になります。',INK,False)],'size':15}])
+tb(s,0.8,5.15,11.8,0.9,[{'t':[('この“使わずに済む採用コスト”が、',INK,False),('そのまま制作・改善・仕組みづくりの原資',GOLD,True),('になります。',INK,False)],'size':15}])
 
 # ============ 15. セクション扉: ご提案 ============
 divider('SECTION 3','ご提案 ─ 3つのプラン','「どこまでやるか」を、御社が選べる形にしました。')
 
 # ============ 16. 3プラン全体像 ============
 s=slide(); title(s,'3つのプラン','ご提案｜全体像')
-plans=[("PLAN A","採用の入口","まず、人を採れる状態に","55万円","単発",GREEN2,None),
-       ("PLAN B","バケツの穴を塞ぐ","穴を塞ぎ、レジを置く","120万円","単発",GOLD,"推奨"),
-       ("PLAN C","数えて磨いて伴走","直すだけで終わらせない","160万円＋月15万","初期＋伴走",GREEN,"本命")]
+plans=[("PLAN A","採用の入口","まず、人を採れる状態に","40〜65万円","単発・目安",GREEN2,None),
+       ("PLAN B","バケツの穴を塞ぐ","穴を塞ぎ、レジを置く","90〜120万円","単発・目安",GOLD,"推奨"),
+       ("PLAN C","数えて磨いて伴走","直すだけで終わらせない","初期120〜160万＋月15万","初期＋伴走・目安",GREEN,"本命")]
 cw=3.9;x0=0.62
 for i,(p,nm,catch,price,term,col,badge) in enumerate(plans):
     x=x0+i*4.05
@@ -339,6 +377,8 @@ for i in range(3):
     nb=box(s,x,4.65,3.85,1.35,fill=(LYEL if i==1 else LGREEN if i==2 else WARM),line=LINE)
     shp_text(nb,[{'t':abc[0][i],'size':11,'bold':True,'color':INK,'space_after':3},{'t':notes[i],'size':10.5,'color':MUT}],anchor=MSO_ANCHOR.MIDDLE)
 
+tb(s,0.62,6.18,12.1,0.7,[{'t':'※金額は目安です。ご予算・承認フローに合わせて調整します。初回をオーナー承認不要の範囲で小さく始め、実績を見て伸ばす進め方も可能です。','size':11,'color':MUT}])
+
 # ============ 17. プランA ============
 def plan_detail(code,name,catch,price,term,col,badge,bullets,foot,foot_col=MUT):
     s=slide(); title(s,f'{code}：{name}',f'ご提案｜{catch}')
@@ -354,8 +394,8 @@ def plan_detail(code,name,catch,price,term,col,badge,bullets,foot,foot_col=MUT):
     fb=box(s,0.7,y+0.05,11.9,0.95,fill=LGREEN,line=GREEN,line_w=1.2)
     shp_text(fb,[{'t':foot,'size':13,'bold':True,'color':GREEN}],anchor=MSO_ANCHOR.MIDDLE)
     return s
-plan_detail("PLAN A","採用の入口","まず、人を採れる状態をつくる","55万円","単発",GREEN2,None,
-    [("採用ペルソナ設計（三浦さん像）",False),
+plan_detail("PLAN A","採用の入口","まず、人を採れる状態をつくる","40〜65万円","単発・目安",GREEN2,None,
+    [("採用ペルソナ設計（近江さん定義＝若く長く続く現場コーチ）",False),
      ("採用LPの磨き込み・本番稼働化（既存資産を活用）",False),
      ("Googleしごと検索の有効化（無料掲載）",False),
      ("Instagram採用導線・採用バナー・OGP",False),
@@ -363,7 +403,7 @@ plan_detail("PLAN A","採用の入口","まず、人を採れる状態をつく�
     "想定応募：30日で 10〜20件（しごと検索＋無料媒体の露出見込み・仮置き）／ まず小さく承認を通したい方へ")
 
 # ============ 18. プランB ============
-plan_detail("PLAN B","バケツの穴を塞ぐ","蛇口は強い。穴を塞ぎ、レジを置く","120万円","単発",GOLD,"推奨",
+plan_detail("PLAN B","バケツの穴を塞ぐ","蛇口は強い。穴を塞ぎ、レジを置く","90〜120万円","単発・目安",GOLD,"推奨",
     [("プランA の内容すべて",False),
      ("CV計測の実装＝「レジを置く」（予約/問合せ/電話/入会など主要6種）",True),
      ("Instagram→HP断絶の解消・有料広告の正体特定（UTM）",True),
@@ -377,7 +417,7 @@ plan_detail("PLAN B","バケツの穴を塞ぐ","蛇口は強い。穴を塞ぎ�
 s=slide(); title(s,'プランB は、何ヶ月で回収できるか','ご提案｜投資回収シミュレーション')
 box(s,0.62,1.5,12.1,0.7,fill=LGREEN,line=GREEN)
 shp_text(box(s,0.62,1.5,12.1,0.7,fill=LGREEN,line=GREEN),
-  [{'t':'投資120万円。入会1件の価値を約24万円【仮置き】とすると──','size':14,'bold':True,'color':GREEN}],anchor=MSO_ANCHOR.MIDDLE)
+  [{'t':'投資 約90〜120万円。入会1件の価値を約24万円【仮置き】とすると──','size':14,'bold':True,'color':GREEN}],anchor=MSO_ANCHOR.MIDDLE)
 cases=[("保守ケース","追加入会 月+1件","24万円/月","約5ヶ月で回収",GREEN2),
        ("標準ケース","追加入会 月+2件","48万円/月","約3ヶ月で回収",GREEN)]
 for i,(t,a,b,c,col) in enumerate(cases):
@@ -388,11 +428,11 @@ for i,(t,a,b,c,col) in enumerate(cases):
                  {'t':c,'size':20,'bold':True,'color':col}],anchor=MSO_ANCHOR.MIDDLE)
 box(s,0.8,4.65,11.85,0.95,fill=LYEL,line=GOLD,line_w=1.2)
 shp_text(box(s,0.8,4.65,11.85,0.95,fill=LYEL,line=GOLD),
-  [{'t':[('さらに、',INK,False),('採用1人を人材紹介で採れば85〜123万円',CRIT,True),('。それを使わないだけで、Bの費用はほぼ相殺されます。',INK,False)],'size':14}],anchor=MSO_ANCHOR.MIDDLE)
+  [{'t':[('さらに、',INK,False),('社員1人を人材紹介で採ると約90〜100万円',CRIT,True),('。それを使わないだけで、Bの費用はほぼ相殺されます。',INK,False)],'size':14}],anchor=MSO_ANCHOR.MIDDLE)
 tb(s,0.8,5.75,11.8,0.5,[{'t':'※数字は仮置き。実数（会員数・月謝・入会率）をMTGで伺い、逆算シートで確定値をその場でお出しします。','size':11,'color':MUT}])
 
 # ============ 20. プランC ============
-plan_detail("PLAN C","数えて、磨いて、伴走する","直すだけで終わらせない。回し続ける","160万円＋月15万","初期＋伴走",GREEN,"本命",
+plan_detail("PLAN C","数えて、磨いて、伴走する","直すだけで終わらせない。回し続ける","初期120〜160万＋月15万","初期＋伴走・目安",GREEN,"本命",
     [("プランB の内容すべて",False),
      ("HP全体のビジュアル刷新・情報設計",True),
      ("ブランドフレームワーク（Instagram投稿/リール型/運用マニュアル）",True),
@@ -402,15 +442,15 @@ plan_detail("PLAN C","数えて、磨いて、伴走する","直すだけで終�
     "月15万の中身＝毎月の“お約束”：月次レポート＋戦略MTG／施策の実行／改善／3ヶ月で中間レビュー（縮小・停止OK）")
 
 # ============ 21. C 残る/消える 対比 ============
-s=slide(); title(s,'同じ約250万でも、「残るか・消えるか」が違う','ご提案｜プランC の価値')
+s=slide(); title(s,'同じご予算をかけるなら「残るか・消えるか」','ご提案｜プランC の価値')
 l=box(s,0.8,1.8,5.7,3.4,fill=LRED,line=CRIT,line_w=1.5)
-shp_text(l,[{'t':'人材紹介に約250万円','size':15,'bold':True,'color':CRIT,'space_after':6},
+shp_text(l,[{'t':'人材紹介にお金をかけても','size':15,'bold':True,'color':CRIT,'space_after':6},
    {'t':'・人は採れる','size':13,'color':INK,'space_after':3},
    {'t':'・でも、それで終わり','size':13,'color':INK,'space_after':3},
    {'t':'・資産は残らない','size':13,'color':INK,'space_after':3},
    {'t':'・来年もまた同じ費用','size':13,'bold':True,'color':CRIT}],anchor=MSO_ANCHOR.MIDDLE)
 r=box(s,6.85,1.8,5.7,3.4,fill=LGREEN,line=GREEN,line_w=1.5)
-shp_text(r,[{'t':'プランCに約250万円（初期160＋月15×6）','size':14,'bold':True,'color':GREEN,'space_after':6},
+shp_text(r,[{'t':'同じご予算をプランCにかけると','size':14,'bold':True,'color':GREEN,'space_after':6},
    {'t':'・人も採れる（無料媒体）','size':13,'color':INK,'space_after':3},
    {'t':'・HP/ブランド/計測基盤が残る','size':13,'color':INK,'space_after':3},
    {'t':'・運用を回す力が社内に残る','size':13,'color':INK,'space_after':3},
@@ -429,7 +469,7 @@ data=[["含まれるもの","A","B","C"],
  ["HP全体刷新・ブランド型化・運用マニュアル","−","−","○"],
  ["AIロープレ／LINE自動応答／SEOコラム","−","−","○"],
  ["月次レポート＋戦略MTG（伴走・小改修込み）","−","−","○"],
- ["初期費用（税別）","55万","120万","160万"],
+ ["初期費用（目安・税別）","40〜65万","90〜120万","120〜160万"],
  ["月額（税別）","−","−","15万/月"]]
 rows=len(data);cols=4
 gt=s.shapes.add_table(rows,cols,Inches(0.7),Inches(1.55),Inches(11.9),Inches(5.1)).table
@@ -532,8 +572,8 @@ s=slide(); title(s,'【ご参考】上の方へお持ちいただく1枚','APPEN
 tb(s,0.62,1.4,12,0.4,[{'t':'山下社長が、上のオーナー様にそのまま見せられる要点1枚です。','size':12,'color':MUT}])
 sm=[("現状の問題","成果(予約/問合せ/入会)の計測ゼロ＋強いSNSがHPに繋がっていない（月25訪問/1.5%）。404が月275回。"),
     ("放置のコスト","機会損失 年 約345万円【仮置き】。広告費も効果不明のまま流出。"),
-    ("打ち手","採用（無料媒体・人材紹介を使わず170-250万節約）＋ HPの穴を塞ぎ計測を入れる。"),
-    ("推奨プラン","B＝120万円（単発）。回収 約3〜5ヶ月見込み【仮置き】。本命Cは初期160＋月15万。"),
+    ("打ち手","採用（無料媒体中心・人材紹介＝社員1人約90-100万を回避）＋ HPの穴を塞ぎ計測を入れる。"),
+    ("推奨プラン","B＝90〜120万円（単発・目安）。回収 約3〜5ヶ月【仮置き】。本命Cは初期120〜160万＋月15万。"),
     ("残る資産","採用の仕組み・HP改善・計測基盤・運用力が社内に残る（来年以降のコストが下がる）。"),
     ("出口条件","初月で成果を可視化。Cは3ヶ月で中間レビュー（縮小・停止可）。")]
 y=2.0
