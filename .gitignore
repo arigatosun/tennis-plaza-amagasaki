@@ -60,3 +60,7 @@ client_gijiroku.zip
 client_gijiroku/transcripts/_*.log
 client_gijiroku/transcripts/*_first_pass.txt
 client_gijiroku/transcripts/*_chunk*.txt
+
+# 録音元データ（大容量・文字起こし済みのため非追跡）
+syanai_gijiroku/*.m4a
+client_gijiroku/*.m4a
